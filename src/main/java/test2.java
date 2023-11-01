@@ -15,5 +15,6 @@ public class test2 {
     public static void main(String args[]) {
         // TODO code application logic here
         // long phan dang test/222
+        // long 22
     }
 }
