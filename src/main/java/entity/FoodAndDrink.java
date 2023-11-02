@@ -15,6 +15,7 @@ public class FoodAndDrink {
     private float gia;
     private String hinhAnh;
     private boolean trangThai;
+    private String maNhanVien;
 
     public String getHinhAnh() {
         return hinhAnh;
@@ -24,12 +25,24 @@ public class FoodAndDrink {
         this.hinhAnh = hinhAnh;
     }
 
-    public FoodAndDrink(String maThucAn, String tenThucAn, float gia, String hinhAnh) {
+    public FoodAndDrink(String maThucAn, String tenThucAn, float gia, String hinhAnh, boolean trangThai, String maNhanVien) {
         this.maThucAn = maThucAn;
         this.tenThucAn = tenThucAn;
         this.gia = gia;
         this.hinhAnh = hinhAnh;
+        this.trangThai = trangThai;
+        this.maNhanVien = maNhanVien;
     }
+
+    public String getMaNhanVien() {
+        return maNhanVien;
+    }
+
+    public void setMaNhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
+    }
+
+  
 
     public boolean isTrangThai() {
         return trangThai;
