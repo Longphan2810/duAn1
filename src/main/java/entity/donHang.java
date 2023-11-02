@@ -10,16 +10,16 @@ import java.util.Date;
  *
  * @author Thinkpad E440
  */
-public class donHang {
+public class DonHang {
     private int maDonHang;
     private Date ngayTao;
     private String trangThai;
     private String  maNhanVien;
 
-    public donHang() {
+    public DonHang() {
     }
 
-    public donHang(int maDonHang, Date ngayTao, String trangThai, String maNhanVien) {
+    public DonHang(int maDonHang, Date ngayTao, String trangThai, String maNhanVien) {
         this.maDonHang = maDonHang;
         this.ngayTao = ngayTao;
         this.trangThai = trangThai;
