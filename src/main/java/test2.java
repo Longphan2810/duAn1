@@ -16,7 +16,7 @@ public class test2 {
         // TODO code application logic here
         // long phan dang test/333
        // long phan dang test/222
-       // long phan x2
+       // long phan x3
        
     }
 }
