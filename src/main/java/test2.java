@@ -29,5 +29,6 @@ public class test2 {
         // t2
         // r33
         //x44
+        // long
     }
 }
