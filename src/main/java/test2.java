@@ -22,5 +22,6 @@ public class test2 {
         // long test lai /222
         // hihi
         // luong test
+        // luong test lan 2
     }
 }
