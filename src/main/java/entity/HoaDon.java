@@ -15,16 +15,20 @@ public class HoaDon {
     private int maDonHang;
     private Date ngayTao;
     private String trangThai;
+    private String maNhanVien;
 
     public HoaDon() {
     }
 
-    public HoaDon(int maHoaDon, int maDonHang, Date ngayTao, String trangThai) {
+    public HoaDon(int maHoaDon, int maDonHang, Date ngayTao, String trangThai, String maNhanVien) {
         this.maHoaDon = maHoaDon;
         this.maDonHang = maDonHang;
         this.ngayTao = ngayTao;
         this.trangThai = trangThai;
+        this.maNhanVien = maNhanVien;
     }
+
+  
 
     public int getMaHoaDon() {
         return maHoaDon;
@@ -36,6 +40,14 @@ public class HoaDon {
 
     public int getMaDonHang() {
         return maDonHang;
+    }
+
+    public String getMaNhanVien() {
+        return maNhanVien;
+    }
+
+    public void setMaNhanVien(String maNhanVien) {
+        this.maNhanVien = maNhanVien;
     }
 
     public void setMaDonHang(int maDonHang) {
