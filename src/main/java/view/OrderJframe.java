@@ -65,8 +65,14 @@ public class OrderJframe extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         panelContainerBurger = new javax.swing.JPanel();
         tabPotato = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        panelContainerPotato = new javax.swing.JPanel();
         tabCream = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        panelContainerCream = new javax.swing.JPanel();
         tabDrink = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        panelContainerDrink = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDonHang = new javax.swing.JTable();
@@ -198,45 +204,90 @@ public class OrderJframe extends javax.swing.JFrame {
 
         tabPotato.setBackground(new java.awt.Color(153, 255, 153));
 
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane3.setPreferredSize(new java.awt.Dimension(312, 1500));
+
+        panelContainerPotato.setBackground(new java.awt.Color(255, 255, 255));
+        panelContainerPotato.setName(""); // NOI18N
+        panelContainerPotato.setPreferredSize(new java.awt.Dimension(300, 1500));
+        panelContainerPotato.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jScrollPane3.setViewportView(panelContainerPotato);
+
         javax.swing.GroupLayout tabPotatoLayout = new javax.swing.GroupLayout(tabPotato);
         tabPotato.setLayout(tabPotatoLayout);
         tabPotatoLayout.setHorizontalGroup(
             tabPotatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabPotatoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addContainerGap())
         );
         tabPotatoLayout.setVerticalGroup(
             tabPotatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabPotatoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tbpSub.addTab("tab3", tabPotato);
 
         tabCream.setBackground(new java.awt.Color(0, 204, 204));
 
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(312, 1500));
+
+        panelContainerCream.setBackground(new java.awt.Color(255, 255, 255));
+        panelContainerCream.setName(""); // NOI18N
+        panelContainerCream.setPreferredSize(new java.awt.Dimension(300, 1500));
+        panelContainerCream.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jScrollPane4.setViewportView(panelContainerCream);
+
         javax.swing.GroupLayout tabCreamLayout = new javax.swing.GroupLayout(tabCream);
         tabCream.setLayout(tabCreamLayout);
         tabCreamLayout.setHorizontalGroup(
             tabCreamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCreamLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addContainerGap())
         );
         tabCreamLayout.setVerticalGroup(
             tabCreamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCreamLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tbpSub.addTab("tab2", tabCream);
 
         tabDrink.setBackground(new java.awt.Color(0, 102, 255));
 
+        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane5.setPreferredSize(new java.awt.Dimension(312, 1500));
+
+        panelContainerDrink.setBackground(new java.awt.Color(255, 255, 255));
+        panelContainerDrink.setName(""); // NOI18N
+        panelContainerDrink.setPreferredSize(new java.awt.Dimension(300, 1500));
+        panelContainerDrink.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jScrollPane5.setViewportView(panelContainerDrink);
+
         javax.swing.GroupLayout tabDrinkLayout = new javax.swing.GroupLayout(tabDrink);
         tabDrink.setLayout(tabDrinkLayout);
         tabDrinkLayout.setHorizontalGroup(
             tabDrinkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabDrinkLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                .addContainerGap())
         );
         tabDrinkLayout.setVerticalGroup(
             tabDrinkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 409, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabDrinkLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tbpSub.addTab("tab4", tabDrink);
@@ -823,8 +874,14 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel labelTongTien;
     private javax.swing.JPanel panelContainerBurger;
+    private javax.swing.JPanel panelContainerCream;
+    private javax.swing.JPanel panelContainerDrink;
+    private javax.swing.JPanel panelContainerPotato;
     private javax.swing.JPanel tabBurger;
     private javax.swing.JPanel tabCream;
     private javax.swing.JPanel tabDrink;
