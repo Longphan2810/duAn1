@@ -65,11 +65,11 @@ public class chaoJDialog extends javax.swing.JDialog {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(progress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 640, 20));
 
-        man.setIcon(new javax.swing.ImageIcon("E:\\Hoctap\\dev\\du An 1\\DuAn1\\src\\main\\resources\\image\\858444-200.png")); // NOI18N
+        man.setIcon(new javax.swing.ImageIcon(getClass().getResource("/858444-200.png"))); // NOI18N
         man.setPreferredSize(new java.awt.Dimension(100, 100));
         jPanel1.add(man, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, 70));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("E:\\Hoctap\\dev\\du An 1\\DuAn1\\src\\main\\resources\\image\\Chao.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chao.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

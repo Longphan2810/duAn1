@@ -49,7 +49,7 @@
         <Component class="javax.swing.JLabel" name="man">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="E:\Hoctap\dev\du An 1\DuAn1\src\main\resources\image\858444-200.png"/>
+              <Image iconType="3" name="/858444-200.png"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[100, 100]"/>
@@ -64,7 +64,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="E:\Hoctap\dev\du An 1\DuAn1\src\main\resources\image\Chao.png"/>
+              <Image iconType="3" name="/Chao.png"/>
             </Property>
           </Properties>
           <Constraints>
