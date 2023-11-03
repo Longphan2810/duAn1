@@ -17,55 +17,65 @@ import java.util.logging.Logger;
  * @author Thinkpad E440
  */
 public class JDBChelper {
-
-    private static String url = "jdbc:sqlserver://localhost:1433;databaseName=nekodelivery";
+    private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private static String url = "jdbc:sqlserver://localhost:1433;databaseName=nekodelivery";   
     private static String user = "sa";
     private static String passSQL = "123";
 
-    public static PreparedStatement getPreparedStatement(String sql, Object... objects) throws SQLException {
-
-        Connection con = DriverManager.getConnection(url, user, passSQL);
-        PreparedStatement pst;
-        if (sql.startsWith("{")) {
-            pst = con.prepareCall(sql);
-
+     static {
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+public static PreparedStatement getPreparedStatement(String sql, Object... args) throws SQLException {
+        Connection connection = DriverManager.getConnection(url, user, passSQL);
+        PreparedStatement pstmt = null;
+        if (sql.trim().startsWith("{")) {
+            pstmt = connection.prepareCall(sql);
         } else {
-            pst = con.prepareStatement(sql);
+            pstmt = connection.prepareStatement(sql);
         }
-        int i = 1;
-        for (Object object : objects) {
-            pst.setObject(i, object);
-            i++;
+        for (int i = 0; i < args.length; i++) {
+            pstmt.setObject(i + 1, args[i]);
 
         }
-
-        return pst;
+        return pstmt;
     }
-
-    public static ResultSet Query(String sql, Object... objects) {
-        ResultSet rs = null;
+    public static int Update(String sql, Object...args){
         try {
-            PreparedStatement ptm = getPreparedStatement(url, objects);
-            rs = ptm.executeQuery();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(JDBChelper.class.getName()).log(Level.SEVERE, null, ex);
+            PreparedStatement stmt= getPreparedStatement(sql, args);
+            try {
+                return stmt.executeUpdate();
+            }finally{
+                stmt.getConnection().close();
+            }
+            
+        } catch (SQLException e) {
+            throw new  RuntimeException(e);
         }
-
-        return rs;
     }
-
-    public static int Update(String sql, Object... objects) {
-
+    public static ResultSet Query(String sql, Object... args) {
         try {
-            PreparedStatement ptm = getPreparedStatement(url, objects);
-            return ptm.executeUpdate();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(JDBChelper.class.getName()).log(Level.SEVERE, null, ex);
+            PreparedStatement stmt = getPreparedStatement(sql, args);
+            return stmt.executeQuery();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
-        return 0;
     }
-
+    public static Object value(String sql,Object... args) {
+        try {
+            ResultSet rs = Query(sql, args);
+            if(rs.next()){
+            return rs.getObject(0);
+            
+            }
+            rs.getStatement().getConnection().close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+        
+    }
 }
