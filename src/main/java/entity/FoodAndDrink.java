@@ -34,6 +34,9 @@ public class FoodAndDrink {
         this.maNhanVien = maNhanVien;
     }
 
+    public FoodAndDrink() {
+    }
+
     public String getMaNhanVien() {
         return maNhanVien;
     }

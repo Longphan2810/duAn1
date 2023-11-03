@@ -17,6 +17,7 @@ public interface EntityDAO<Entity> {
     public int delete(String ID);
     public List<Entity> selectAll(); 
     public Entity findById(String ID);
+    public abstract List<Entity> selectBySQL(String sql,Object...args);
     
     
 }
