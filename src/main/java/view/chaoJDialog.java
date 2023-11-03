@@ -34,11 +34,13 @@ public class chaoJDialog extends javax.swing.JDialog {
                 if (progressRun >= 1500) {
                     chaoJDialog.this.dispose();
                 } else {
-                    man.setLocation(manRun, 410);
+                    man.setLocation(manRun, 450);
                     progress.setValue(progressRun);
                     manRun += 4;
                     progressRun=progressRun+10;
-
+                    if(progressRun%150 <=100){
+                        man.setLocation(manRun, 437);
+                    }
                 }
             }
         });
@@ -67,9 +69,9 @@ public class chaoJDialog extends javax.swing.JDialog {
         progress.setMaximum(1500);
         jPanel1.add(progress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 640, 20));
 
-        man.setIcon(new javax.swing.ImageIcon(getClass().getResource("/858444-200.png"))); // NOI18N
+        man.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/burge_Title.png"))); // NOI18N
         man.setPreferredSize(new java.awt.Dimension(100, 100));
-        jPanel1.add(man, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, -1, 70));
+        jPanel1.add(man, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 40, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chao.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
