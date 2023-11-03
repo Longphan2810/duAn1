@@ -4,24 +4,27 @@
  */
 package view;
 
+import DAO.NhanVienDAO;
+import entity.NhanVien;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Thinkpad E440
  */
 public class quanLyJframe extends javax.swing.JFrame {
-
-    /**
-     * Creates new form quanLyJframe
-     */
-    public quanLyJframe() {
+        List<NhanVien> listNV = new ArrayList<>();
+        NhanVienDAO daonv = new NhanVienDAO();
+   public quanLyJframe() {
         initComponents();
         inItTab();
         setLocationRelativeTo(this);
-
+        test(); 
     }
 
     /**
@@ -786,6 +789,16 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         Color backgroundColor = new Color(255, 177, 55);
         Button.setBackground(backgroundColor);
+    }
+    
+
+    public void test() {             
+        listNV = daonv.selectAll();
+        DefaultTableModel model = (DefaultTableModel) tblDanhSachNhanVien.getModel();     
+        model.setRowCount(0);             
+        for (NhanVien nv : listNV) {
+            model.addRow(new Object[]{nv.getMaNhanVien(), nv.getMatKhau(),nv.isRole(), nv.getTenNhanVien(), nv.getNgaySinh(), nv.getSoDienThoai()});
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
