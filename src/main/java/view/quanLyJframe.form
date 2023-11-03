@@ -55,19 +55,22 @@
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="btnTaoDon" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="btnList" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnList5" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel7" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                              <Component id="btnList" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnList5" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnThongKe" alignment="1" min="-2" pref="189" max="-2" attributes="0"/>
-                              <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="btnDanhSachNhanVien" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnThemNhanVien" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnThemMon" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="btnDanhSachmon" alignment="1" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel7" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
+                                  <Component id="btnThongKe" alignment="1" min="-2" pref="189" max="-2" attributes="0"/>
+                                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="btnDanhSachNhanVien" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnThemNhanVien" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="btnThemMon" alignment="1" max="32767" attributes="0"/>
+                                      <Component id="btnDanhSachmon" alignment="1" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
+                              <Component id="btnThongKe2" alignment="1" min="-2" pref="189" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -86,18 +89,20 @@
                   <Component id="btnTaoDon" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnThemMon" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDanhSachmon" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnList" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnThemNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDanhSachNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnList5" min="-2" pref="35" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnThongKe" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnThongKe2" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
@@ -854,7 +859,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="tabThongKe">
+            <Container class="javax.swing.JPanel" name="tabThongKeDoanhThu">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -885,7 +890,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace pref="389" max="32767" attributes="0"/>
@@ -895,6 +900,56 @@
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jLabel11">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI" size="24" style="1"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="B&#xe1;o c&#xe1;o th&#x1ed1;ng k&#xea;"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="tabThongKeMonAn">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                    <LineBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Th&#x1ed1;ng k&#xea;">
+                    <Property name="tabTitle" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          <Component id="jLabel18" min="-2" pref="222" max="-2" attributes="0"/>
+                          <EmptySpace pref="354" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel18" min="-2" pref="40" max="-2" attributes="0"/>
+                          <EmptySpace pref="389" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabel18">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="24" style="1"/>
@@ -931,9 +986,9 @@
         <Component class="javax.swing.JButton" name="btnThongKe">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="0"/>
+              <Font name="Segoe UI" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
+            <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea; doanh thu"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThongKeActionPerformed"/>
@@ -959,6 +1014,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDanhSachmonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnThongKe2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea; m&#xf3;n &#x103;n"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThongKe2ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
