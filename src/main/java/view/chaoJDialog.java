@@ -31,13 +31,13 @@ public class chaoJDialog extends javax.swing.JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (progressRun == 110) {
+                if (progressRun >= 1500) {
                     chaoJDialog.this.dispose();
                 } else {
                     man.setLocation(manRun, 410);
                     progress.setValue(progressRun);
-                    manRun += 6;
-                    progressRun++;
+                    manRun += 4;
+                    progressRun=progressRun+10;
 
                 }
             }
@@ -63,6 +63,8 @@ public class chaoJDialog extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        progress.setMaximum(1500);
         jPanel1.add(progress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 640, 20));
 
         man.setIcon(new javax.swing.ImageIcon(getClass().getResource("/858444-200.png"))); // NOI18N
@@ -130,6 +132,7 @@ public class chaoJDialog extends javax.swing.JDialog {
 
     private void inIt() {
         setLocationRelativeTo(this);
+        
 
     }
 
