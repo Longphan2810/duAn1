@@ -37,8 +37,8 @@ public class chaoJDialog extends javax.swing.JDialog {
                 } else {
                     man.setLocation(manRun, 451);
                     progress.setValue(progressRun);
-                    manRun += 4;
-                    progressRun=progressRun+10;
+                    manRun += 3;
+                    progressRun=progressRun+7;
                     if(progressRun%310 <=150){
                         i--;
                         man.setLocation(manRun, i);
