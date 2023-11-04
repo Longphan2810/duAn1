@@ -19,7 +19,7 @@ public class chaoJDialog extends javax.swing.JDialog {
      */
     int manRun = 0;
     int progressRun = 0;
-    int i =451;
+    int i =445;
 
     public chaoJDialog(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
@@ -32,13 +32,13 @@ public class chaoJDialog extends javax.swing.JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (progressRun >= 1500) {
+                if (progressRun >= 1550) {
                     chaoJDialog.this.dispose();
                 } else {
                     man.setLocation(manRun, 451);
                     progress.setValue(progressRun);
                     manRun += 3;
-                    progressRun=progressRun+7;
+                    progressRun=progressRun+8;
                     if(progressRun%310 <=150){
                         i--;
                         man.setLocation(manRun, i);
@@ -71,12 +71,12 @@ public class chaoJDialog extends javax.swing.JDialog {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        progress.setMaximum(1500);
+        progress.setMaximum(1550);
         jPanel1.add(progress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 640, 20));
 
         man.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/858444-200.png"))); // NOI18N
         man.setPreferredSize(new java.awt.Dimension(100, 100));
-        jPanel1.add(man, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 440, 60, 40));
+        jPanel1.add(man, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 60, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chao.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
