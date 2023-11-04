@@ -74,9 +74,9 @@ public class chaoJDialog extends javax.swing.JDialog {
         progress.setMaximum(1490);
         jPanel1.add(progress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 640, 20));
 
-        man.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/burge_Title.png"))); // NOI18N
+        man.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/858444-200.png"))); // NOI18N
         man.setPreferredSize(new java.awt.Dimension(100, 100));
-        jPanel1.add(man, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 40, 30));
+        jPanel1.add(man, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 50, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chao.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
