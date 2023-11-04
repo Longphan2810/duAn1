@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 /**
  *
@@ -153,7 +154,7 @@ public class LoginMain extends javax.swing.JDialog {
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-        
+
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -163,14 +164,16 @@ public class LoginMain extends javax.swing.JDialog {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
 
+        JFrame ql = new quanLyJframe();
+        JFrame nv = new OrderJframe();
         if (txtUserName.getText().equalsIgnoreCase("admin")) {
 
             LoginMain.this.dispose();
-            new quanLyJframe().setVisible(true);
+            ql.setVisible(true);
 
         } else {
             LoginMain.this.dispose();
-            new OrderJframe().setVisible(true);
+            nv.setVisible(true);
 
         }
 
