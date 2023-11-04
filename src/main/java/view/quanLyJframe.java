@@ -103,6 +103,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         btnList5 = new javax.swing.JButton();
         btnDanhSachmon = new javax.swing.JButton();
         btnThongKe2 = new javax.swing.JButton();
+        btnChuyenManHinh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -621,6 +622,14 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
+        btnChuyenManHinh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnChuyenManHinh.setText("Chuyển màn hình");
+        btnChuyenManHinh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChuyenManHinhActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -641,7 +650,8 @@ public class quanLyJframe extends javax.swing.JFrame {
                                     .addComponent(btnThemNhanVien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnThemMon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnDanhSachmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(btnThongKe2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnThongKe2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnChuyenManHinh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tabbedTong)
                 .addContainerGap())
@@ -669,6 +679,8 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThongKe2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnChuyenManHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -754,6 +766,13 @@ public class quanLyJframe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThongKe2ActionPerformed
 
+    private void btnChuyenManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenManHinhActionPerformed
+        // TODO add your handling code here:
+         new OrderJframe().setVisible(true);
+         dispose();
+      
+    }//GEN-LAST:event_btnChuyenManHinhActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -833,6 +852,7 @@ public class quanLyJframe extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup ChucVu;
     private javax.swing.ButtonGroup TrangThaiMonAn;
+    private javax.swing.JButton btnChuyenManHinh;
     private javax.swing.JButton btnDanhSachNhanVien;
     private javax.swing.JButton btnDanhSachmon;
     private javax.swing.JButton btnList;
