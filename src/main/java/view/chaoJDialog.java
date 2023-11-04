@@ -17,9 +17,9 @@ public class chaoJDialog extends javax.swing.JDialog {
     /**
      * Creates new form chaoJDialog
      */
-    int manRun = 0;
+    int manRun = -40;
     int progressRun = 0;
-    int i =454;
+    int i =452;
 
     public chaoJDialog(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
@@ -35,7 +35,7 @@ public class chaoJDialog extends javax.swing.JDialog {
                 if (progressRun >= 1500) {
                     chaoJDialog.this.dispose();
                 } else {
-                    man.setLocation(manRun, 454);
+                    man.setLocation(manRun, 452);
                     progress.setValue(progressRun);
                     manRun += 3;
                     progressRun=progressRun+7;
