@@ -63,6 +63,7 @@ public class LoginMain extends javax.swing.JDialog {
         jLabel4.setText("Username");
 
         txtUserName.setBackground(new java.awt.Color(243, 239, 243));
+        txtUserName.setText("NV001");
         txtUserName.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
         txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,6 +72,7 @@ public class LoginMain extends javax.swing.JDialog {
         });
 
         txtPassword.setBackground(new java.awt.Color(243, 239, 243));
+        txtPassword.setText("password1");
         txtPassword.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, new java.awt.Color(153, 153, 153), new java.awt.Color(204, 204, 204)));
 
         btnLogin.setBackground(new java.awt.Color(204, 204, 204));

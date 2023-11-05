@@ -224,6 +224,11 @@ public class quanLyJframe extends javax.swing.JFrame {
         });
 
         btnSuaMonAn.setText("Sửa món ăn");
+        btnSuaMonAn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaMonAnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabThemMonLayout = new javax.swing.GroupLayout(tabThemMon);
         tabThemMon.setLayout(tabThemMonLayout);
@@ -317,6 +322,11 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel8.setText("Danh sách món ăn");
 
         btnXoaMon.setText("Xóa món");
+        btnXoaMon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaMonActionPerformed(evt);
+            }
+        });
 
         tblDanhSachMon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -326,6 +336,11 @@ public class quanLyJframe extends javax.swing.JFrame {
                 "Mã món ăn", "Tên món ăn", "Giá tiền", "Hình ảnh", "Mã nhân viên", "Trạng thái"
             }
         ));
+        tblDanhSachMon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblDanhSachMonMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblDanhSachMon);
 
         btnTimKiemMonAn.setText("Tìm Kiếm");
@@ -849,15 +864,75 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     private void btnTimKiemMonAnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemMonAnActionPerformed
         // TODO add your handling code here:
+        try {
 
-        modelFoodList.setRowCount(0);
-        FoodAndDrink food = FoodDao.findById(txtTimKiemMonAn.getText().trim());
+            modelFoodList.setRowCount(0);
+            FoodAndDrink food = FoodDao.findById(txtTimKiemMonAn.getText().trim());
 
-        Object[] temp = {food.getMaThucAn(), food.getTenThucAn(), food.getGia(), food.getHinhAnh(), food.getMaNhanVien(), food.isTrangThai()};
-        modelFoodList.addRow(temp);
+            Object[] temp = {food.getMaThucAn(), food.getTenThucAn(), food.getGia(), food.getHinhAnh(), food.getMaNhanVien(), food.isTrangThai()};
+            modelFoodList.addRow(temp);
+        } catch (Exception e) {
+        }
 
 
     }//GEN-LAST:event_btnTimKiemMonAnActionPerformed
+
+    private void btnXoaMonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaMonActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            int[] selectedRow = tblDanhSachMon.getSelectedRows();
+            boolean checkDelete = false;
+
+            for (int i : selectedRow) {
+                String maMon = (String) tblDanhSachMon.getValueAt(i, 0);
+                FoodDao.delete(maMon);
+                checkDelete = true;
+            }
+            if (checkDelete == true) {
+                DialogHelper.alert(this, "Da Xoa 1 so mon vui long kiem tra lai !");
+            }
+            fillTableFood();
+
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Mot so mon da dung khong the  xoa !");
+        }
+
+    }//GEN-LAST:event_btnXoaMonActionPerformed
+
+    private void btnSuaMonAnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaMonAnActionPerformed
+        // TODO add your handling code here:
+        if (validateFood()) {
+            FoodAndDrink newFood = FoodDao.findById(txtMaMon.getText().trim());
+
+            if (newFood != null) {
+
+                File f = new File(imageCurrent);
+
+                newFood.setMaThucAn(txtMaMon.getText().trim());
+                newFood.setTenThucAn(txtTenMon.getText().trim());
+                newFood.setGia(Float.parseFloat(txtGia.getText().trim()));
+                newFood.setTrangThai(rdoConHang.isSelected());
+                newFood.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
+                newFood.setHinhAnh(f.getName());
+                FoodDao.insert(newFood);
+                DialogHelper.alert(this, "Da sua thanh cong !");
+            } else {
+
+                DialogHelper.alert(this, "Khong ton tai mon an de sua !");
+
+            }
+        }
+
+
+    }//GEN-LAST:event_btnSuaMonAnActionPerformed
+
+    private void tblDanhSachMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMonMouseClicked
+        // TODO add your handling code here:
+        
+        
+
+    }//GEN-LAST:event_tblDanhSachMonMouseClicked
 
     /**
      * @param args the command line arguments
