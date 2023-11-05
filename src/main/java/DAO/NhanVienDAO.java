@@ -24,12 +24,12 @@ public class NhanVienDAO implements EntityDAO<NhanVien> {
 
     @Override
     public void insert(NhanVien E) {
-         JDBChelper.Update(insert_SQL, E.getMaNhanVien(),E.getTenNhanVien(),E.getMatKhau(),E.getNgaySinh(),E.getSoDienThoai());
+         JDBChelper.Update(insert_SQL, E.getMaNhanVien(),E.getMatKhau(),E.getTenNhanVien(),E.isRole(),E.getNgaySinh(),E.getSoDienThoai());
     }
 
     @Override
     public void update(NhanVien E) {
-       JDBChelper.Update(update_SQL, E.getTenNhanVien(),E.getMatKhau(),E.getNgaySinh(),E.getSoDienThoai(),E.getMaNhanVien());
+       JDBChelper.Update(update_SQL, E.getMatKhau(),E.getTenNhanVien(),E.isRole(),E.getNgaySinh(),E.getSoDienThoai(),E.getMaNhanVien());
     }
 
     @Override

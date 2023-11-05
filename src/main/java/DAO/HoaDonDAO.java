@@ -24,7 +24,7 @@ public class HoaDonDAO implements EntityDAO<HoaDon> {
 
     @Override
     public void insert(HoaDon E) {
-        JDBChelper.Update(insert_SQL, E.getMaHoaDon(),E.getMaDonHang(),E.getNgayTao(),E.getTrangThai(),E.getMaNhanVien());
+        JDBChelper.Update(insert_SQL, E.getMaDonHang(),E.getNgayTao(),E.getTrangThai(),E.getMaNhanVien());
     }
 
     @Override

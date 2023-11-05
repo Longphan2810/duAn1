@@ -24,7 +24,7 @@ public class DonHangChiTietDAO implements EntityDAO<DonHangChiTiet> {
 
     @Override
     public void insert(DonHangChiTiet E) {
-        JDBChelper.Update(insert_SQL, E.getMaDonChiTiet(),E.getMaDonHang(),E.getMaMonAn(),E.getSoLuong());
+        JDBChelper.Update(insert_SQL, E.getMaDonHang(),E.getMaMonAn(),E.getSoLuong());
     }
 
     @Override

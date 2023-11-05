@@ -24,7 +24,7 @@ public class DonHangDAO implements EntityDAO<DonHang> {
 
     @Override
     public void insert(DonHang E) {
-         JDBChelper.Update(insert_SQL, E.getMaDonHang(),E.getNgayTao(),E.getMaNhanVien(),E.getTrangThai());
+         JDBChelper.Update(insert_SQL, E.getNgayTao(),E.getMaNhanVien(),E.getTrangThai());
     }
 
     @Override

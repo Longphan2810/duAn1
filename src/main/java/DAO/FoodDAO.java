@@ -24,12 +24,12 @@ public class FoodDAO implements EntityDAO<FoodAndDrink> {
 
     @Override
     public void insert(FoodAndDrink E) {
-        JDBChelper.Update(insert_SQL, E.getMaThucAn(), E.getTenThucAn(), E.getGia(), E.getHinhAnh(), E.isTrangThai(), E.getMaNhanVien());
+        JDBChelper.Update(insert_SQL, E.getMaThucAn(), E.getTenThucAn(), E.getGia(), E.getHinhAnh(), E.getMaNhanVien(), E.isTrangThai());
     }
 
     @Override
     public void update(FoodAndDrink E) {
-        JDBChelper.Update(update_SQL, E.getTenThucAn(), E.getGia(), E.getHinhAnh(), E.isTrangThai(), E.getMaNhanVien(), E.getMaThucAn());
+        JDBChelper.Update(update_SQL, E.getTenThucAn(), E.getGia(), E.getHinhAnh(),E.getMaNhanVien(), E.isTrangThai(), E.getMaThucAn());
     }
 
     @Override
