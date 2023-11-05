@@ -4,25 +4,39 @@
  */
 package view;
 
+import DAO.FoodDAO;
 import DAO.NhanVienDAO;
+import entity.FoodAndDrink;
 import entity.NhanVien;
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 import ulti.Auth;
+import ulti.DialogHelper;
 
 /**
  *
  * @author Thinkpad E440
  */
 public class quanLyJframe extends javax.swing.JFrame {
-
+    
     List<NhanVien> listNV = new ArrayList<>();
+    List<FoodAndDrink> listFood = new ArrayList<>();
+    
     NhanVienDAO daonv = new NhanVienDAO();
-
+    FoodDAO FoodDao = new FoodDAO();
+    
+    DefaultTableModel modelFoodList;
+    
+    String imageCurrent = "";
+    
     public quanLyJframe() {
         initComponents();
         inItTab();
@@ -50,6 +64,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         tabbedTong = new javax.swing.JTabbedPane();
         tabThemMon = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        lblHinhAnh = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -58,9 +73,9 @@ public class quanLyJframe extends javax.swing.JFrame {
         txtTenMon = new javax.swing.JTextField();
         txtGia = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        rdoConHang = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        btnHetHang = new javax.swing.JRadioButton();
         btnThemMonAn = new javax.swing.JButton();
         btnSuaMonAn = new javax.swing.JButton();
         tabDanhSachMon = new javax.swing.JPanel();
@@ -143,15 +158,21 @@ public class quanLyJframe extends javax.swing.JFrame {
         tabThemMon.setBackground(new java.awt.Color(255, 255, 255));
         tabThemMon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        lblHinhAnh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHinhAnhMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 196, Short.MAX_VALUE)
+            .addComponent(lblHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addComponent(lblHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -175,26 +196,32 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setText("Giá");
 
-        TrangThaiMonAn.add(jRadioButton1);
-        jRadioButton1.setText("Còn hàng");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        TrangThaiMonAn.add(rdoConHang);
+        rdoConHang.setSelected(true);
+        rdoConHang.setText("Còn hàng");
+        rdoConHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rdoConHangActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Trạng thái");
 
-        TrangThaiMonAn.add(jRadioButton2);
-        jRadioButton2.setText("Hết hàng");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        TrangThaiMonAn.add(btnHetHang);
+        btnHetHang.setText("Hết hàng");
+        btnHetHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                btnHetHangActionPerformed(evt);
             }
         });
 
         btnThemMonAn.setText("Thêm món ăn");
+        btnThemMonAn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemMonAnActionPerformed(evt);
+            }
+        });
 
         btnSuaMonAn.setText("Sửa món ăn");
 
@@ -207,23 +234,18 @@ public class quanLyJframe extends javax.swing.JFrame {
                     .addGroup(tabThemMonLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
                         .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(tabThemMonLayout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(tabThemMonLayout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(jLabel6)
+                                .addComponent(btnThemMonAn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(tabThemMonLayout.createSequentialGroup()
-                                        .addComponent(btnThemMonAn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnSuaMonAn))
-                                    .addGroup(tabThemMonLayout.createSequentialGroup()
-                                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(btnSuaMonAn))
+                            .addGroup(tabThemMonLayout.createSequentialGroup()
+                                .addComponent(rdoConHang, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(43, 43, 43)
+                                .addComponent(btnHetHang, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(tabThemMonLayout.createSequentialGroup()
                             .addContainerGap()
@@ -246,7 +268,8 @@ public class quanLyJframe extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtMaMon, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-                                .addComponent(txtTenMon)))))
+                                .addComponent(txtTenMon)
+                                .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         tabThemMonLayout.setVerticalGroup(
@@ -276,8 +299,8 @@ public class quanLyJframe extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2))
+                            .addComponent(rdoConHang)
+                            .addComponent(btnHetHang))
                         .addGap(35, 35, 35)
                         .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnThemMonAn)
@@ -743,16 +766,17 @@ public class quanLyJframe extends javax.swing.JFrame {
     private void btnDanhSachmonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhSachmonActionPerformed
         checkClickButton(btnDanhSachmon);
         tabbedTong.setSelectedIndex(1);
+        fillTableFood();
 
     }//GEN-LAST:event_btnDanhSachmonActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void btnHetHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHetHangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_btnHetHangActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rdoConHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoConHangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rdoConHangActionPerformed
 
     private void txtGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGiaActionPerformed
         // TODO add your handling code here:
@@ -776,6 +800,46 @@ public class quanLyJframe extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_btnChuyenManHinhActionPerformed
+
+    private void lblHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhAnhMouseClicked
+        // TODO add your handling code here:
+        try {
+            JFileChooser fcs = new JFileChooser();
+            int checkChooseFile = fcs.showOpenDialog(this);
+            if (checkChooseFile == JFileChooser.APPROVE_OPTION) {
+                File f = fcs.getSelectedFile();
+                imageCurrent = f.getAbsolutePath();
+                ImageIcon imgIcon = new ImageIcon(f.getAbsolutePath());
+                Image newImg = imgIcon.getImage().getScaledInstance(lblHinhAnh.getWidth(), lblHinhAnh.getHeight(), Image.SCALE_SMOOTH);
+                imgIcon = new ImageIcon(newImg);
+                lblHinhAnh.setIcon(imgIcon);
+                
+            }
+        } catch (Exception e) {
+            
+        }
+        
+
+    }//GEN-LAST:event_lblHinhAnhMouseClicked
+
+    private void btnThemMonAnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemMonAnActionPerformed
+        // TODO add your handling code here:
+        if (validateFood()) {
+            File f = new File(imageCurrent);
+            FoodAndDrink newFood = new FoodAndDrink();
+            
+            newFood.setMaThucAn(txtMaMon.getText().trim());
+            newFood.setTenThucAn(txtTenMon.getText().trim());
+            newFood.setGia(Float.parseFloat(txtGia.getText().trim()));
+            newFood.setTrangThai(rdoConHang.isSelected());
+            newFood.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
+            newFood.setHinhAnh(f.getName());
+            FoodDao.insert(newFood);
+            DialogHelper.alert(this, "Da them thanh cong !");
+        }
+        
+
+    }//GEN-LAST:event_btnThemMonAnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -812,6 +876,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         });
     }
 
+    // ======================= inIt ==================================  
     private void inItTab() {
         tabbedTong.setUI(new BasicTabbedPaneUI() {
             @Override
@@ -819,30 +884,80 @@ public class quanLyJframe extends javax.swing.JFrame {
                 return 0; // Set the tab area height to 0
             }
         });
-
+        
     }
-
+    
     private void inIt() {
         Color backgroundColor = new Color(255, 177, 55);
         btnThemMon.setBackground(backgroundColor);
-
+        
+        modelFoodList = (DefaultTableModel) tblDanhSachMon.getModel();
+        
     }
 
+    // ======================== check click and remove  active ============================
     private void checkClickButton(JButton Button) {
         // remove active btn 
 
         btnThemMon.setBackground(Color.white);
-
+        
         btnDanhSachmon.setBackground(Color.white);
         btnThemNhanVien.setBackground(Color.white);
-
+        
         btnDanhSachNhanVien.setBackground(Color.white);
         btnThongKe.setBackground(Color.white);
-
+        
         Color backgroundColor = new Color(255, 177, 55);
         Button.setBackground(backgroundColor);
     }
 
+    //======================== validate form ===================================
+    public boolean validateFood() {
+        String checkIdFood = "(BG|PT|IC|DR){1}\\d+";
+        String checkPrice = "\\d+|\\d+\\.\\d+";
+        String nameFood = txtTenMon.getText().trim();
+        String IdFood = txtMaMon.getText().trim();
+        String priceFood = txtGia.getText().trim();
+        
+        if (!IdFood.matches(checkIdFood)) {
+            DialogHelper.alert(this, """
+                                 Vui long nhap ma mon dung cu phap  ! 
+                                  Burger : BG ,Potato : PT, Ice cream : IC, Drink : DR 
+                                  VD: BG01 or PT01 or IC01 or DR01""");
+            return false;
+        }
+        
+        if (nameFood.equalsIgnoreCase("")) {
+            DialogHelper.alert(this, "Vui long nhap ten mon an !");
+            return false;
+        }
+        
+        if (!priceFood.matches(checkPrice)) {
+            DialogHelper.alert(this, """
+                                     Vui long nhap tien mon an dung cu phap ! 
+                                     VD : 314 or 3.14
+                                     """);
+            return false;
+            
+        }
+        
+        return true;
+    }
+
+
+    //====================== fill table ================================
+    public void fillTableFood() {
+        modelFoodList.setRowCount(0);
+        listFood = FoodDao.selectAll();
+        for (FoodAndDrink food : listFood) {
+            Object[] temp  = {food.getMaThucAn(),food.getTenThucAn(),food.getGia(),food.getHinhAnh(),food.getMaNhanVien(),food.isTrangThai()};
+            modelFoodList.addRow(temp);
+            
+            
+        }
+        
+    }
+    
     public void test() {
         listNV = daonv.selectAll();
         DefaultTableModel model = (DefaultTableModel) tblDanhSachNhanVien.getModel();
@@ -858,6 +973,7 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnChuyenManHinh;
     private javax.swing.JButton btnDanhSachNhanVien;
     private javax.swing.JButton btnDanhSachmon;
+    private javax.swing.JRadioButton btnHetHang;
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnList5;
     private javax.swing.JButton btnSuaMonAn;
@@ -895,12 +1011,12 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblHinhAnh;
+    private javax.swing.JRadioButton rdoConHang;
     private javax.swing.JPanel tabDanhSachMon;
     private javax.swing.JPanel tabDanhSachNhanVien;
     private javax.swing.JPanel tabThemMon;

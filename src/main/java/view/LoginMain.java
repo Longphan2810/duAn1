@@ -4,10 +4,12 @@
  */
 package view;
 
+import DAO.NhanVienDAO;
 import entity.NhanVien;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import ulti.Auth;
+import ulti.DialogHelper;
 
 /**
  *
@@ -18,7 +20,8 @@ public class LoginMain extends javax.swing.JDialog {
     /**
      * Creates new form NewJFrame
      */
-       
+    NhanVienDAO nhanVienDao = new NhanVienDAO();
+
     public LoginMain(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         chaoOpen();
@@ -169,23 +172,38 @@ public class LoginMain extends javax.swing.JDialog {
 
         JFrame ql = new quanLyJframe();
         JFrame nv = new OrderJframe();
-        
-        NhanVien admin = new NhanVien();
-        admin.setRole(true);
-        admin.setTenNhanVien("Admin");
-        
-        Auth.currentNhanVien= admin;
-        
-        if (txtUserName.getText().equalsIgnoreCase("admin")) {
 
-            LoginMain.this.dispose();
-            ql.setVisible(true);
+        String pass = String.valueOf(txtPassword.getPassword());
+
+        NhanVien nvTemp = nhanVienDao.findById(txtUserName.getText().trim());
+
+        if (nvTemp != null) {
+            if (nvTemp.getMatKhau().equals(pass)) {
+
+                if (nvTemp.isRole()) {
+
+                    LoginMain.this.dispose();
+                    ql.setVisible(true);
+
+                } else {
+                    LoginMain.this.dispose();
+                    nv.setVisible(true);
+
+                }
+                
+                Auth.currentNhanVien = nvTemp;
+                
+            } else {
+                DialogHelper.alert(this, "Sai password !");
+
+            }
 
         } else {
-            LoginMain.this.dispose();
-            nv.setVisible(true);
+
+            DialogHelper.alert(this, "Sai user va password !");
 
         }
+
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
