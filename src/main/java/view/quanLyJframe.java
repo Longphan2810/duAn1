@@ -795,9 +795,10 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     private void btnChuyenManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenManHinhActionPerformed
         // TODO add your handling code here:
-        System.out.println(Auth.currentNhanVien.getTenNhanVien());
+        if(Auth.isManager()){
         new OrderJframe().setVisible(true);
         dispose();
+        }
 
     }//GEN-LAST:event_btnChuyenManHinhActionPerformed
 

@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 import ulti.Auth;
+import ulti.DialogHelper;
 
 /**
  *
@@ -678,9 +679,15 @@ public class OrderJframe extends javax.swing.JFrame {
 
     private void btnChuyenManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenManHinhActionPerformed
         // TODO add your handling code here:
-        System.out.println(Auth.currentNhanVien.getTenNhanVien());
-        new quanLyJframe().setVisible(true);
-        dispose();
+
+        if (Auth.isManager()) {
+            new quanLyJframe().setVisible(true);
+            dispose();
+        } else {
+            DialogHelper.alert(this, "Chi quan ly moi duoc phep dung !");
+            
+        }
+
     }//GEN-LAST:event_btnChuyenManHinhActionPerformed
 
     /**
