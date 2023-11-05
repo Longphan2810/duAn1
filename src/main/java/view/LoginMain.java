@@ -4,8 +4,10 @@
  */
 package view;
 
+import entity.NhanVien;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import ulti.Auth;
 
 /**
  *
@@ -16,6 +18,7 @@ public class LoginMain extends javax.swing.JDialog {
     /**
      * Creates new form NewJFrame
      */
+       
     public LoginMain(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         chaoOpen();
@@ -166,6 +169,13 @@ public class LoginMain extends javax.swing.JDialog {
 
         JFrame ql = new quanLyJframe();
         JFrame nv = new OrderJframe();
+        
+        NhanVien admin = new NhanVien();
+        admin.setRole(true);
+        admin.setTenNhanVien("Admin");
+        
+        Auth.currentNhanVien= admin;
+        
         if (txtUserName.getText().equalsIgnoreCase("admin")) {
 
             LoginMain.this.dispose();

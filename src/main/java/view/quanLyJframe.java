@@ -12,20 +12,23 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
+import ulti.Auth;
 
 /**
  *
  * @author Thinkpad E440
  */
 public class quanLyJframe extends javax.swing.JFrame {
-        List<NhanVien> listNV = new ArrayList<>();
-        NhanVienDAO daonv = new NhanVienDAO();
-   public quanLyJframe() {
+
+    List<NhanVien> listNV = new ArrayList<>();
+    NhanVienDAO daonv = new NhanVienDAO();
+
+    public quanLyJframe() {
         initComponents();
         inItTab();
         inIt();
         setLocationRelativeTo(this);
-        test(); 
+        test();
     }
 
     /**
@@ -768,9 +771,10 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     private void btnChuyenManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenManHinhActionPerformed
         // TODO add your handling code here:
-         new OrderJframe().setVisible(true);
-         dispose();
-      
+        System.out.println(Auth.currentNhanVien.getTenNhanVien());
+        new OrderJframe().setVisible(true);
+        dispose();
+
     }//GEN-LAST:event_btnChuyenManHinhActionPerformed
 
     /**
@@ -838,14 +842,13 @@ public class quanLyJframe extends javax.swing.JFrame {
         Color backgroundColor = new Color(255, 177, 55);
         Button.setBackground(backgroundColor);
     }
-    
 
-    public void test() {             
+    public void test() {
         listNV = daonv.selectAll();
-        DefaultTableModel model = (DefaultTableModel) tblDanhSachNhanVien.getModel();     
-        model.setRowCount(0);             
+        DefaultTableModel model = (DefaultTableModel) tblDanhSachNhanVien.getModel();
+        model.setRowCount(0);
         for (NhanVien nv : listNV) {
-            model.addRow(new Object[]{nv.getMaNhanVien(), nv.getMatKhau(),nv.isRole(), nv.getTenNhanVien(), nv.getNgaySinh(), nv.getSoDienThoai()});
+            model.addRow(new Object[]{nv.getMaNhanVien(), nv.getMatKhau(), nv.isRole(), nv.getTenNhanVien(), nv.getNgaySinh(), nv.getSoDienThoai()});
         }
     }
 
