@@ -888,8 +888,8 @@ public class quanLyJframe extends javax.swing.JFrame {
             newFood.setTenThucAn(txtTenMon.getText().trim());
             newFood.setGia(Float.parseFloat(txtGia.getText().trim()));
             newFood.setTrangThai(rdoConHang.isSelected());
-//            newFood.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
-            newFood.setMaNhanVien("NV001");
+            newFood.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
+ 
             newFood.setHinhAnh(f.getName());
             try {
                 FoodDao.insert(newFood);
