@@ -141,6 +141,7 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
+        btnThemMon.setBackground(new java.awt.Color(255, 255, 255));
         btnThemMon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnThemMon.setText("Thêm món");
         btnThemMon.addActionListener(new java.awt.event.ActionListener() {
@@ -655,6 +656,7 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         tabbedTong.addTab("Thống kê", tabThongKeMonAn);
 
+        btnThemNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         btnThemNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnThemNhanVien.setText("Thêm nhân viên");
         btnThemNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -663,6 +665,7 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
+        btnDanhSachNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         btnDanhSachNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDanhSachNhanVien.setText("Danh sách nhân viên");
         btnDanhSachNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -671,6 +674,7 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
+        btnThongKe.setBackground(new java.awt.Color(255, 255, 255));
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnThongKe.setText("Thống kê doanh thu");
         btnThongKe.addActionListener(new java.awt.event.ActionListener() {
@@ -687,6 +691,7 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
+        btnDanhSachmon.setBackground(new java.awt.Color(255, 255, 255));
         btnDanhSachmon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDanhSachmon.setText("Danh sách món");
         btnDanhSachmon.addActionListener(new java.awt.event.ActionListener() {
@@ -695,6 +700,7 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
+        btnThongKe2.setBackground(new java.awt.Color(255, 255, 255));
         btnThongKe2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnThongKe2.setText("Thống kê món ăn");
         btnThongKe2.addActionListener(new java.awt.event.ActionListener() {
