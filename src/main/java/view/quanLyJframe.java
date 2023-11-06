@@ -37,17 +37,18 @@ public class quanLyJframe extends javax.swing.JFrame {
     List<FoodAndDrink> listFood = new ArrayList<>();
     NhanVienDAO daonv = new NhanVienDAO();
     FoodDAO FoodDao = new FoodDAO();
-    DefaultTableModel modelFoodList,modelNV;
-    
+    DefaultTableModel modelFoodList, modelNV;
+
     String imageCurrent = "";
     int row = 0;
+    int rowMenu = 0;
 
     public quanLyJframe() {
         initComponents();
         inItTab();
         inIt();
         setLocationRelativeTo(this);
-       
+
     }
 
     /**
@@ -80,7 +81,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         rdoConHang = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        btnHetHang = new javax.swing.JRadioButton();
+        rdoHetHang = new javax.swing.JRadioButton();
         btnThemMonAn = new javax.swing.JButton();
         btnSuaMonAn = new javax.swing.JButton();
         tabDanhSachMon = new javax.swing.JPanel();
@@ -214,11 +215,11 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Trạng thái");
 
-        TrangThaiMonAn.add(btnHetHang);
-        btnHetHang.setText("Hết hàng");
-        btnHetHang.addActionListener(new java.awt.event.ActionListener() {
+        TrangThaiMonAn.add(rdoHetHang);
+        rdoHetHang.setText("Hết hàng");
+        rdoHetHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHetHangActionPerformed(evt);
+                rdoHetHangActionPerformed(evt);
             }
         });
 
@@ -256,7 +257,7 @@ public class quanLyJframe extends javax.swing.JFrame {
                             .addGroup(tabThemMonLayout.createSequentialGroup()
                                 .addComponent(rdoConHang, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(43, 43, 43)
-                                .addComponent(btnHetHang, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(rdoHetHang, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(tabThemMonLayout.createSequentialGroup()
                             .addContainerGap()
@@ -311,7 +312,7 @@ public class quanLyJframe extends javax.swing.JFrame {
                         .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(rdoConHang)
-                            .addComponent(btnHetHang))
+                            .addComponent(rdoHetHang))
                         .addGap(35, 35, 35)
                         .addGroup(tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnThemMonAn)
@@ -345,6 +346,9 @@ public class quanLyJframe extends javax.swing.JFrame {
         tblDanhSachMon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblDanhSachMonMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblDanhSachMonMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(tblDanhSachMon);
@@ -821,9 +825,9 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDanhSachmonActionPerformed
 
-    private void btnHetHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHetHangActionPerformed
+    private void rdoHetHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoHetHangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnHetHangActionPerformed
+    }//GEN-LAST:event_rdoHetHangActionPerformed
 
     private void rdoConHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoConHangActionPerformed
         // TODO add your handling code here:
@@ -888,9 +892,9 @@ public class quanLyJframe extends javax.swing.JFrame {
             newFood.setMaNhanVien("NV001");
             newFood.setHinhAnh(f.getName());
             try {
-                 FoodDao.insert(newFood);
+                FoodDao.insert(newFood);
             } catch (Exception e) {
-                DialogHelper.alert(this, "Da ton tai mon an co ma la : "+newFood.getMaThucAn());
+                DialogHelper.alert(this, "Da ton tai mon an co ma la : " + newFood.getMaThucAn());
                 return;
             }
 
@@ -975,7 +979,6 @@ public class quanLyJframe extends javax.swing.JFrame {
     private void tblDanhSachMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMonMouseClicked
         // TODO add your handling code here:
 
-
     }//GEN-LAST:event_tblDanhSachMonMouseClicked
 
     private void tblDanhSachNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachNhanVienMousePressed
@@ -987,27 +990,27 @@ public class quanLyJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_tblDanhSachNhanVienMousePressed
 
     private void btnThemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNVActionPerformed
-        if(validateNV()){
-        try {
-            insertNV();
-        } catch (ParseException ex) {
-            Logger.getLogger(quanLyJframe.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if (validateNV()) {
+            try {
+                insertNV();
+            } catch (ParseException ex) {
+                Logger.getLogger(quanLyJframe.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnThemNVActionPerformed
 
     private void btnSuaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaNVActionPerformed
-        if(validateNV()){
-        try {
-            updateNV();
-        } catch (ParseException ex) {
-            Logger.getLogger(quanLyJframe.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if (validateNV()) {
+            try {
+                updateNV();
+            } catch (ParseException ex) {
+                Logger.getLogger(quanLyJframe.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btnSuaNVActionPerformed
 
     private void btnXoaNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaNhanVienActionPerformed
-        
+
         deleteNV();
     }//GEN-LAST:event_btnXoaNhanVienActionPerformed
 
@@ -1017,11 +1020,19 @@ public class quanLyJframe extends javax.swing.JFrame {
             modelNV.setRowCount(0);
             NhanVien nv = daonv.findById(txtTimKiemNV.getText().trim());
 
-            Object[] temp = {nv.getMaNhanVien(),nv.getMatKhau(),nv.isRole(),nv.getTenNhanVien(),nv.getNgaySinh(),nv.getSoDienThoai()};
+            Object[] temp = {nv.getMaNhanVien(), nv.getMatKhau(), nv.isRole(), nv.getTenNhanVien(), nv.getNgaySinh(), nv.getSoDienThoai()};
             modelNV.addRow(temp);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnTimKiemNVActionPerformed
+
+    private void tblDanhSachMonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMonMousePressed
+        // TODO add your handling code here:
+        if (evt.getClickCount() == 2) {
+            this.rowMenu = tblDanhSachMon.rowAtPoint(evt.getPoint());
+            fillFormMenu();
+        }
+    }//GEN-LAST:event_tblDanhSachMonMousePressed
 
     /**
      * @param args the command line arguments
@@ -1124,18 +1135,19 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         return true;
     }
+
     public boolean validateNV() {
         String formatNgaySinh = "\\d{1,2}[-]\\d{1,2}[-]\\d{4}";
         String MaNV = txtMaNhanVien.getText().trim();
         String TenNV = txtTenNhanVien.getText().trim();
         String MkNV = txtMatKhau.getText().trim();
         String NgaySinh = txtNgaySinh.getText().trim();
-        String SDT = txtSoDienThoai.getText().trim();                     
+        String SDT = txtSoDienThoai.getText().trim();
         if (MaNV.equalsIgnoreCase("")) {
             DialogHelper.alert(this, "Vui long nhap Ma nhan vien !");
             return false;
         }
-         if (MkNV.equalsIgnoreCase("")) {
+        if (MkNV.equalsIgnoreCase("")) {
             DialogHelper.alert(this, "Vui long nhap Mat khau !");
             return false;
         }
@@ -1143,12 +1155,12 @@ public class quanLyJframe extends javax.swing.JFrame {
             DialogHelper.alert(this, "Vui long nhap Ten nhan vien !");
             return false;
         }
-       
+
         if (NgaySinh.equalsIgnoreCase("")) {
             DialogHelper.alert(this, "Vui long nhap Ngay sinh !");
             return false;
         }
-         if (!NgaySinh.matches(formatNgaySinh)) {
+        if (!NgaySinh.matches(formatNgaySinh)) {
             DialogHelper.alert(this, "Vui long nhap dung dinh dang dd-MM-yyyy ! ");
             return false;
 
@@ -1157,8 +1169,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             DialogHelper.alert(this, "Vui long nhap So dien thoai !");
             return false;
         }
-        
-       
 
         return true;
     }
@@ -1168,7 +1178,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         modelFoodList.setRowCount(0);
         listFood = FoodDao.selectAll();
         for (FoodAndDrink food : listFood) {
-            Object[] temp = {food.getMaThucAn(), food.getTenThucAn(), food.getGia(), food.getHinhAnh(), food.getMaNhanVien(), food.isTrangThai()};
+            Object[] temp = {food.getMaThucAn(), food.getTenThucAn(), food.getGia(), food.getHinhAnh(), food.getMaNhanVien(), food.isTrangThai()?"Còn Hàng":"Hết Hàng"};
             modelFoodList.addRow(temp);
 
         }
@@ -1180,11 +1190,11 @@ public class quanLyJframe extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) tblDanhSachNhanVien.getModel();
         model.setRowCount(0);
         for (NhanVien nv : listNV) {
-            model.addRow(new Object[]{nv.getMaNhanVien(), nv.getMatKhau(), nv.isRole(), nv.getTenNhanVien(), nv.getNgaySinh(), nv.getSoDienThoai()});
+            model.addRow(new Object[]{nv.getMaNhanVien(), nv.getMatKhau(), nv.isRole() ? "Quản lý" : "Nhân Viên", nv.getTenNhanVien(), nv.getNgaySinh(), nv.getSoDienThoai()});
         }
     }
 
-    //====================== fill FromNV ================================
+    //====================== fill From ================================
     void fillFromNV() {
         tblDanhSachNhanVien.setRowSelectionInterval(row, row);
         try {
@@ -1193,14 +1203,30 @@ public class quanLyJframe extends javax.swing.JFrame {
             if (modelNV != null) {
                 setFormNV(modelNV);
                 tabbedTong.setSelectedIndex(2);
-
+                checkClickButton(btnThemNhanVien);
             }
         } catch (Exception e) {
             DialogHelper.alert(this, "lỗi truy vấn dữ liệu");
         }
     }
 
-        //====================== Set FromNV ================================
+    void fillFormMenu() {
+        tblDanhSachMon.setRowSelectionInterval(rowMenu, rowMenu);
+        try {
+            String maMon = (String) tblDanhSachMon.getValueAt(rowMenu, 0);
+            FoodAndDrink modelFood = FoodDao.findById(maMon);
+            if (modelFood != null) {
+                setFormMenu(modelFood);
+                tabbedTong.setSelectedIndex(0);
+                 checkClickButton(btnThemMon);
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "lỗi truy vấn dữ liệu");
+            e.printStackTrace();
+        }
+    }
+    //====================== Set From ================================
+
     void setFormNV(NhanVien model) {
         txtMaNhanVien.setText(model.getMaNhanVien());
         txtMatKhau.setText(model.getMatKhau());
@@ -1214,7 +1240,41 @@ public class quanLyJframe extends javax.swing.JFrame {
         }
 
     }
-    //====================== Get FromNV ================================
+
+    void setFormMenu(FoodAndDrink model) {
+        txtMaMon.setText(model.getMaThucAn());
+        txtGia.setText(String.valueOf(model.getGia()));
+        txtTenMon.setText(model.getTenThucAn());
+
+        if (model.isTrangThai()) {
+            rdoConHang.setSelected(true);
+        } else {
+            rdoHetHang.setSelected(true);
+        }
+        // Kiểm tra điều kiện trước khi xử lý hình ảnh
+        if (!model.getHinhAnh().isEmpty()) {
+// Phần quan trọng nhất khi muốn chỉnh sửa kích thước ảnh
+            ImageIcon originalIcon = shareHelper.readLogo(model.getHinhAnh());
+            Image originalImage = originalIcon.getImage();
+
+            // Lấy kích thước của label
+            int labelWidth = lblHinhAnh.getWidth();
+            int labelHeight = lblHinhAnh.getHeight();
+
+            // Chỉnh kích thước của ảnh để vừa với label
+            Image scaledImage = originalImage.getScaledInstance(labelWidth, labelHeight, java.awt.Image.SCALE_SMOOTH);
+            ImageIcon scaledIcon = new ImageIcon(scaledImage);
+
+            // Set icon và tooltip cho label
+            lblHinhAnh.setIcon(scaledIcon);
+            lblHinhAnh.setToolTipText(model.getHinhAnh());
+        } else {
+            lblHinhAnh.setIcon(null); // Xóa hình ảnh hiển thị nếu không có hình
+            lblHinhAnh.setToolTipText(null);
+        }
+    }
+
+    //====================== Get From ================================
     NhanVien getFormNV() throws ParseException {
         NhanVien nv = new NhanVien();
         String ngaySinh = txtNgaySinh.getText();
@@ -1233,46 +1293,62 @@ public class quanLyJframe extends javax.swing.JFrame {
         return nv;
     }
 
-    //====================== thêm Nhân viên ================================
-    void insertNV() throws ParseException {      
+    FoodAndDrink getFormMenu() throws ParseException {
+        FoodAndDrink fd = new FoodAndDrink();
+
+        fd.setMaNhanVien(txtMaNhanVien.getText());
+        fd.setGia(Float.parseFloat(txtGia.getText()));
+        fd.setTenThucAn(txtTenMon.getText());
+        fd.setHinhAnh(lblHinhAnh.getToolTipText());
+        if (rdoConHang.isSelected()) {
+            fd.setTrangThai(true);
+        } else {
+            fd.setTrangThai(false);
+        }
+        return fd;
+    }    //====================== thêm Nhân viên ================================
+
+    void insertNV() throws ParseException {
         NhanVien nv = getFormNV();
-        String maNV = txtMaNhanVien.getText();     
-            try {
-                
-                daonv.insert(nv);                
-                this.fillTableNV();               
-                DialogHelper.alert(this, "Thêm thành công");
-            } catch (Exception e) {                
-                DialogHelper.alert(this, "Thêm thất bại");
-            }       
+        String maNV = txtMaNhanVien.getText();
+        try {
+
+            daonv.insert(nv);
+            this.fillTableNV();
+            DialogHelper.alert(this, "Thêm thành công");
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Thêm thất bại");
+        }
     }
+
     //====================== sửa Nhân viên ================================
     void updateNV() throws ParseException {
-        NhanVien nv = getFormNV();       
-            try {               
-                daonv.update(nv);
-                this.fillTableNV();
-                DialogHelper.alert(this, "Cập nhật thành công");
-            } catch (Exception e) {                
-                DialogHelper.alert(this, "Cập nhật thất bại");
-            }
-        
+        NhanVien nv = getFormNV();
+        try {
+            daonv.update(nv);
+            this.fillTableNV();
+            DialogHelper.alert(this, "Cập nhật thành công");
+        } catch (Exception e) {
+            DialogHelper.alert(this, "Cập nhật thất bại");
+        }
+
     }
+
     //====================== xóa Nhân viên ================================
     void deleteNV() {
         row = tblDanhSachNhanVien.getSelectedRow();
         String maNV = (String) tblDanhSachNhanVien.getValueAt(row, 0);
-            if (maNV.equals(Auth.currentNhanVien.getMaNhanVien())) {
-                DialogHelper.alert(this, "Bạn không được xóa chính bạn!");
-            } else if (DialogHelper.confirm(this, "Bạn thật sự muốn xóa nhân viên này?")) {
-                try {
-                    daonv.delete(maNV);
-                    this.fillTableNV();                  
-                    DialogHelper.alert(this, "Xóa thành công!");
-                } catch (Exception e) {
-                    DialogHelper.alert(this, "Xóa thất bại!");
-                }
+        if (maNV.equals(Auth.currentNhanVien.getMaNhanVien())) {
+            DialogHelper.alert(this, "Bạn không được xóa chính bạn!");
+        } else if (DialogHelper.confirm(this, "Bạn thật sự muốn xóa nhân viên này?")) {
+            try {
+                daonv.delete(maNV);
+                this.fillTableNV();
+                DialogHelper.alert(this, "Xóa thành công!");
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Xóa thất bại!");
             }
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1281,7 +1357,6 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnChuyenManHinh;
     private javax.swing.JButton btnDanhSachNhanVien;
     private javax.swing.JButton btnDanhSachmon;
-    private javax.swing.JRadioButton btnHetHang;
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnList5;
     private javax.swing.JButton btnSuaMonAn;
@@ -1323,6 +1398,7 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblHinhAnh;
     private javax.swing.JRadioButton rdoConHang;
+    private javax.swing.JRadioButton rdoHetHang;
     private javax.swing.JRadioButton rdoNV;
     private javax.swing.JRadioButton rdoQL;
     private javax.swing.JPanel tabDanhSachMon;
