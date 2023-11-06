@@ -37,7 +37,8 @@ public class quanLyJframe extends javax.swing.JFrame {
     List<FoodAndDrink> listFood = new ArrayList<>();
     NhanVienDAO daonv = new NhanVienDAO();
     FoodDAO FoodDao = new FoodDAO();
-    DefaultTableModel modelFoodList;
+    DefaultTableModel modelFoodList,modelNV;
+    
     String imageCurrent = "";
     int row = 0;
 
@@ -552,6 +553,11 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel20.setText("Mã Nhân Viên");
 
         btnTimKiemNV.setText("Tìm Kiếm");
+        btnTimKiemNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemNVActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabDanhSachNhanVienLayout = new javax.swing.GroupLayout(tabDanhSachNhanVien);
         tabDanhSachNhanVien.setLayout(tabDanhSachNhanVienLayout);
@@ -1004,6 +1010,18 @@ public class quanLyJframe extends javax.swing.JFrame {
         
         deleteNV();
     }//GEN-LAST:event_btnXoaNhanVienActionPerformed
+
+    private void btnTimKiemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemNVActionPerformed
+        try {
+            modelNV = (DefaultTableModel) tblDanhSachNhanVien.getModel();
+            modelNV.setRowCount(0);
+            NhanVien nv = daonv.findById(txtTimKiemNV.getText().trim());
+
+            Object[] temp = {nv.getMaNhanVien(),nv.getMatKhau(),nv.isRole(),nv.getTenNhanVien(),nv.getNgaySinh(),nv.getSoDienThoai()};
+            modelNV.addRow(temp);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnTimKiemNVActionPerformed
 
     /**
      * @param args the command line arguments
