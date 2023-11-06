@@ -11,6 +11,7 @@ import entity.NhanVien;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import ulti.Auth;
 import ulti.DateHelper;
 import ulti.DialogHelper;
+import ulti.shareHelper;
 
 /**
  *
@@ -876,9 +878,23 @@ public class quanLyJframe extends javax.swing.JFrame {
             newFood.setTenThucAn(txtTenMon.getText().trim());
             newFood.setGia(Float.parseFloat(txtGia.getText().trim()));
             newFood.setTrangThai(rdoConHang.isSelected());
-            newFood.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
+//            newFood.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
+            newFood.setMaNhanVien("NV001");
             newFood.setHinhAnh(f.getName());
-            FoodDao.insert(newFood);
+            try {
+                 FoodDao.insert(newFood);
+            } catch (Exception e) {
+                DialogHelper.alert(this, "Da ton tai mon an co ma la : "+newFood.getMaThucAn());
+                return;
+            }
+
+            try {
+                shareHelper.saveLogo(f);
+                System.out.println(f.getAbsoluteFile());
+            } catch (IOException ex) {
+                Logger.getLogger(quanLyJframe.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             DialogHelper.alert(this, "Da them thanh cong !");
         }
 

@@ -4,12 +4,15 @@
  */
 package view;
 
+import DAO.FoodDAO;
 import entity.FoodAndDrink;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -19,6 +22,7 @@ import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 import ulti.Auth;
 import ulti.DialogHelper;
+import ulti.shareHelper;
 
 /**
  *
@@ -26,8 +30,11 @@ import ulti.DialogHelper;
  */
 public class OrderJframe extends javax.swing.JFrame {
 
+    List<FoodAndDrink> listFood = new ArrayList<>();
     HashMap<FoodAndDrink, Integer> danhSachMonAn = new HashMap<>();
     DefaultTableModel modelTableDanhSachMonAn;
+
+    FoodDAO foodDao = new FoodDAO();
 
     /**
      * Creates new form Order
@@ -36,8 +43,7 @@ public class OrderJframe extends javax.swing.JFrame {
         initComponents();
         inItTab();
         inItTable();
-        addBurgerPanel();
-
+        readAndFillFood();
         setLocationRelativeTo(this);
 
     }
@@ -205,7 +211,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
         tbpSub.addTab("tab1", tabBurger);
 
-        tabPotato.setBackground(new java.awt.Color(153, 255, 153));
+        tabPotato.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane3.setPreferredSize(new java.awt.Dimension(312, 1500));
@@ -235,7 +241,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
         tbpSub.addTab("tab3", tabPotato);
 
-        tabCream.setBackground(new java.awt.Color(0, 204, 204));
+        tabCream.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane4.setPreferredSize(new java.awt.Dimension(312, 1500));
@@ -265,7 +271,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
         tbpSub.addTab("tab2", tabCream);
 
-        tabDrink.setBackground(new java.awt.Color(0, 102, 255));
+        tabDrink.setBackground(new java.awt.Color(255, 255, 255));
 
         jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         jScrollPane5.setPreferredSize(new java.awt.Dimension(312, 1500));
@@ -685,7 +691,7 @@ public class OrderJframe extends javax.swing.JFrame {
             dispose();
         } else {
             DialogHelper.alert(this, "Chi quan ly moi duoc phep dung !");
-            
+
         }
 
     }//GEN-LAST:event_btnChuyenManHinhActionPerformed
@@ -746,12 +752,14 @@ public class OrderJframe extends javax.swing.JFrame {
         });
 
     }
+    //==================== in it  =============
 
     private void inItTable() {
         modelTableDanhSachMonAn = (DefaultTableModel) tblDonHang.getModel();
 
     }
 
+    //  =========================== fill table =================================
     private void fillTable() {
         modelTableDanhSachMonAn.setRowCount(0);
         Set<FoodAndDrink> key = danhSachMonAn.keySet();
@@ -767,6 +775,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
     }
 
+    // ========================== check and block active button ================
     private void checkClickButton(JButton Button) {
 
         Color backgroundColor = new Color(255, 177, 55);
@@ -794,27 +803,56 @@ public class OrderJframe extends javax.swing.JFrame {
 
     }
 
-    private void addBurgerPanel() {
-        FoodAndDrink n1 = new FoodAndDrink("Bg01", "Burger");
-        FoodAndDrink n2 = new FoodAndDrink("Coca01", "cocacola");
-        n1.setGia(1900);
-        n2.setGia(9.00f);
-        JPanel pn = ClonePanel(n1);
-        JPanel pn2 = ClonePanel(n1);
-        JPanel pn3 = ClonePanel(n2);
-        panelContainerBurger.add(pn);
-        panelContainerBurger.add(pn2);
-        panelContainerBurger.add(pn3);
+    // ================================ add panel food ==============================
+//    private void addBurgerPanel() {
+//        FoodAndDrink n1 = new FoodAndDrink("Bg01", "Burger");
+//        FoodAndDrink n2 = new FoodAndDrink("Coca01", "cocacola");
+//        n1.setGia(1900);
+//        n2.setGia(9.00f);
+//        JPanel pn = ClonePanel(n1);
+//        JPanel pn2 = ClonePanel(n1);
+//        JPanel pn3 = ClonePanel(n2);
+//        panelContainerBurger.add(pn);
+//        panelContainerBurger.add(pn2);
+//        panelContainerBurger.add(pn3);
+//    }
+    private void readAndFillFood() {
+        listFood = foodDao.selectAll();
+        for (FoodAndDrink foodAndDrink : listFood) {
+
+            if (foodAndDrink.getMaThucAn().startsWith("BG")) {
+                panelContainerBurger.add(ClonePanel(foodAndDrink));
+
+            }
+            if (foodAndDrink.getMaThucAn().startsWith("IC")) {
+                panelContainerCream.add(ClonePanel(foodAndDrink));
+
+            }
+            if (foodAndDrink.getMaThucAn().startsWith("PT")) {
+                panelContainerPotato.add(ClonePanel(foodAndDrink));
+
+            }
+            if (foodAndDrink.getMaThucAn().startsWith("DR")) {
+                panelContainerDrink.add(ClonePanel(foodAndDrink));
+
+            }
+
+        }
+
     }
 
-    //  Tạo panel chứa sản phẩm bà nút add
+    //  ==================  clone panel food ==========================
     private JPanel ClonePanel(FoodAndDrink food) {
 
         JPanel panelReturn = new JPanel();
         FlowLayout layout = new FlowLayout();
         panelReturn.setLayout(layout);
-
-        Dimension sizePanel = new Dimension(115, 150);
+        
+        JLabel nameFood = new JLabel(food.getTenThucAn());
+        JLabel temp = new JLabel("");
+        
+        
+        Dimension sizePanel = new Dimension(115, 160);
         panelReturn.setPreferredSize(sizePanel);
 
         Dimension sizeLabel = new Dimension(100, 100);
@@ -841,45 +879,16 @@ public class OrderJframe extends javax.swing.JFrame {
         btn.setAction(ac);
         btn.setText("Add");
 
-        label.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\image\\burger_sandwich_1 2.png")); // NOI18N
+        label.setIcon(shareHelper.readLogo(food.getHinhAnh())); // NOI18N
 
         panelReturn.add(label);
+        panelReturn.add(nameFood);
+        panelReturn.add(temp);
         panelReturn.add(btn);
 
         return panelReturn;
     }
 
-//    private JPanel ClonePanel() {
-//
-//        JPanel panelReturn = new JPanel();
-//        FlowLayout layout = new FlowLayout();
-//        panelReturn.setLayout(layout);
-//
-//        Dimension sizePanel = new Dimension(120, 150);
-//        panelReturn.setPreferredSize(sizePanel);
-//
-//        Dimension sizeLabel = new Dimension(100, 100);
-//        JLabel label = new JLabel();
-//        label.setPreferredSize(sizeLabel);
-//        JButton btn = new JButton();
-//
-//        AbstractAction ac = new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//        };
-//
-//        btn.setAction(ac);
-//        btn.setText("Add");
-//
-//        label.setIcon(new javax.swing.ImageIcon("src\\main\\resources\\image\\burger_sandwich_1 2.png")); // NOI18N
-//
-//        panelReturn.add(label);
-//        panelReturn.add(btn);
-//
-//        return panelReturn;
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TabListDonHang;
