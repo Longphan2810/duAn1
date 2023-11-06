@@ -11,14 +11,18 @@ import entity.NhanVien;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 import ulti.Auth;
+import ulti.DateHelper;
 import ulti.DialogHelper;
 
 /**
@@ -29,20 +33,18 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     List<NhanVien> listNV = new ArrayList<>();
     List<FoodAndDrink> listFood = new ArrayList<>();
-
     NhanVienDAO daonv = new NhanVienDAO();
     FoodDAO FoodDao = new FoodDAO();
-
     DefaultTableModel modelFoodList;
-
     String imageCurrent = "";
+    int row = 0;
 
     public quanLyJframe() {
         initComponents();
         inItTab();
         inIt();
         setLocationRelativeTo(this);
-        test();
+       
     }
 
     /**
@@ -98,8 +100,8 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtSoDienThoai = new javax.swing.JTextField();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        rdoQL = new javax.swing.JRadioButton();
+        rdoNV = new javax.swing.JRadioButton();
         jLabel17 = new javax.swing.JLabel();
         btnThemNV = new javax.swing.JButton();
         btnSuaNV = new javax.swing.JButton();
@@ -411,17 +413,27 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         jLabel16.setText("Số điên thoại");
 
-        ChucVu.add(jRadioButton3);
-        jRadioButton3.setText("Quản lý");
+        ChucVu.add(rdoQL);
+        rdoQL.setText("Quản lý");
 
-        ChucVu.add(jRadioButton4);
-        jRadioButton4.setText("Nhân viên");
+        ChucVu.add(rdoNV);
+        rdoNV.setText("Nhân viên");
 
         jLabel17.setText("Chức vụ");
 
         btnThemNV.setText("Thêm nhân viên");
+        btnThemNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemNVActionPerformed(evt);
+            }
+        });
 
         btnSuaNV.setText("Sửa nhân viên");
+        btnSuaNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaNVActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabThemNhanVienLayout = new javax.swing.GroupLayout(tabThemNhanVien);
         tabThemNhanVien.setLayout(tabThemNhanVienLayout);
@@ -444,9 +456,9 @@ public class quanLyJframe extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnSuaNV))
                                     .addGroup(tabThemNhanVienLayout.createSequentialGroup()
-                                        .addComponent(jRadioButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(rdoQL, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jRadioButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(rdoNV, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(tabThemNhanVienLayout.createSequentialGroup()
                                 .addGroup(tabThemNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
@@ -492,8 +504,8 @@ public class quanLyJframe extends javax.swing.JFrame {
                     .addComponent(jLabel16))
                 .addGap(27, 27, 27)
                 .addGroup(tabThemNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4)
+                    .addComponent(rdoQL)
+                    .addComponent(rdoNV)
                     .addComponent(jLabel17))
                 .addGap(45, 45, 45)
                 .addGroup(tabThemNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -521,9 +533,19 @@ public class quanLyJframe extends javax.swing.JFrame {
                 "Mã nhân viên", "Mật khẩu", "Chức vụ", "Tên nhân viên", "Ngày sinh", "Số điện thoại"
             }
         ));
+        tblDanhSachNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblDanhSachNhanVienMousePressed(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblDanhSachNhanVien);
 
         btnXoaNhanVien.setText("Xóa nhân viên");
+        btnXoaNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaNhanVienActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Mã Nhân Viên");
 
@@ -807,7 +829,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         // TODO add your handling code here:
         checkClickButton(btnDanhSachNhanVien);
         tabbedTong.setSelectedIndex(3);
-
+        fillTableNV();
     }//GEN-LAST:event_btnDanhSachNhanVienActionPerformed
 
     private void btnThongKe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKe2ActionPerformed
@@ -930,10 +952,42 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     private void tblDanhSachMonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachMonMouseClicked
         // TODO add your handling code here:
-        
-        
+
 
     }//GEN-LAST:event_tblDanhSachMonMouseClicked
+
+    private void tblDanhSachNhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblDanhSachNhanVienMousePressed
+        if (evt.getClickCount() == 2) {
+            this.row = tblDanhSachNhanVien.rowAtPoint(evt.getPoint());
+            fillFromNV();
+        }
+
+    }//GEN-LAST:event_tblDanhSachNhanVienMousePressed
+
+    private void btnThemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNVActionPerformed
+        if(validateNV()){
+        try {
+            insertNV();
+        } catch (ParseException ex) {
+            Logger.getLogger(quanLyJframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_btnThemNVActionPerformed
+
+    private void btnSuaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaNVActionPerformed
+        if(validateNV()){
+        try {
+            updateNV();
+        } catch (ParseException ex) {
+            Logger.getLogger(quanLyJframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_btnSuaNVActionPerformed
+
+    private void btnXoaNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaNhanVienActionPerformed
+        
+        deleteNV();
+    }//GEN-LAST:event_btnXoaNhanVienActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1012,7 +1066,6 @@ public class quanLyJframe extends javax.swing.JFrame {
         String nameFood = txtTenMon.getText().trim();
         String IdFood = txtMaMon.getText().trim();
         String priceFood = txtGia.getText().trim();
-
         if (!IdFood.matches(checkIdFood)) {
             DialogHelper.alert(this, """
                                  Vui long nhap ma mon dung cu phap  ! 
@@ -1037,6 +1090,44 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         return true;
     }
+    public boolean validateNV() {
+        String formatNgaySinh = "\\d{1,2}[-]\\d{1,2}[-]\\d{4}";
+        String MaNV = txtMaNhanVien.getText().trim();
+        String TenNV = txtTenNhanVien.getText().trim();
+        String MkNV = txtMatKhau.getText().trim();
+        String NgaySinh = txtNgaySinh.getText().trim();
+        String SDT = txtSoDienThoai.getText().trim();                     
+        if (MaNV.equalsIgnoreCase("")) {
+            DialogHelper.alert(this, "Vui long nhap Ma nhan vien !");
+            return false;
+        }
+         if (MkNV.equalsIgnoreCase("")) {
+            DialogHelper.alert(this, "Vui long nhap Mat khau !");
+            return false;
+        }
+        if (TenNV.equalsIgnoreCase("")) {
+            DialogHelper.alert(this, "Vui long nhap Ten nhan vien !");
+            return false;
+        }
+       
+        if (NgaySinh.equalsIgnoreCase("")) {
+            DialogHelper.alert(this, "Vui long nhap Ngay sinh !");
+            return false;
+        }
+         if (!NgaySinh.matches(formatNgaySinh)) {
+            DialogHelper.alert(this, "Vui long nhap dung dinh dang dd-MM-yyyy ! ");
+            return false;
+
+        }
+        if (SDT.equalsIgnoreCase("")) {
+            DialogHelper.alert(this, "Vui long nhap So dien thoai !");
+            return false;
+        }
+        
+       
+
+        return true;
+    }
 
     //====================== fill table ================================
     public void fillTableFood() {
@@ -1050,13 +1141,104 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     }
 
-    public void test() {
+    public void fillTableNV() {
         listNV = daonv.selectAll();
         DefaultTableModel model = (DefaultTableModel) tblDanhSachNhanVien.getModel();
         model.setRowCount(0);
         for (NhanVien nv : listNV) {
             model.addRow(new Object[]{nv.getMaNhanVien(), nv.getMatKhau(), nv.isRole(), nv.getTenNhanVien(), nv.getNgaySinh(), nv.getSoDienThoai()});
         }
+    }
+
+    //====================== fill FromNV ================================
+    void fillFromNV() {
+        tblDanhSachNhanVien.setRowSelectionInterval(row, row);
+        try {
+            String maNV = (String) tblDanhSachNhanVien.getValueAt(this.row, 0);
+            NhanVien modelNV = daonv.findById(maNV);
+            if (modelNV != null) {
+                setFormNV(modelNV);
+                tabbedTong.setSelectedIndex(2);
+
+            }
+        } catch (Exception e) {
+            DialogHelper.alert(this, "lỗi truy vấn dữ liệu");
+        }
+    }
+
+        //====================== Set FromNV ================================
+    void setFormNV(NhanVien model) {
+        txtMaNhanVien.setText(model.getMaNhanVien());
+        txtMatKhau.setText(model.getMatKhau());
+        txtTenNhanVien.setText(model.getTenNhanVien());
+        txtNgaySinh.setText(String.valueOf(model.getNgaySinh()));
+        txtSoDienThoai.setText(model.getSoDienThoai());
+        if (model.isRole()) {
+            rdoQL.setSelected(true);
+        } else {
+            rdoNV.setSelected(true);
+        }
+
+    }
+    //====================== Get FromNV ================================
+    NhanVien getFormNV() throws ParseException {
+        NhanVien nv = new NhanVien();
+        String ngaySinh = txtNgaySinh.getText();
+        nv.setMaNhanVien(txtMaNhanVien.getText());
+        nv.setMatKhau(txtMatKhau.getText());
+        nv.setTenNhanVien(txtTenNhanVien.getText());
+        if (DateHelper.validateDate(ngaySinh)) {
+            nv.setNgaySinh(DateHelper.StringToDate(ngaySinh));
+        }
+        nv.setSoDienThoai(txtSoDienThoai.getText());
+        if (rdoQL.isSelected()) {
+            nv.setRole(true);
+        } else {
+            nv.setRole(false);
+        }
+        return nv;
+    }
+
+    //====================== thêm Nhân viên ================================
+    void insertNV() throws ParseException {      
+        NhanVien nv = getFormNV();
+        String maNV = txtMaNhanVien.getText();     
+            try {
+                
+                daonv.insert(nv);                
+                this.fillTableNV();               
+                DialogHelper.alert(this, "Thêm thành công");
+            } catch (Exception e) {                
+                DialogHelper.alert(this, "Thêm thất bại");
+            }       
+    }
+    //====================== sửa Nhân viên ================================
+    void updateNV() throws ParseException {
+        NhanVien nv = getFormNV();       
+            try {               
+                daonv.update(nv);
+                this.fillTableNV();
+                DialogHelper.alert(this, "Cập nhật thành công");
+            } catch (Exception e) {                
+                DialogHelper.alert(this, "Cập nhật thất bại");
+            }
+        
+    }
+    //====================== xóa Nhân viên ================================
+    void deleteNV() {
+        row = tblDanhSachNhanVien.getSelectedRow();
+        String maNV = (String) tblDanhSachNhanVien.getValueAt(row, 0);
+            if (maNV.equals(Auth.currentNhanVien.getMaNhanVien())) {
+                DialogHelper.alert(this, "Bạn không được xóa chính bạn!");
+            } else if (DialogHelper.confirm(this, "Bạn thật sự muốn xóa nhân viên này?")) {
+                try {
+                    daonv.delete(maNV);
+                    this.fillTableNV();                  
+                    DialogHelper.alert(this, "Xóa thành công!");
+                } catch (Exception e) {
+                    DialogHelper.alert(this, "Xóa thất bại!");
+                }
+            }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1103,12 +1285,12 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblHinhAnh;
     private javax.swing.JRadioButton rdoConHang;
+    private javax.swing.JRadioButton rdoNV;
+    private javax.swing.JRadioButton rdoQL;
     private javax.swing.JPanel tabDanhSachMon;
     private javax.swing.JPanel tabDanhSachNhanVien;
     private javax.swing.JPanel tabThemMon;
