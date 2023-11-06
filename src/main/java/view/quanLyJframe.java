@@ -154,6 +154,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         });
 
         tabbedTong.setBackground(new java.awt.Color(153, 153, 255));
+        tabbedTong.setEnabled(false);
 
         tabThemMon.setBackground(new java.awt.Color(255, 255, 255));
         tabThemMon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
