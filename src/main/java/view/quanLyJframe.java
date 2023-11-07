@@ -879,7 +879,6 @@ public class quanLyJframe extends javax.swing.JFrame {
         if (validateFood()) {
             File f = new File(imageCurrent);
             FoodAndDrink newFood = new FoodAndDrink();
-
             newFood.setMaThucAn(txtMaMon.getText().trim());
             newFood.setTenThucAn(txtTenMon.getText().trim());
             newFood.setGia(Float.parseFloat(txtGia.getText().trim()));
