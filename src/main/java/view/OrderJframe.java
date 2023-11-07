@@ -1008,7 +1008,8 @@ public class OrderJframe extends javax.swing.JFrame {
 
     // ======================  read  food in order================
     private void readFoodFromDonHang(String maDonHang) {
-        danhSachMonAn.clear();
+        danhSachMonAn.clear(); 
+           //
         HashMap<String, Integer> listFoodTemp = chiTietDao.selectFoodFromOrder(maDonHang);
         Set<String> maMonAnFromListFoodTemp = listFoodTemp.keySet();
 
@@ -1029,7 +1030,7 @@ public class OrderJframe extends javax.swing.JFrame {
             DonHang donHangTemp = new DonHang();
             donHangTemp.setNgayTao(DateHelper.GetDateNow());
             donHangTemp.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
-            donHangTemp.setTrangThai("Da tao don");
+            donHangTemp.setTrangThai("Chua Thanh Toan");
             donHangDao.insert(donHangTemp);
             donHangTemp = donHangDao.selectLast();
             System.out.println(donHangTemp.getMaDonHang());
