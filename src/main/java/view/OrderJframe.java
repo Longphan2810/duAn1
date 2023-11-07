@@ -1008,6 +1008,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
     // ======================  read  food in order================
     private void readFoodFromDonHang(String maDonHang) {
+        danhSachMonAn.clear();
         HashMap<String, Integer> listFoodTemp = chiTietDao.selectFoodFromOrder(maDonHang);
         Set<String> maMonAnFromListFoodTemp = listFoodTemp.keySet();
 
