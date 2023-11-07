@@ -701,10 +701,10 @@ public class OrderJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemDonHangActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-         this.dispose();
+        this.dispose();
         new LoginMain(this, true).setVisible(true);
-            
-            
+
+
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     /**
@@ -861,9 +861,14 @@ public class OrderJframe extends javax.swing.JFrame {
         panelReturn.setLayout(layout);
 
         JLabel nameFood = new JLabel(food.getTenThucAn());
-        JLabel temp = new JLabel("");
 
-        Dimension sizePanel = new Dimension(111, 160);
+        Dimension sizePanelName = new Dimension(100, 22);
+        JPanel namePanelFood = new JPanel();
+        namePanelFood.setPreferredSize(sizePanelName);
+        namePanelFood.add(nameFood);
+//        namePanelFood.setBackground(Color.red);
+
+        Dimension sizePanel = new Dimension(111, 165);
         panelReturn.setPreferredSize(sizePanel);
 
         Dimension sizeLabel = new Dimension(100, 100);
@@ -893,8 +898,7 @@ public class OrderJframe extends javax.swing.JFrame {
         label.setIcon(shareHelper.readLogo(food.getHinhAnh())); // NOI18N
 
         panelReturn.add(label);
-        panelReturn.add(nameFood);
-        panelReturn.add(temp);
+        panelReturn.add(namePanelFood);
         panelReturn.add(btn);
 
         return panelReturn;
@@ -913,26 +917,19 @@ public class OrderJframe extends javax.swing.JFrame {
             // ========== add note order  ======
             Set<FoodAndDrink> key = danhSachMonAn.keySet();
 
-      
-
             for (FoodAndDrink foodAndDrink : key) {
-               DonHangChiTiet chiTietTemp = new DonHangChiTiet();
-               chiTietTemp.setMaDonHang(donHangTemp.getMaDonHang());
-               chiTietTemp.setMaMonAn(foodAndDrink.getMaThucAn());
-               chiTietTemp.setSoLuong(danhSachMonAn.get(foodAndDrink));
-               chiTietDao.insert(chiTietTemp);
+                DonHangChiTiet chiTietTemp = new DonHangChiTiet();
+                chiTietTemp.setMaDonHang(donHangTemp.getMaDonHang());
+                chiTietTemp.setMaMonAn(foodAndDrink.getMaThucAn());
+                chiTietTemp.setSoLuong(danhSachMonAn.get(foodAndDrink));
+                chiTietDao.insert(chiTietTemp);
             }
-            
+
             DialogHelper.alert(this, "Da tao don hang !");
 
         } catch (ParseException ex) {
             Logger.getLogger(OrderJframe.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-          
-
-            
-
 
     }
 
