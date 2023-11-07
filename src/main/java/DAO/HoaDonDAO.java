@@ -72,8 +72,8 @@ public class HoaDonDAO implements EntityDAO<HoaDon> {
         }
         return list;
     }
-    public List<Integer> selectYear() {
-        String sql = "Select distinct Day(ngayTao) as Days from hoaDon order by Days desc";
+    public List<Integer> selectDays() {
+        String sql = "Select distinct Day(ngayTao) as Days from donHang where trangThai like 'Da thanh toan' order by  Days desc";
         List<Integer> list = new ArrayList<>();
         try {
             ResultSet rs = JDBChelper.Query(sql);
