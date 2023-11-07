@@ -7,8 +7,11 @@ package DAO;
 import database.JDBChelper;
 import entity.DonHang;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +23,7 @@ public class DonHangDAO implements EntityDAO<DonHang> {
     final String update_SQL = "update donHang set ngayTao = ?, maNhanVien = ?,trangThai = ? where maDonHang = ?";
     final String delete_SQL = "delete from donHang where maDonHang = ?";
     final String selectALL_SQL = "select * from donHang";
+    final String selectLast = "select top 1  * from donHang order by maDonHang desc ;";
     final String selectByID_SQL = "select * from donHang where maDonHang = ?";
 
     @Override
@@ -49,6 +53,26 @@ public class DonHangDAO implements EntityDAO<DonHang> {
             return null;
         }
         return list.get(0);
+    }
+    
+    public DonHang selectLast(){
+        try {
+            DonHang donHangTemp = new DonHang();
+            ResultSet rs = JDBChelper.Query(selectLast);
+            while (rs.next()) {
+                
+                donHangTemp.setMaDonHang(rs.getInt("maDonHang"));
+                donHangTemp.setNgayTao(rs.getDate("ngayTao"));
+                donHangTemp.setMaNhanVien(rs.getString("maNhanVien"));
+                donHangTemp.setTrangThai(rs.getString("trangThai"));
+                
+            }
+            return donHangTemp;
+        } catch (SQLException ex) {
+            Logger.getLogger(DonHangDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
     }
 
     @Override
