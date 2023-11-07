@@ -42,7 +42,8 @@ public class DonHangChiTietDAO implements EntityDAO<DonHangChiTiet> {
     public int delete(String ID) {
         return JDBChelper.Update(delete_SQL, ID);
     }
-     public int deleteMaDonHang(int maDonHang) {
+
+    public int deleteMaDonHang(int maDonHang) {
         return JDBChelper.Update(delete_SQL_maDonHang, maDonHang);
     }
 
@@ -59,7 +60,12 @@ public class DonHangChiTietDAO implements EntityDAO<DonHangChiTiet> {
             while (rs.next()) {
                 String maMonAn = rs.getString("maMonAn");
                 int soLuong = rs.getInt("soLuongMon");
-                listFood.put(maMonAn, soLuong);
+                if (listFood.containsKey(maMonAn)) {
+                    int oldValue = listFood.get(maMonAn);
+                    listFood.put(maMonAn, oldValue + soLuong);
+                } else {
+                    listFood.put(maMonAn, soLuong);
+                }
 
             }
 

@@ -7,9 +7,11 @@ package view;
 import DAO.DonHangChiTietDAO;
 import DAO.DonHangDAO;
 import DAO.FoodDAO;
+import DAO.HoaDonDAO;
 import entity.DonHang;
 import entity.DonHangChiTiet;
 import entity.FoodAndDrink;
+import entity.HoaDon;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -48,7 +50,8 @@ public class OrderJframe extends javax.swing.JFrame {
     DonHangDAO donHangDao = new DonHangDAO();
     DonHangChiTietDAO chiTietDao = new DonHangChiTietDAO();
     FoodDAO foodDao = new FoodDAO();
-
+    HoaDonDAO hoaDonDao = new HoaDonDAO();
+    
     private DonHang donHangCurrent;
 
     /**
@@ -844,12 +847,14 @@ public class OrderJframe extends javax.swing.JFrame {
 
             Set<FoodAndDrink> key = danhSachMonAn.keySet();
             chiTietDao.deleteMaDonHang(donHangCurrent.getMaDonHang());
+          
             for (FoodAndDrink foodAndDrink : key) {
                 DonHangChiTiet chiTietTemp = new DonHangChiTiet();
                 chiTietTemp.setMaDonHang(donHangCurrent.getMaDonHang());
                 chiTietTemp.setMaMonAn(foodAndDrink.getMaThucAn());
                 chiTietTemp.setSoLuong(danhSachMonAn.get(foodAndDrink));
                 chiTietDao.insert(chiTietTemp);
+
             }
 
             DialogHelper.alert(this, "Da tao cap nhat !");
@@ -859,7 +864,24 @@ public class OrderJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
     private void btnThanhToanDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanDonHangActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            donHangCurrent.setTrangThai("Da Thanh Toan");
+            donHangDao.update(donHangCurrent);
+            
+            HoaDon newHoaDon = new HoaDon();
+            newHoaDon.setMaDonHang(donHangCurrent.getMaDonHang());
+            newHoaDon.setNgayTao(DateHelper.GetDateNow());
+            newHoaDon.setTrangThai("Da Thanh Toan");
+            newHoaDon.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
+            
+            hoaDonDao.insert(newHoaDon);
+            
+            DialogHelper.alert(this, "Da hoan tat !");
+            clearDonHang();
+        } catch (ParseException ex) {
+            Logger.getLogger(OrderJframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnThanhToanDonHangActionPerformed
 
     private void btnHuyDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyDonActionPerformed
@@ -1106,6 +1128,13 @@ public class OrderJframe extends javax.swing.JFrame {
                 btnThemDonHang.setEnabled(false);
                 btnHuyDon.setEnabled(true);
                 donHangCurrent = donHang;
+                
+                Set<FoodAndDrink> key = danhSachMonAn.keySet();
+                for (FoodAndDrink foodAndDrink : key) {
+                    System.out.println(foodAndDrink);
+                    
+                }
+                
 
             }
         };
