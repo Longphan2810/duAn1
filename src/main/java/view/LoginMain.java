@@ -27,6 +27,7 @@ public class LoginMain extends javax.swing.JDialog {
         chaoOpen();
         initComponents();
         setLocationRelativeTo(this);
+        this.setTitle("Đăng nhập Neko Delivery");
     }
 
     /**

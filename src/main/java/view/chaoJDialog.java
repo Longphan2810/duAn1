@@ -139,7 +139,7 @@ public class chaoJDialog extends javax.swing.JDialog {
 
     private void inIt() {
         setLocationRelativeTo(this);
-        
+        this.setTitle("Chào mừng đến với Neko Delivery");
 
     }
 

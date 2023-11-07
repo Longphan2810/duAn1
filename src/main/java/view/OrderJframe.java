@@ -45,7 +45,7 @@ public class OrderJframe extends javax.swing.JFrame {
         inItTable();
         readAndFillFood();
         setLocationRelativeTo(this);
-
+        this.setTitle("Màn hình Order");
     }
 
     /**

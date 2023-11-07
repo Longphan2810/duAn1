@@ -48,7 +48,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         inItTab();
         inIt();
         setLocationRelativeTo(this);
-
+        this.setTitle("Màn hình Quản lý");
     }
 
     /**
