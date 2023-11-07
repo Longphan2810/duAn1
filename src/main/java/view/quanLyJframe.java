@@ -969,7 +969,7 @@ public class quanLyJframe extends javax.swing.JFrame {
                 newFood.setTrangThai(rdoConHang.isSelected());
                 newFood.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
                 newFood.setHinhAnh(f.getName());
-                FoodDao.insert(newFood);
+                FoodDao.update(newFood);
                 DialogHelper.alert(this, "Da sua thanh cong !");
             } else {
 
