@@ -84,11 +84,9 @@ public class OrderJframe extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDonHang = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         labelTongTien = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -100,9 +98,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnTaoDon.setBackground(new java.awt.Color(255, 255, 255));
         btnTaoDon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnTaoDon.setForeground(new java.awt.Color(0, 0, 0));
         btnTaoDon.setText("Tạo đơn hàng");
         btnTaoDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,10 +106,7 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnPotato.setBackground(new java.awt.Color(255, 255, 255));
         btnPotato.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnPotato.setForeground(new java.awt.Color(0, 0, 0));
-        btnPotato.setIcon(new javax.swing.ImageIcon("E:\\Hoctap\\dev\\du An 1\\DuAn1\\src\\main\\resources\\image\\logoCream.png")); // NOI18N
         btnPotato.setText("Potato");
         btnPotato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,10 +114,7 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnCream.setBackground(new java.awt.Color(255, 255, 255));
         btnCream.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCream.setForeground(new java.awt.Color(0, 0, 0));
-        btnCream.setIcon(new javax.swing.ImageIcon("E:\\Hoctap\\dev\\du An 1\\DuAn1\\src\\main\\resources\\image\\logoDrink.png")); // NOI18N
         btnCream.setText("Ice Cream");
         btnCream.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,10 +122,7 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnBurger.setBackground(new java.awt.Color(255, 255, 255));
         btnBurger.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBurger.setForeground(new java.awt.Color(0, 0, 0));
-        btnBurger.setIcon(new javax.swing.ImageIcon("E:\\Hoctap\\dev\\du An 1\\DuAn1\\src\\main\\resources\\image\\logoPotato.png")); // NOI18N
         btnBurger.setText("Burger");
         btnBurger.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,10 +132,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo_brand.png"))); // NOI18N
 
-        btnDrink.setBackground(new java.awt.Color(255, 255, 255));
         btnDrink.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnDrink.setForeground(new java.awt.Color(0, 0, 0));
-        btnDrink.setIcon(new javax.swing.ImageIcon("E:\\Hoctap\\dev\\du An 1\\DuAn1\\src\\main\\resources\\image\\logoDrink.png")); // NOI18N
         btnDrink.setText("Drink");
         btnDrink.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,9 +140,7 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnList.setBackground(new java.awt.Color(255, 255, 255));
         btnList.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnList.setForeground(new java.awt.Color(0, 0, 0));
         btnList.setText("List đơn hàng");
         btnList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,9 +148,7 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnLichSu.setBackground(new java.awt.Color(255, 255, 255));
         btnLichSu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnLichSu.setForeground(new java.awt.Color(0, 0, 0));
         btnLichSu.setText("Lịch sử đơn hàng");
         btnLichSu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -417,9 +397,6 @@ public class OrderJframe extends javax.swing.JFrame {
             tblDonHang.getColumnModel().getColumn(2).setPreferredWidth(90);
         }
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Bàn :");
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Danh Sách món :");
 
@@ -429,14 +406,12 @@ public class OrderJframe extends javax.swing.JFrame {
         labelTongTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelTongTien.setText("1000000$");
 
-        jButton1.setText("Chọn bàn");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Tạo đơn hàng");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
-
-        jButton3.setText("Tạo đơn hàng");
 
         jButton4.setText("Cập nhật");
         jButton4.setEnabled(false);
@@ -452,32 +427,28 @@ public class OrderJframe extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel6Layout.createSequentialGroup()
-                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton1))
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel6Layout.createSequentialGroup()
-                                            .addComponent(jButton3)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton4))))
+                                    .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(84, 84, 84)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel2)
                 .addGap(3, 3, 3)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -485,9 +456,8 @@ public class OrderJframe extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(labelTongTien))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -511,7 +481,7 @@ public class OrderJframe extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabTaoDonHangLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tabTaoDonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(tbpSub))
                 .addContainerGap())
         );
@@ -544,9 +514,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
         tabbedTong.addTab("tab3", tabLichSu);
 
-        btnChuyenManHinh.setBackground(new java.awt.Color(255, 255, 255));
         btnChuyenManHinh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnChuyenManHinh.setForeground(new java.awt.Color(0, 0, 0));
         btnChuyenManHinh.setText("Chuyển màn hình");
         btnChuyenManHinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -624,10 +592,6 @@ public class OrderJframe extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btnLichSuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLichSuActionPerformed
         // TODO add your handling code here:
         removeColorAllButton();
@@ -695,6 +659,10 @@ public class OrderJframe extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnChuyenManHinhActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -766,7 +734,8 @@ public class OrderJframe extends javax.swing.JFrame {
         float tongTien = 0;
         for (FoodAndDrink f : key) {
             float gia = f.getGia() * danhSachMonAn.get(f);
-            Object[] temp = {f.getTenThucAn(), gia, f.getGia()};
+            int soLuongMon = danhSachMonAn.get(f);
+            Object[] temp = {f.getTenThucAn(), soLuongMon, f.getGia()};
             modelTableDanhSachMonAn.addRow(temp);
             tongTien += gia;
 
@@ -900,11 +869,9 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnPotato;
     private javax.swing.JButton btnTaoDon;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;

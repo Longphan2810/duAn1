@@ -1267,6 +1267,8 @@ public class quanLyJframe extends javax.swing.JFrame {
             Image scaledImage = originalImage.getScaledInstance(labelWidth, labelHeight, java.awt.Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
+            imageCurrent = "src\\main\\resources\\logo\\"+model.getHinhAnh();
+            
             lblHinhAnh.setIcon(scaledIcon);
             lblHinhAnh.setToolTipText(model.getHinhAnh());
         } else {
