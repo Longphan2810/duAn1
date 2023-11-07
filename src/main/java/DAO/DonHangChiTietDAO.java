@@ -23,6 +23,7 @@ public class DonHangChiTietDAO implements EntityDAO<DonHangChiTiet> {
     final String insert_SQL = "insert into donHangChiTiet (maDonHang, maMonAn, soLuongMon) values(?,?,?)";
     final String update_SQL = "update donHangChiTiet set maDonHang = ?, maMonAn = ?,soLuongMon = ? where maDonHangChiTiet = ?";
     final String delete_SQL = "delete from donHangChiTiet where maDonHangChiTiet = ?";
+    final String delete_SQL_maDonHang = "delete from donHangChiTiet where maDonHang =  ?";
     final String selectALL_SQL = "select * from donHangChiTiet";
     final String selectFoodFromOrder = "select * from donHangChiTiet where maDonHang = ?";
     final String selectByID_SQL = "select * from donHangChiTiet where maDonHangChiTiet = ?";
@@ -40,6 +41,9 @@ public class DonHangChiTietDAO implements EntityDAO<DonHangChiTiet> {
     @Override
     public int delete(String ID) {
         return JDBChelper.Update(delete_SQL, ID);
+    }
+     public int deleteMaDonHang(int maDonHang) {
+        return JDBChelper.Update(delete_SQL_maDonHang, maDonHang);
     }
 
     @Override
