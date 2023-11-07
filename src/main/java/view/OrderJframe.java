@@ -852,7 +852,7 @@ public class OrderJframe extends javax.swing.JFrame {
         JLabel temp = new JLabel("");
         
         
-        Dimension sizePanel = new Dimension(115, 160);
+        Dimension sizePanel = new Dimension(111, 160);
         panelReturn.setPreferredSize(sizePanel);
 
         Dimension sizeLabel = new Dimension(100, 100);

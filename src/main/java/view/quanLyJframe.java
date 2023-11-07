@@ -1256,25 +1256,21 @@ public class quanLyJframe extends javax.swing.JFrame {
         } else {
             rdoHetHang.setSelected(true);
         }
-        // Kiểm tra điều kiện trước khi xử lý hình ảnh
         if (!model.getHinhAnh().isEmpty()) {
-// Phần quan trọng nhất khi muốn chỉnh sửa kích thước ảnh
+
             ImageIcon originalIcon = shareHelper.readLogo(model.getHinhAnh());
             Image originalImage = originalIcon.getImage();
 
-            // Lấy kích thước của label
             int labelWidth = lblHinhAnh.getWidth();
             int labelHeight = lblHinhAnh.getHeight();
 
-            // Chỉnh kích thước của ảnh để vừa với label
             Image scaledImage = originalImage.getScaledInstance(labelWidth, labelHeight, java.awt.Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-            // Set icon và tooltip cho label
             lblHinhAnh.setIcon(scaledIcon);
             lblHinhAnh.setToolTipText(model.getHinhAnh());
         } else {
-            lblHinhAnh.setIcon(null); // Xóa hình ảnh hiển thị nếu không có hình
+            lblHinhAnh.setIcon(null); 
             lblHinhAnh.setToolTipText(null);
         }
     }
