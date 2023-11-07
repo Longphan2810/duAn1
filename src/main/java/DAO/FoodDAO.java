@@ -20,6 +20,7 @@ public class FoodDAO implements EntityDAO<FoodAndDrink> {
     final String update_SQL = "update monAn set tenMonAn = ?,giaTien = ?, hinhAnh = ?,maNhanVien = ?,trangThai = ? where maMonAn = ?";
     final String delete_SQL = "delete from monAn where maMonAn = ?";
     final String selectALL_SQL = "select * from monAn";
+    final String selectConBan_SQL = "select * from monan where trangThai =1";
     final String selectByID_SQL = "select * from monAn where maMonAn = ?";
 
     @Override
@@ -29,7 +30,7 @@ public class FoodDAO implements EntityDAO<FoodAndDrink> {
 
     @Override
     public void update(FoodAndDrink E) {
-        JDBChelper.Update(update_SQL, E.getTenThucAn(), E.getGia(), E.getHinhAnh(),E.getMaNhanVien(), E.isTrangThai(), E.getMaThucAn());
+        JDBChelper.Update(update_SQL, E.getTenThucAn(), E.getGia(), E.getHinhAnh(), E.getMaNhanVien(), E.isTrangThai(), E.getMaThucAn());
     }
 
     @Override
@@ -41,6 +42,10 @@ public class FoodDAO implements EntityDAO<FoodAndDrink> {
     @Override
     public List<FoodAndDrink> selectAll() {
         return selectBySQL(selectALL_SQL);
+    }
+
+    public List<FoodAndDrink> selectDangBan() {
+        return selectBySQL(selectConBan_SQL);
     }
 
     @Override
