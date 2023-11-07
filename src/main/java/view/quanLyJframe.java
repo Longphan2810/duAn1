@@ -16,6 +16,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +55,12 @@ public class quanLyJframe extends javax.swing.JFrame {
         inItTab();
         inIt();
         setLocationRelativeTo(this);
+<<<<<<< HEAD
         this.setTitle("Màn hình Quản lý");
+=======
+       
+
+>>>>>>> 9d097ea (Test bao cao thong ke)
     }
 
     /**
@@ -127,17 +134,30 @@ public class quanLyJframe extends javax.swing.JFrame {
         cboDoanhThuNgay = new javax.swing.JComboBox<>();
         cboDoanhThuThang = new javax.swing.JComboBox<>();
         cboDoanhThuNam = new javax.swing.JComboBox<>();
+<<<<<<< HEAD
         JScrollPane = new javax.swing.JScrollPane();
         tblTKDoanhThu = new javax.swing.JTable();
         btnInTKDoanhThu = new javax.swing.JButton();
+=======
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblTKDoanhThu = new javax.swing.JTable();
+        btnInBCDoanhThu = new javax.swing.JButton();
+>>>>>>> 9d097ea (Test bao cao thong ke)
         tabThongKeMonAn = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblTKMonAn = new javax.swing.JTable();
+<<<<<<< HEAD
         cboMonAnNgay = new javax.swing.JComboBox<>();
         cboMonAnThang = new javax.swing.JComboBox<>();
         cboMonAnNam = new javax.swing.JComboBox<>();
         btnInTKMonAn = new javax.swing.JButton();
+=======
+        cboTkMonAnNgay = new javax.swing.JComboBox<>();
+        cboTKMonAnThang = new javax.swing.JComboBox<>();
+        cboTKMonAnNam = new javax.swing.JComboBox<>();
+        btnInBCMonAn = new javax.swing.JButton();
+>>>>>>> 9d097ea (Test bao cao thong ke)
         btnThemNhanVien = new javax.swing.JButton();
         btnDanhSachNhanVien = new javax.swing.JButton();
         btnThongKeDoanhThu = new javax.swing.JButton();
@@ -299,7 +319,11 @@ public class quanLyJframe extends javax.swing.JFrame {
                                 .addComponent(txtMaMon, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                                 .addComponent(txtTenMon)
                                 .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+<<<<<<< HEAD
                 .addContainerGap(68, Short.MAX_VALUE))
+=======
+                .addContainerGap(110, Short.MAX_VALUE))
+>>>>>>> 9d097ea (Test bao cao thong ke)
         );
         tabThemMonLayout.setVerticalGroup(
             tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -385,7 +409,7 @@ public class quanLyJframe extends javax.swing.JFrame {
             tabDanhSachMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabDanhSachMonLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(tabDanhSachMonLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -396,7 +420,7 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addComponent(txtTimKiemMonAn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTimKiemMonAn)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabDanhSachMonLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnXoaMon)
@@ -499,7 +523,11 @@ public class quanLyJframe extends javax.swing.JFrame {
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(txtSoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+<<<<<<< HEAD
                 .addContainerGap(179, Short.MAX_VALUE))
+=======
+                .addContainerGap(221, Short.MAX_VALUE))
+>>>>>>> 9d097ea (Test bao cao thong ke)
         );
         tabThemNhanVienLayout.setVerticalGroup(
             tabThemNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -588,7 +616,7 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(tabDanhSachNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tabDanhSachNhanVienLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(tabDanhSachNhanVienLayout.createSequentialGroup()
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -628,10 +656,17 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel11.setText("Báo cáo thống kê doanh thu");
 
+<<<<<<< HEAD
         cboDoanhThuNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
         cboDoanhThuNgay.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboDoanhThuNgayItemStateChanged(evt);
+=======
+        cboDoanhThuNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày" }));
+        cboDoanhThuNgay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDoanhThuNgayActionPerformed(evt);
+>>>>>>> 9d097ea (Test bao cao thong ke)
             }
         });
         cboDoanhThuNgay.addActionListener(new java.awt.event.ActionListener() {
@@ -679,11 +714,41 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         btnInTKDoanhThu.setText("In Báo Cáo");
 
+        cboDoanhThuThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng", " " }));
+        cboDoanhThuThang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDoanhThuThangActionPerformed(evt);
+            }
+        });
+
+        cboDoanhThuNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm" }));
+        cboDoanhThuNam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDoanhThuNamActionPerformed(evt);
+            }
+        });
+
+        tblTKDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Thời Gian", "Doanh Thu"
+            }
+        ));
+        jScrollPane4.setViewportView(tblTKDoanhThu);
+
+        btnInBCDoanhThu.setText("In Báo Cáo");
+
         javax.swing.GroupLayout tabThongKeDoanhThuLayout = new javax.swing.GroupLayout(tabThongKeDoanhThu);
         tabThongKeDoanhThu.setLayout(tabThongKeDoanhThuLayout);
         tabThongKeDoanhThuLayout.setHorizontalGroup(
             tabThongKeDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabThongKeDoanhThuLayout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(17, 17, 17)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -701,6 +766,26 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnInTKDoanhThu)
                 .addGap(39, 39, 39))
+=======
+                .addGroup(tabThongKeDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabThongKeDoanhThuLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboDoanhThuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(cboDoanhThuThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addComponent(cboDoanhThuNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))
+                    .addGroup(tabThongKeDoanhThuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabThongKeDoanhThuLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnInBCDoanhThu)))
+                .addContainerGap())
+>>>>>>> 9d097ea (Test bao cao thong ke)
         );
         tabThongKeDoanhThuLayout.setVerticalGroup(
             tabThongKeDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -712,10 +797,17 @@ public class quanLyJframe extends javax.swing.JFrame {
                     .addComponent(cboDoanhThuThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboDoanhThuNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addComponent(JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInTKDoanhThu)
                 .addContainerGap(7, Short.MAX_VALUE))
+=======
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInBCDoanhThu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 9d097ea (Test bao cao thong ke)
         );
 
         tabbedTong.addTab("Thống kê", tabThongKeDoanhThu);
@@ -728,6 +820,7 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         tblTKMonAn.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+<<<<<<< HEAD
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -735,10 +828,20 @@ public class quanLyJframe extends javax.swing.JFrame {
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
+=======
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Mã Món Ăn", "Tên Món Ăn", "Thời Gian", "Doanh Thu", "Doanh Thu (%)"
+>>>>>>> 9d097ea (Test bao cao thong ke)
             }
         ));
         jScrollPane3.setViewportView(tblTKMonAn);
 
+<<<<<<< HEAD
         cboMonAnNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày" }));
         cboMonAnNgay.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -776,6 +879,20 @@ public class quanLyJframe extends javax.swing.JFrame {
         });
 
         btnInTKMonAn.setText("In Báo Cáo");
+=======
+        cboTkMonAnNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày" }));
+
+        cboTKMonAnThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng" }));
+        cboTKMonAnThang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboTKMonAnThangItemStateChanged(evt);
+            }
+        });
+
+        cboTKMonAnNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm" }));
+
+        btnInBCMonAn.setText("In Báo Cáo");
+>>>>>>> 9d097ea (Test bao cao thong ke)
 
         javax.swing.GroupLayout tabThongKeMonAnLayout = new javax.swing.GroupLayout(tabThongKeMonAn);
         tabThongKeMonAn.setLayout(tabThongKeMonAnLayout);
@@ -785,15 +902,28 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+<<<<<<< HEAD
                 .addComponent(cboMonAnNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(cboMonAnThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(cboMonAnNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
+=======
+                .addComponent(cboTkMonAnNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cboTKMonAnThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cboTKMonAnNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> 9d097ea (Test bao cao thong ke)
             .addGroup(tabThongKeMonAnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3)
+                .addGroup(tabThongKeMonAnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabThongKeMonAnLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnInBCMonAn, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabThongKeMonAnLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -806,6 +936,7 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(tabThongKeMonAnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                     .addComponent(cboMonAnNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboMonAnThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cboMonAnNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -813,6 +944,15 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInTKMonAn)
+=======
+                    .addComponent(cboTkMonAnNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboTKMonAnThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboTKMonAnNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInBCMonAn)
+>>>>>>> 9d097ea (Test bao cao thong ke)
                 .addContainerGap())
         );
 
@@ -990,11 +1130,15 @@ public class quanLyJframe extends javax.swing.JFrame {
     private void btnThongKeDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeDoanhThuActionPerformed
         // TODO add your handling code here:
         checkClickButton(btnThongKeDoanhThu);
+<<<<<<< HEAD
         tabbedTong.setSelectedIndex(4);  
         tkDoanhThuNamCombobox();
         tkDoanhThuThangCombobox();
 //        String thang = cboDoanhThuThang.getSelectedItem().toString();
 //        tkDoanhThuNgayCombobox(thang);
+=======
+        tabbedTong.setSelectedIndex(4);
+>>>>>>> 9d097ea (Test bao cao thong ke)
     }//GEN-LAST:event_btnThongKeDoanhThuActionPerformed
 
     private void btnList5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnList5ActionPerformed
@@ -1028,11 +1172,17 @@ public class quanLyJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDanhSachNhanVienActionPerformed
 
     private void btnThongKeMonAnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeMonAnActionPerformed
+<<<<<<< HEAD
         checkClickButton(btnThongKeMonAn);
         tabbedTong.setSelectedIndex(5);
           tkMonAnNamCombobox();
         tkMonAnThangCombobox();
 //        fillTableTKMonAn();
+=======
+        // TODO add your handling code here:
+        checkClickButton(btnThongKeMonAn);
+        tabbedTong.setSelectedIndex(5);
+>>>>>>> 9d097ea (Test bao cao thong ke)
     }//GEN-LAST:event_btnThongKeMonAnActionPerformed
 
     private void btnChuyenManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenManHinhActionPerformed
@@ -1220,6 +1370,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblDanhSachMonMousePressed
 
+<<<<<<< HEAD
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
 
         this.dispose();
@@ -1227,21 +1378,21 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
-    private void cboDoanhThuNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayActionPerformed
+    private void cboDoanhThuNgayActionPerformed(java.awt.event.ActionEvent evt) {                                                
 
-    }//GEN-LAST:event_cboDoanhThuNgayActionPerformed
+    }                                               
 
-    private void cboDoanhThuThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuThangActionPerformed
+    private void cboDoanhThuThangActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
            String thang = cboDoanhThuThang.getSelectedItem().toString() ;
 fillTableDoanhThu();
 
-    }//GEN-LAST:event_cboDoanhThuThangActionPerformed
+    }                                                
 
-    private void cboDoanhThuNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNamActionPerformed
+    private void cboDoanhThuNamActionPerformed(java.awt.event.ActionEvent evt) {                                               
 
         fillTableDoanhThu();
-    }//GEN-LAST:event_cboDoanhThuNamActionPerformed
+    }                                              
 
     private void cboDoanhThuThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuThangItemStateChanged
         // TODO add your handling code here:
@@ -1287,6 +1438,39 @@ fillTableDoanhThu();
         // TODO add your handling code here:
         fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnNamActionPerformed
+=======
+    private void cboDoanhThuNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayActionPerformed
+        // TODO add your handling code here:
+                
+            cboDoanhThuNgay.removeItem("Ngày");
+        
+            
+    }//GEN-LAST:event_cboDoanhThuNgayActionPerformed
+
+    private void cboDoanhThuThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuThangActionPerformed
+        // TODO add your handling code here:
+        String selectedItem = cboDoanhThuThang.getSelectedItem().toString();
+        if (selectedItem.equalsIgnoreCase("Tất cả")) {
+         cboDoanhThuNgay.setEnabled(false);
+        }
+        else{
+         cboDoanhThuNgay.setEnabled(true);
+        }
+             cboDoanhThuThang.removeItem("Tháng"); 
+
+        tkDTNgayCombobox();
+    }//GEN-LAST:event_cboDoanhThuThangActionPerformed
+
+    private void cboDoanhThuNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNamActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cboDoanhThuNamActionPerformed
+
+    private void cboTKMonAnThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboTKMonAnThangItemStateChanged
+
+
+    }//GEN-LAST:event_cboTKMonAnThangItemStateChanged
+>>>>>>> 9d097ea (Test bao cao thong ke)
 
     /**
      * @param args the command line arguments
@@ -1353,7 +1537,11 @@ fillTableDoanhThu();
 
         btnDanhSachNhanVien.setBackground(Color.white);
         btnThongKeDoanhThu.setBackground(Color.white);
+<<<<<<< HEAD
         btnThongKeMonAn.setBackground(Color.white);
+=======
+
+>>>>>>> 9d097ea (Test bao cao thong ke)
         Color backgroundColor = new Color(255, 177, 55);
         Button.setBackground(backgroundColor);
     }
@@ -1495,19 +1683,19 @@ fillTableDoanhThu();
 
     }
 
-    void setFormMenu(FoodAndDrink model) {
-        txtMaMon.setText(model.getMaThucAn());
-        txtGia.setText(String.valueOf(model.getGia()));
-        txtTenMon.setText(model.getTenThucAn());
+    void setFormMenu(FoodAndDrink f) {
+        txtMaMon.setText(f.getMaThucAn());
+        txtGia.setText(String.valueOf(f.getGia()));
+        txtTenMon.setText(f.getTenThucAn());
 
-        if (model.isTrangThai()) {
+        if (f.isTrangThai()) {
             rdoConHang.setSelected(true);
         } else {
             rdoHetHang.setSelected(true);
         }
-        if (!model.getHinhAnh().isEmpty()) {
+        if (!f.getHinhAnh().isEmpty()) {
 
-            ImageIcon originalIcon = shareHelper.readLogo(model.getHinhAnh());
+            ImageIcon originalIcon = shareHelper.readLogo(f.getHinhAnh());
             Image originalImage = originalIcon.getImage();
 
             int labelWidth = lblHinhAnh.getWidth();
@@ -1516,10 +1704,14 @@ fillTableDoanhThu();
             Image scaledImage = originalImage.getScaledInstance(labelWidth, labelHeight, java.awt.Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
+<<<<<<< HEAD
             imageCurrent = "src\\main\\resources\\logo\\" + model.getHinhAnh();
+=======
+            imageCurrent = "src\\main\\resources\\logo\\" + f.getHinhAnh();
+>>>>>>> 9d097ea (Test bao cao thong ke)
 
             lblHinhAnh.setIcon(scaledIcon);
-            lblHinhAnh.setToolTipText(model.getHinhAnh());
+            lblHinhAnh.setToolTipText(f.getHinhAnh());
         } else {
             lblHinhAnh.setIcon(null);
             lblHinhAnh.setToolTipText(null);
@@ -1603,6 +1795,7 @@ fillTableDoanhThu();
         }
     }
 
+<<<<<<< HEAD
     //=====================Báo cáo thống kê===============
     //======================Năm==================
      void tkDoanhThuNamCombobox() {
@@ -1721,6 +1914,65 @@ void fillTableDoanhThu() {
     }
     
    
+=======
+    //====================SetCombobox Thống Kê Doanh Thu=====================
+    void tkDTThangCombobox() {
+        ArrayList<String> ds = new ArrayList<>();
+        ds.add("Tháng");
+        ds.add("Tất Cả");
+        for (int month = 1; month <= 12; month++) {
+            ds.add("Tháng " + month);
+        }
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(ds.toArray(new String[0]));
+        cboDoanhThuThang.setModel(model);
+
+    }
+
+    void tkDTNgayCombobox() {
+        String selectedMonth = cboDoanhThuThang.getSelectedItem().toString();
+        int year = Calendar.getInstance().get(Calendar.YEAR);
+        int day = getDaysInMonth(selectedMonth, year);
+        ArrayList<String> ds = new ArrayList<>();
+        ds.add("Ngày");
+        ds.add("Tất Cả");
+        for (int i = 1; i <= day; i++) {
+            ds.add("Ngày " + i);
+        }
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>(ds.toArray(new String[0]));
+        cboDoanhThuNgay.setModel(model);
+    }
+
+    private int getDaysInMonth(String month, int year) {
+        switch (month) {
+            case "Tháng 1":
+            case "Tháng 3":
+            case "Tháng 5":
+            case "Tháng 7":
+            case "Tháng 8":
+            case "Tháng 10":
+            case "Tháng 12":
+                return 31;
+            case "Tháng 4":
+            case "Tháng 6":
+            case "Tháng 9":
+            case "Tháng 11":
+                return 30;
+            case "Tháng 2":
+                if (isNamNhuan(year)) {
+                    return 29; // Năm nhuận
+                } else {
+                    return 28; // Năm thường
+                }
+            default:
+                return 0;
+        }
+    }
+
+    private boolean isNamNhuan(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+    //====================SetCombobox Thống Kê Món ăn=========================
+>>>>>>> 9d097ea (Test bao cao thong ke)
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup ChucVu;
@@ -1730,8 +1982,13 @@ void fillTableDoanhThu() {
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDanhSachNhanVien;
     private javax.swing.JButton btnDanhSachmon;
+<<<<<<< HEAD
     private javax.swing.JButton btnInTKDoanhThu;
     private javax.swing.JButton btnInTKMonAn;
+=======
+    private javax.swing.JButton btnInBCDoanhThu;
+    private javax.swing.JButton btnInBCMonAn;
+>>>>>>> 9d097ea (Test bao cao thong ke)
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnList5;
     private javax.swing.JButton btnSuaMonAn;
@@ -1750,9 +2007,15 @@ void fillTableDoanhThu() {
     private javax.swing.JComboBox<String> cboDoanhThuNam;
     private javax.swing.JComboBox<String> cboDoanhThuNgay;
     private javax.swing.JComboBox<String> cboDoanhThuThang;
+<<<<<<< HEAD
     private javax.swing.JComboBox<String> cboMonAnNam;
     private javax.swing.JComboBox<String> cboMonAnNgay;
     private javax.swing.JComboBox<String> cboMonAnThang;
+=======
+    private javax.swing.JComboBox<String> cboTKMonAnNam;
+    private javax.swing.JComboBox<String> cboTKMonAnThang;
+    private javax.swing.JComboBox<String> cboTkMonAnNgay;
+>>>>>>> 9d097ea (Test bao cao thong ke)
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1778,6 +2041,7 @@ void fillTableDoanhThu() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblHinhAnh;
     private javax.swing.JRadioButton rdoConHang;
     private javax.swing.JRadioButton rdoHetHang;

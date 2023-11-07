@@ -7,6 +7,7 @@ package DAO;
 import database.JDBChelper;
 import entity.HoaDon;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,5 +72,20 @@ public class HoaDonDAO implements EntityDAO<HoaDon> {
         }
         return list;
     }
+    public List<Integer> selectYear() {
+        String sql = "Select distinct Day(ngayTao) as Days from hoaDon order by Days desc";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JDBChelper.Query(sql);
+            while (rs.next()) {
+                int Days = rs.getInt("Days");
+                list.add(Days);
+            }
+            rs.getStatement().getConnection().close();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+    }
 }
