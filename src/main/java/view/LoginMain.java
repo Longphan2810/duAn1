@@ -184,13 +184,16 @@ public class LoginMain extends javax.swing.JDialog {
             if (nvTemp.getMatKhau().equals(pass)) {
 
                 if (nvTemp.isRole()) {
-
-                    LoginMain.this.dispose();
+                    
+                    LoginMain.this.dispose();                  
                     ql.setVisible(true);
+                    chaoClose();
 
                 } else {
-                    LoginMain.this.dispose();
+                    
+                    LoginMain.this.dispose();                  
                     nv.setVisible(true);
+                     chaoClose();
 
                 }
                 
@@ -270,6 +273,10 @@ public class LoginMain extends javax.swing.JDialog {
     private void chaoOpen() {
 
         new chaoJDialog(this, true).setVisible(true);
+
+    }
+     private void chaoClose() {
+        new chaoJDialog(this, false).dispose();
 
     }
 

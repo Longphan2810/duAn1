@@ -701,7 +701,10 @@ public class OrderJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThemDonHangActionPerformed
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-        // TODO add your handling code here:
+         this.dispose();
+        new LoginMain(this, true).setVisible(true);
+            
+            
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     /**

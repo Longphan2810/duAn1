@@ -1049,11 +1049,15 @@ public class quanLyJframe extends javax.swing.JFrame {
             fillFormMenu();
         }
     }//GEN-LAST:event_tblDanhSachMonMousePressed
-
+  
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-        // TODO add your handling code here:
+        
+        this.dispose();     
+        new LoginMain(this, true).setVisible(true);
+            
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
+   
     /**
      * @param args the command line arguments
      */
