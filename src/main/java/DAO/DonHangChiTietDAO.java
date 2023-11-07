@@ -23,6 +23,7 @@ public class DonHangChiTietDAO implements EntityDAO<DonHangChiTiet> {
     final String insert_SQL = "insert into donHangChiTiet (maDonHang, maMonAn, soLuongMon) values(?,?,?)";
     final String update_SQL = "update donHangChiTiet set maDonHang = ?, maMonAn = ?,soLuongMon = ? where maDonHangChiTiet = ?";
     final String delete_SQL = "delete from donHangChiTiet where maDonHangChiTiet = ?";
+    final String delete_SQL_maDonHang = "delete from donHangChiTiet where maDonHang =  ?";
     final String selectALL_SQL = "select * from donHangChiTiet";
     final String selectFoodFromOrder = "select * from donHangChiTiet where maDonHang = ?";
     final String selectByID_SQL = "select * from donHangChiTiet where maDonHangChiTiet = ?";
@@ -42,6 +43,10 @@ public class DonHangChiTietDAO implements EntityDAO<DonHangChiTiet> {
         return JDBChelper.Update(delete_SQL, ID);
     }
 
+    public int deleteMaDonHang(int maDonHang) {
+        return JDBChelper.Update(delete_SQL_maDonHang, maDonHang);
+    }
+
     @Override
     public List<DonHangChiTiet> selectAll() {
         return selectBySQL(selectALL_SQL);
@@ -55,7 +60,12 @@ public class DonHangChiTietDAO implements EntityDAO<DonHangChiTiet> {
             while (rs.next()) {
                 String maMonAn = rs.getString("maMonAn");
                 int soLuong = rs.getInt("soLuongMon");
-                listFood.put(maMonAn, soLuong);
+                if (listFood.containsKey(maMonAn)) {
+                    int oldValue = listFood.get(maMonAn);
+                    listFood.put(maMonAn, oldValue + soLuong);
+                } else {
+                    listFood.put(maMonAn, soLuong);
+                }
 
             }
 
