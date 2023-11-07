@@ -128,6 +128,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         btnDanhSachmon = new javax.swing.JButton();
         btnThongKe2 = new javax.swing.JButton();
         btnChuyenManHinh = new javax.swing.JButton();
+        btnDangXuat = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -141,7 +142,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        btnThemMon.setBackground(new java.awt.Color(255, 255, 255));
         btnThemMon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnThemMon.setText("Thêm món");
         btnThemMon.addActionListener(new java.awt.event.ActionListener() {
@@ -656,7 +656,6 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         tabbedTong.addTab("Thống kê", tabThongKeMonAn);
 
-        btnThemNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         btnThemNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnThemNhanVien.setText("Thêm nhân viên");
         btnThemNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -665,7 +664,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        btnDanhSachNhanVien.setBackground(new java.awt.Color(255, 255, 255));
         btnDanhSachNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDanhSachNhanVien.setText("Danh sách nhân viên");
         btnDanhSachNhanVien.addActionListener(new java.awt.event.ActionListener() {
@@ -674,7 +672,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        btnThongKe.setBackground(new java.awt.Color(255, 255, 255));
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnThongKe.setText("Thống kê doanh thu");
         btnThongKe.addActionListener(new java.awt.event.ActionListener() {
@@ -691,7 +688,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        btnDanhSachmon.setBackground(new java.awt.Color(255, 255, 255));
         btnDanhSachmon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDanhSachmon.setText("Danh sách món");
         btnDanhSachmon.addActionListener(new java.awt.event.ActionListener() {
@@ -700,7 +696,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        btnThongKe2.setBackground(new java.awt.Color(255, 255, 255));
         btnThongKe2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnThongKe2.setText("Thống kê món ăn");
         btnThongKe2.addActionListener(new java.awt.event.ActionListener() {
@@ -714,6 +709,14 @@ public class quanLyJframe extends javax.swing.JFrame {
         btnChuyenManHinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChuyenManHinhActionPerformed(evt);
+            }
+        });
+
+        btnDangXuat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnDangXuat.setText("Đăng xuất");
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
             }
         });
 
@@ -742,6 +745,10 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tabbedTong)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -768,6 +775,8 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addComponent(btnThongKe2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnChuyenManHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -785,7 +794,9 @@ public class quanLyJframe extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -1038,6 +1049,10 @@ public class quanLyJframe extends javax.swing.JFrame {
             fillFormMenu();
         }
     }//GEN-LAST:event_tblDanhSachMonMousePressed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDangXuatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1358,6 +1373,7 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.ButtonGroup ChucVu;
     private javax.swing.ButtonGroup TrangThaiMonAn;
     private javax.swing.JButton btnChuyenManHinh;
+    private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDanhSachNhanVien;
     private javax.swing.JButton btnDanhSachmon;
     private javax.swing.JButton btnList;
