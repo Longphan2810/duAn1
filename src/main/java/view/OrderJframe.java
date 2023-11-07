@@ -103,7 +103,8 @@ public class OrderJframe extends javax.swing.JFrame {
         labelTongTien = new javax.swing.JLabel();
         btnThemDonHang = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
-        btnThanhToan = new javax.swing.JButton();
+        btnThanhToanDonHang = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
         TabListDonHang = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         panelContainerDonHang = new javax.swing.JPanel();
@@ -440,8 +441,15 @@ public class OrderJframe extends javax.swing.JFrame {
         btnCapNhat.setText("Cập nhật");
         btnCapNhat.setEnabled(false);
 
-        btnThanhToan.setText("Thanh toán");
-        btnThanhToan.setEnabled(false);
+        btnThanhToanDonHang.setText("Thanh toán");
+        btnThanhToanDonHang.setEnabled(false);
+
+        btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -453,20 +461,24 @@ public class OrderJframe extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnThanhToanDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addComponent(btnThemDonHang)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCapNhat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnLamMoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -483,9 +495,10 @@ public class OrderJframe extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemDonHang)
-                    .addComponent(btnCapNhat))
+                    .addComponent(btnCapNhat)
+                    .addComponent(btnLamMoi))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThanhToan)
+                .addComponent(btnThanhToanDonHang)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -749,6 +762,15 @@ public class OrderJframe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        danhSachMonAn.clear();
+        btnThanhToanDonHang.setEnabled(false);
+        btnCapNhat.setEnabled(false);
+        fillTable();
+        
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -969,13 +991,14 @@ public class OrderJframe extends javax.swing.JFrame {
                 checkClickButton(btnBurger);
                 tabbedTong.setSelectedIndex(0);
                 tbpSub.setSelectedIndex(0);
-
+                btnCapNhat.setEnabled(true);
+                btnThanhToanDonHang.setEnabled(true);
+                
             }
         };
 
         btnThanhToan.setAction(ac);
         btnThanhToan.setText("Thanh Toan");
-
         panelReturn.add(lblMaDon);
         panelReturn.add(lblNguoiTao);
         panelReturn.add(btnThanhToan);
@@ -1039,11 +1062,12 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnCream;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDrink;
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnLichSu;
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnPotato;
     private javax.swing.JButton btnTaoDon;
-    private javax.swing.JButton btnThanhToan;
+    private javax.swing.JButton btnThanhToanDonHang;
     private javax.swing.JButton btnThemDonHang;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
