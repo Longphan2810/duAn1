@@ -46,7 +46,7 @@ public class OrderJframe extends javax.swing.JFrame {
     List<FoodAndDrink> listFood = new ArrayList<>();
     HashMap<FoodAndDrink, Integer> danhSachMonAn = new HashMap<>();
     DefaultTableModel modelTableDanhSachMonAn;
-
+    List<DonHang> listDonHang = new ArrayList<>();
     DonHangDAO donHangDao = new DonHangDAO();
     DonHangChiTietDAO chiTietDao = new DonHangChiTietDAO();
     FoodDAO foodDao = new FoodDAO();
@@ -117,7 +117,11 @@ public class OrderJframe extends javax.swing.JFrame {
         panelContainerDonHang = new javax.swing.JPanel();
         tabLichSu = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        btnChiTietDonHang = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tblLichSuHD = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         btnChuyenManHinh = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
 
@@ -125,7 +129,6 @@ public class OrderJframe extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnTaoDon.setBackground(new java.awt.Color(255, 255, 255));
         btnTaoDon.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnTaoDon.setText("Tạo đơn hàng");
         btnTaoDon.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +137,6 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnPotato.setBackground(new java.awt.Color(255, 255, 255));
         btnPotato.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnPotato.setText("Potato");
         btnPotato.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +145,6 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnCream.setBackground(new java.awt.Color(255, 255, 255));
         btnCream.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCream.setText("Ice Cream");
         btnCream.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +153,6 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnBurger.setBackground(new java.awt.Color(255, 255, 255));
         btnBurger.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBurger.setText("Burger");
         btnBurger.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +163,6 @@ public class OrderJframe extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo_brand.png"))); // NOI18N
 
-        btnDrink.setBackground(new java.awt.Color(255, 255, 255));
         btnDrink.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDrink.setText("Drink");
         btnDrink.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +171,6 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnList.setBackground(new java.awt.Color(255, 255, 255));
         btnList.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnList.setText("Danh sách đơn hàng");
         btnList.addActionListener(new java.awt.event.ActionListener() {
@@ -181,7 +179,6 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnLichSu.setBackground(new java.awt.Color(255, 255, 255));
         btnLichSu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnLichSu.setText("Lịch sử đơn hàng");
         btnLichSu.addActionListener(new java.awt.event.ActionListener() {
@@ -598,26 +595,66 @@ public class OrderJframe extends javax.swing.JFrame {
         tabLichSu.setBackground(new java.awt.Color(255, 255, 255));
         tabLichSu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        btnChiTietDonHang.setText("Chi tiết đơn hàng");
+
+        tblLichSuHD.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Mã đơn hàng", "Ngày tạo", "Mã nhân viên", "Trạng thái"
+            }
+        ));
+        jScrollPane8.setViewportView(tblLichSuHD);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 515, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap(286, Short.MAX_VALUE)
+                .addComponent(btnChiTietDonHang)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnChiTietDonHang)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(34, Short.MAX_VALUE)))
         );
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Chi tiết đơn hàng");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 288, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(412, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout tabLichSuLayout = new javax.swing.GroupLayout(tabLichSu);
@@ -625,9 +662,10 @@ public class OrderJframe extends javax.swing.JFrame {
         tabLichSuLayout.setHorizontalGroup(
             tabLichSuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabLichSuLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         tabLichSuLayout.setVerticalGroup(
             tabLichSuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -637,7 +675,6 @@ public class OrderJframe extends javax.swing.JFrame {
 
         tabbedTong.addTab("tab3", tabLichSu);
 
-        btnChuyenManHinh.setBackground(new java.awt.Color(255, 255, 255));
         btnChuyenManHinh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnChuyenManHinh.setText("Chuyển màn hình");
         btnChuyenManHinh.addActionListener(new java.awt.event.ActionListener() {
@@ -646,7 +683,6 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnDangXuat.setBackground(new java.awt.Color(255, 255, 255));
         btnDangXuat.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDangXuat.setText("Đăng xuất");
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
@@ -686,7 +722,7 @@ public class OrderJframe extends javax.swing.JFrame {
                         .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tabbedTong, javax.swing.GroupLayout.PREFERRED_SIZE, 823, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -743,6 +779,7 @@ public class OrderJframe extends javax.swing.JFrame {
         blockOrder(true);
         checkClickButton(btnLichSu);
         tabbedTong.setSelectedIndex(2);
+        fillTableLichSu();
     }//GEN-LAST:event_btnLichSuActionPerformed
 
     private void btnCreamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreamActionPerformed
@@ -1198,12 +1235,23 @@ public class OrderJframe extends javax.swing.JFrame {
         }
 
     }
+    
+    public void fillTableLichSu(){
+        listDonHang = donHangDao.selectDaThanhToan();
+        DefaultTableModel model = (DefaultTableModel) tblLichSuHD.getModel();
+        model.setRowCount(0);
+        for (DonHang dh : listDonHang) {
+            model.addRow(new Object[]{dh.getMaDonHang(),dh.getNgayTao(),dh.getMaNhanVien(),dh.getTrangThai()});
+        }
+        
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TabListDonHang;
     private javax.swing.JButton btnBurger;
     private javax.swing.JButton btnCapNhat;
+    private javax.swing.JButton btnChiTietDonHang;
     private javax.swing.JButton btnChuyenManHinh;
     private javax.swing.JButton btnCream;
     private javax.swing.JButton btnDangXuat;
@@ -1217,6 +1265,7 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnThanhToanDonHang;
     private javax.swing.JButton btnThemDonHang;
     private javax.swing.JButton btnXoaMon;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
@@ -1230,6 +1279,7 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JLabel labelTongTien;
     private javax.swing.JPanel panelContainerBurger;
     private javax.swing.JPanel panelContainerCream;
@@ -1244,6 +1294,7 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JPanel tabTaoDonHang;
     private javax.swing.JTabbedPane tabbedTong;
     private javax.swing.JTable tblDonHang;
+    private javax.swing.JTable tblLichSuHD;
     private javax.swing.JTabbedPane tbpSub;
     // End of variables declaration//GEN-END:variables
 
