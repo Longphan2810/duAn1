@@ -55,12 +55,10 @@ public class quanLyJframe extends javax.swing.JFrame {
         inItTab();
         inIt();
         setLocationRelativeTo(this);
-<<<<<<< HEAD
         this.setTitle("Màn hình Quản lý");
-=======
+
        
 
->>>>>>> 9d097ea (Test bao cao thong ke)
     }
 
     /**
@@ -1130,15 +1128,11 @@ public class quanLyJframe extends javax.swing.JFrame {
     private void btnThongKeDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeDoanhThuActionPerformed
         // TODO add your handling code here:
         checkClickButton(btnThongKeDoanhThu);
-<<<<<<< HEAD
         tabbedTong.setSelectedIndex(4);  
         tkDoanhThuNamCombobox();
         tkDoanhThuThangCombobox();
-//        String thang = cboDoanhThuThang.getSelectedItem().toString();
-//        tkDoanhThuNgayCombobox(thang);
-=======
-        tabbedTong.setSelectedIndex(4);
->>>>>>> 9d097ea (Test bao cao thong ke)
+
+
     }//GEN-LAST:event_btnThongKeDoanhThuActionPerformed
 
     private void btnList5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnList5ActionPerformed
@@ -1172,17 +1166,13 @@ public class quanLyJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDanhSachNhanVienActionPerformed
 
     private void btnThongKeMonAnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeMonAnActionPerformed
-<<<<<<< HEAD
+
         checkClickButton(btnThongKeMonAn);
         tabbedTong.setSelectedIndex(5);
           tkMonAnNamCombobox();
         tkMonAnThangCombobox();
 //        fillTableTKMonAn();
-=======
-        // TODO add your handling code here:
-        checkClickButton(btnThongKeMonAn);
-        tabbedTong.setSelectedIndex(5);
->>>>>>> 9d097ea (Test bao cao thong ke)
+
     }//GEN-LAST:event_btnThongKeMonAnActionPerformed
 
     private void btnChuyenManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenManHinhActionPerformed
@@ -1370,7 +1360,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tblDanhSachMonMousePressed
 
-<<<<<<< HEAD
+
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
 
         this.dispose();
@@ -1378,21 +1368,8 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
-    private void cboDoanhThuNgayActionPerformed(java.awt.event.ActionEvent evt) {                                                
 
-    }                                               
 
-    private void cboDoanhThuThangActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
-           String thang = cboDoanhThuThang.getSelectedItem().toString() ;
-fillTableDoanhThu();
-
-    }                                                
-
-    private void cboDoanhThuNamActionPerformed(java.awt.event.ActionEvent evt) {                                               
-
-        fillTableDoanhThu();
-    }                                              
 
     private void cboDoanhThuThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuThangItemStateChanged
         // TODO add your handling code here:
@@ -1438,13 +1415,10 @@ fillTableDoanhThu();
         // TODO add your handling code here:
         fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnNamActionPerformed
-=======
+
     private void cboDoanhThuNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayActionPerformed
         // TODO add your handling code here:
-                
-            cboDoanhThuNgay.removeItem("Ngày");
-        
-            
+     
     }//GEN-LAST:event_cboDoanhThuNgayActionPerformed
 
     private void cboDoanhThuThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuThangActionPerformed
@@ -1529,19 +1503,12 @@ fillTableDoanhThu();
     // ======================== check click and remove  active ============================
     private void checkClickButton(JButton Button) {
         // remove active btn 
-
         btnThemMon.setBackground(Color.white);
-
         btnDanhSachmon.setBackground(Color.white);
         btnThemNhanVien.setBackground(Color.white);
-
         btnDanhSachNhanVien.setBackground(Color.white);
         btnThongKeDoanhThu.setBackground(Color.white);
-<<<<<<< HEAD
         btnThongKeMonAn.setBackground(Color.white);
-=======
-
->>>>>>> 9d097ea (Test bao cao thong ke)
         Color backgroundColor = new Color(255, 177, 55);
         Button.setBackground(backgroundColor);
     }
@@ -1704,11 +1671,8 @@ fillTableDoanhThu();
             Image scaledImage = originalImage.getScaledInstance(labelWidth, labelHeight, java.awt.Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-<<<<<<< HEAD
-            imageCurrent = "src\\main\\resources\\logo\\" + model.getHinhAnh();
-=======
             imageCurrent = "src\\main\\resources\\logo\\" + f.getHinhAnh();
->>>>>>> 9d097ea (Test bao cao thong ke)
+
 
             lblHinhAnh.setIcon(scaledIcon);
             lblHinhAnh.setToolTipText(f.getHinhAnh());
@@ -1795,7 +1759,7 @@ fillTableDoanhThu();
         }
     }
 
-<<<<<<< HEAD
+
     //=====================Báo cáo thống kê===============
     //======================Năm==================
      void tkDoanhThuNamCombobox() {
@@ -1912,9 +1876,7 @@ void fillTableDoanhThu() {
             monAn.addRow(row);
         }
     }
-    
-   
-=======
+
     //====================SetCombobox Thống Kê Doanh Thu=====================
     void tkDTThangCombobox() {
         ArrayList<String> ds = new ArrayList<>();
