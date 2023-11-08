@@ -1377,22 +1377,20 @@ public class quanLyJframe extends javax.swing.JFrame {
 
     private void cboDoanhThuNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuNamItemStateChanged
         // TODO add your handling code here:
-// tkDoanhThuThangCombobox();
         fillTableDoanhThu();
     }//GEN-LAST:event_cboDoanhThuNamItemStateChanged
 
     private void cboMonAnNgayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnNgayItemStateChanged
-        // TODO add your handling code here:
-//        fillTableTKMonAn();
+
     }//GEN-LAST:event_cboMonAnNgayItemStateChanged
 
     private void cboMonAnThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnThangItemStateChanged
-        // TODO add your handling code here:
+
         fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnThangItemStateChanged
 
     private void cboMonAnNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnNamItemStateChanged
-        // TODO add your handling code here:
+
         fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnNamItemStateChanged
 
@@ -1401,7 +1399,7 @@ public class quanLyJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_cboMonAnNgayActionPerformed
 
     private void cboMonAnThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMonAnThangActionPerformed
-        // TODO add your handling code here:
+
         String thang = cboMonAnThang.getSelectedItem().toString();
         fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnThangActionPerformed
@@ -1899,35 +1897,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         cboDoanhThuNgay.setModel(model);
     }
 
-    private int getDaysInMonth(String month, int year) {
-        switch (month) {
-            case "Tháng 1":
-            case "Tháng 3":
-            case "Tháng 5":
-            case "Tháng 7":
-            case "Tháng 8":
-            case "Tháng 10":
-            case "Tháng 12":
-                return 31;
-            case "Tháng 4":
-            case "Tháng 6":
-            case "Tháng 9":
-            case "Tháng 11":
-                return 30;
-            case "Tháng 2":
-                if (isNamNhuan(year)) {
-                    return 29; // Năm nhuận
-                } else {
-                    return 28; // Năm thường
-                }
-            default:
-                return 0;
-        }
-    }
-
-    private boolean isNamNhuan(int year) {
-        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
-    }
+    
     //====================SetCombobox Thống Kê Món ăn=========================
 
     >>>>>>> 9d097ea (Test bao
