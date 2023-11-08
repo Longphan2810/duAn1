@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package view;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -13,13 +12,10 @@ import javax.swing.Timer;
  * @author Thinkpad E440
  */
 public class chaoJDialog extends javax.swing.JDialog {
-
-    /**
-     * Creates new form chaoJDialog
-     */
+    Timer timer;
     int manRun = -40;
     int progressRun = 0;
-    int i =452;
+    int i = 452;
 
     public chaoJDialog(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
@@ -27,22 +23,23 @@ public class chaoJDialog extends javax.swing.JDialog {
         initComponents();
 
         inIt();
-
-        Timer timer = new Timer(14, new ActionListener() {
+ 
+         timer = new Timer(14, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 if (progressRun >= 1500) {
+                    stop();
                     chaoJDialog.this.dispose();
+                    
                 } else {
                     man.setLocation(manRun, 452);
                     progress.setValue(progressRun);
                     manRun += 3;
-                    progressRun=progressRun+7;
-                    if(progressRun%310 <=150){
+                    progressRun = progressRun + 7;
+                    if (progressRun % 310 <= 150) {
                         i--;
                         man.setLocation(manRun, i);
-                    }else{
+                    } else {
                         i++;
                         man.setLocation(manRun, i);
                     }
@@ -50,9 +47,10 @@ public class chaoJDialog extends javax.swing.JDialog {
             }
         });
         timer.start();
-
     }
-
+    public void  stop(){      
+    timer.stop();                           
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

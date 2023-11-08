@@ -24,7 +24,7 @@ public class DonHangDAO implements EntityDAO<DonHang> {
     final String delete_SQL = "delete from donHang where maDonHang = ?";
     final String selectALL_SQL = "select * from donHang";
     final String selectChuaThanhToan = "select * from donhang  where trangThai = 'Chua Thanh Toan'";
-
+    final String selectDaThanhToan = "select * from donhang  where trangThai like 'Da %'";
     final String selectLast = "select top 1  * from donHang order by maDonHang desc ;";
     final String selectByID_SQL = "select * from donHang where maDonHang = ?";
 
@@ -49,6 +49,9 @@ public class DonHangDAO implements EntityDAO<DonHang> {
     }
      public List<DonHang> selectChuaThanhToan() {
         return selectBySQL(selectChuaThanhToan);
+    }
+     public List<DonHang> selectDaThanhToan() {
+        return selectBySQL(selectDaThanhToan);
     }
     @Override
     public DonHang findById(String ID) {
