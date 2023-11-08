@@ -46,7 +46,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
     List<FoodAndDrink> listFood = new ArrayList<>();
     HashMap<FoodAndDrink, Integer> danhSachMonAn = new HashMap<>();
-    DefaultTableModel modelTableDanhSachMonAn;
+    DefaultTableModel modelTableDanhSachMonAn,modelDonHang;
     List<DonHang> listDonHang = new ArrayList<>();
     DonHangDAO donHangDao = new DonHangDAO();
     DonHangChiTietDAO chiTietDao = new DonHangChiTietDAO();
@@ -121,10 +121,13 @@ public class OrderJframe extends javax.swing.JFrame {
         btnChiTietDonHang = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         tblLichSuHD = new javax.swing.JTable();
+        txtTimKiemDonHang = new javax.swing.JTextField();
+        btnTimKiemDonHang = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblChiTietDonHang = new javax.swing.JTable();
+        btnTaoHoaDon = new javax.swing.JButton();
         btnChuyenManHinh = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
 
@@ -625,6 +628,13 @@ public class OrderJframe extends javax.swing.JFrame {
         ));
         jScrollPane9.setViewportView(tblLichSuHD);
 
+        btnTimKiemDonHang.setText("Tìm kiếm");
+        btnTimKiemDonHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemDonHangActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -634,14 +644,22 @@ public class OrderJframe extends javax.swing.JFrame {
                 .addComponent(btnChiTietDonHang)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(txtTimKiemDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btnTimKiemDonHang)
+                .addGap(19, 19, 19))
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtTimKiemDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTimKiemDonHang))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnChiTietDonHang)
                 .addContainerGap())
@@ -660,27 +678,32 @@ public class OrderJframe extends javax.swing.JFrame {
         ));
         jScrollPane8.setViewportView(tblChiTietDonHang);
 
+        btnTaoHoaDon.setText("Tạo hóa đơn");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(358, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTaoHoaDon)
+                .addGap(19, 19, 19))
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTaoHoaDon)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout tabLichSuLayout = new javax.swing.GroupLayout(tabLichSu);
@@ -961,6 +984,18 @@ public class OrderJframe extends javax.swing.JFrame {
         int maDH = (int) tblLichSuHD.getValueAt(i, 0);
         fillChiTietDonHang(maDH);
     }//GEN-LAST:event_btnChiTietDonHangActionPerformed
+
+    private void btnTimKiemDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemDonHangActionPerformed
+        try {
+            modelDonHang = (DefaultTableModel) tblLichSuHD.getModel();
+            modelDonHang.setRowCount(0);
+            DonHang dh = donHangDao.findById(txtTimKiemDonHang.getText().trim());
+
+            Object[] temp = {dh.getMaDonHang(), dh.getNgayTao(), dh.getMaNhanVien(), dh.getTrangThai()};
+            modelDonHang.addRow(temp);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnTimKiemDonHangActionPerformed
     
     /**
      * @param args the command line arguments
@@ -1316,8 +1351,10 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnPotato;
     private javax.swing.JButton btnTaoDon;
+    private javax.swing.JButton btnTaoHoaDon;
     private javax.swing.JButton btnThanhToanDonHang;
     private javax.swing.JButton btnThemDonHang;
+    private javax.swing.JButton btnTimKiemDonHang;
     private javax.swing.JButton btnXoaMon;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -1352,6 +1389,7 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JTable tblDonHang;
     private javax.swing.JTable tblLichSuHD;
     private javax.swing.JTabbedPane tbpSub;
+    private javax.swing.JTextField txtTimKiemDonHang;
     // End of variables declaration//GEN-END:variables
 
 }
