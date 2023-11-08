@@ -21,7 +21,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>
         <maven.compiler.target>16</maven.compiler.target>
-        <exec.mainClass>com.mycompany.duan1.DuAn1</exec.mainClass>
+        <exec.mainClass>view.quanLyJframe</exec.mainClass>
     </properties>
      
   
