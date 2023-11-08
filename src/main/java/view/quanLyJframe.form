@@ -255,11 +255,7 @@
                                   </Group>
                               </Group>
                           </Group>
-<<<<<<< HEAD
                           <EmptySpace pref="68" max="32767" attributes="0"/>
-=======
-                          <EmptySpace pref="110" max="32767" attributes="0"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -453,7 +449,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="681" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="639" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -465,7 +461,7 @@
                           <Component id="txtTimKiemMonAn" min="-2" pref="98" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnTimKiemMonAn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="124" max="32767" attributes="0"/>
+                          <EmptySpace pref="82" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
@@ -663,11 +659,7 @@
                                   </Group>
                               </Group>
                           </Group>
-<<<<<<< HEAD
                           <EmptySpace pref="179" max="32767" attributes="0"/>
-=======
-                          <EmptySpace pref="221" max="32767" attributes="0"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -826,7 +818,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jScrollPane2" pref="681" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="639" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -987,7 +979,6 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-<<<<<<< HEAD
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Component id="jLabel11" min="-2" pref="328" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1007,30 +998,6 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btnInTKDoanhThu" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-=======
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                                  <Component id="jLabel11" min="-2" pref="328" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cboDoanhThuNgay" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                  <Component id="cboDoanhThuThang" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="41" max="32767" attributes="0"/>
-                                  <Component id="cboDoanhThuNam" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane4" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnInBCDoanhThu" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1045,17 +1012,10 @@
                               <Component id="cboDoanhThuNam" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-<<<<<<< HEAD
                           <Component id="JScrollPane" min="-2" pref="347" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnInTKDoanhThu" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="7" max="32767" attributes="0"/>
-=======
-                          <Component id="jScrollPane4" min="-2" pref="348" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnInBCDoanhThu" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1073,19 +1033,12 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-<<<<<<< HEAD
                         <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-=======
-                        <StringItem index="0" value="Ng&#xe0;y"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                       </StringArray>
                     </Property>
                   </Properties>
                   <Events>
-<<<<<<< HEAD
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboDoanhThuNgayItemStateChanged"/>
-=======
->>>>>>> 9d097ea (Test bao cao thong ke)
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboDoanhThuNgayActionPerformed"/>
                   </Events>
                   <AuxValues>
@@ -1095,22 +1048,13 @@
                 <Component class="javax.swing.JComboBox" name="cboDoanhThuThang">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-<<<<<<< HEAD
                       <StringArray count="1">
                         <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-=======
-                      <StringArray count="2">
-                        <StringItem index="0" value="Th&#xe1;ng"/>
-                        <StringItem index="1" value=" "/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                       </StringArray>
                     </Property>
                   </Properties>
                   <Events>
-<<<<<<< HEAD
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboDoanhThuThangItemStateChanged"/>
-=======
->>>>>>> 9d097ea (Test bao cao thong ke)
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboDoanhThuThangActionPerformed"/>
                   </Events>
                   <AuxValues>
@@ -1121,58 +1065,37 @@
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-<<<<<<< HEAD
                         <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-=======
-                        <StringItem index="0" value="N&#x103;m"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                       </StringArray>
                     </Property>
                   </Properties>
                   <Events>
-<<<<<<< HEAD
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboDoanhThuNamItemStateChanged"/>
-=======
->>>>>>> 9d097ea (Test bao cao thong ke)
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboDoanhThuNamActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Container class="javax.swing.JScrollPane" name="JScrollPane">
-=======
-                <Container class="javax.swing.JScrollPane" name="jScrollPane4">
->>>>>>> 9d097ea (Test bao cao thong ke)
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tblTKDoanhThu">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-<<<<<<< HEAD
                           <Table columnCount="4" rowCount="4">
                             <Column editable="true" title="Title 1" type="java.lang.Object"/>
                             <Column editable="true" title="Title 2" type="java.lang.Object"/>
                             <Column editable="true" title="Title 3" type="java.lang.Object"/>
                             <Column editable="true" title="Title 4" type="java.lang.Object"/>
-=======
-                          <Table columnCount="2" rowCount="4">
-                            <Column editable="true" title="Th&#x1edd;i Gian" type="java.lang.Object"/>
-                            <Column editable="true" title="Doanh Thu" type="java.lang.Object"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                           </Table>
                         </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
-<<<<<<< HEAD
                 <Component class="javax.swing.JButton" name="btnInTKDoanhThu">
-=======
-                <Component class="javax.swing.JButton" name="btnInBCDoanhThu">
->>>>>>> 9d097ea (Test bao cao thong ke)
                   <Properties>
                     <Property name="text" type="java.lang.String" value="In B&#xe1;o C&#xe1;o"/>
                   </Properties>
@@ -1204,7 +1127,6 @@
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                           <Component id="jLabel18" min="-2" pref="310" max="-2" attributes="0"/>
-<<<<<<< HEAD
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cboMonAnNgay" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
@@ -1214,25 +1136,8 @@
                           <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-=======
->>>>>>> 9d097ea (Test bao cao thong ke)
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cboTkMonAnNgay" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="cboTKMonAnThang" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="cboTKMonAnNam" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" alignment="0" pref="681" max="32767" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="btnInBCMonAn" min="-2" pref="91" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="jScrollPane3" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -1248,24 +1153,14 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel18" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
-<<<<<<< HEAD
                               <Component id="cboMonAnNgay" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cboMonAnThang" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cboMonAnNam" alignment="3" min="-2" max="-2" attributes="0"/>
-=======
-                              <Component id="cboTkMonAnNgay" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTKMonAnThang" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTKMonAnNam" alignment="3" min="-2" max="-2" attributes="0"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jScrollPane3" pref="348" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-<<<<<<< HEAD
                           <Component id="btnInTKMonAn" min="-2" max="-2" attributes="0"/>
-=======
-                          <Component id="btnInBCMonAn" min="-2" max="-2" attributes="0"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1287,31 +1182,18 @@
                     <Component class="javax.swing.JTable" name="tblTKMonAn">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-<<<<<<< HEAD
                           <Table columnCount="4" rowCount="4">
                             <Column editable="true" title="Title 1" type="java.lang.Object"/>
                             <Column editable="true" title="Title 2" type="java.lang.Object"/>
                             <Column editable="true" title="Title 3" type="java.lang.Object"/>
                             <Column editable="true" title="Title 4" type="java.lang.Object"/>
-=======
-                          <Table columnCount="5" rowCount="4">
-                            <Column editable="true" title="M&#xe3; M&#xf3;n &#x102;n" type="java.lang.Object"/>
-                            <Column editable="true" title="T&#xea;n M&#xf3;n &#x102;n" type="java.lang.Object"/>
-                            <Column editable="true" title="Th&#x1edd;i Gian" type="java.lang.Object"/>
-                            <Column editable="true" title="Doanh Thu" type="java.lang.Object"/>
-                            <Column editable="true" title="Doanh Thu (%)" type="java.lang.Object"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                           </Table>
                         </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
-<<<<<<< HEAD
                 <Component class="javax.swing.JComboBox" name="cboMonAnNgay">
-=======
-                <Component class="javax.swing.JComboBox" name="cboTkMonAnNgay">
->>>>>>> 9d097ea (Test bao cao thong ke)
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -1319,22 +1201,15 @@
                       </StringArray>
                     </Property>
                   </Properties>
-<<<<<<< HEAD
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboMonAnNgayItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboMonAnNgayActionPerformed"/>
                   </Events>
-=======
->>>>>>> 9d097ea (Test bao cao thong ke)
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JComboBox" name="cboMonAnThang">
-=======
-                <Component class="javax.swing.JComboBox" name="cboTKMonAnThang">
->>>>>>> 9d097ea (Test bao cao thong ke)
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -1343,22 +1218,14 @@
                     </Property>
                   </Properties>
                   <Events>
-<<<<<<< HEAD
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboMonAnThangItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboMonAnThangActionPerformed"/>
-=======
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboTKMonAnThangItemStateChanged"/>
->>>>>>> 9d097ea (Test bao cao thong ke)
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JComboBox" name="cboMonAnNam">
-=======
-                <Component class="javax.swing.JComboBox" name="cboTKMonAnNam">
->>>>>>> 9d097ea (Test bao cao thong ke)
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
@@ -1366,22 +1233,15 @@
                       </StringArray>
                     </Property>
                   </Properties>
-<<<<<<< HEAD
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboMonAnNamItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboMonAnNamActionPerformed"/>
                   </Events>
-=======
->>>>>>> 9d097ea (Test bao cao thong ke)
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-<<<<<<< HEAD
                 <Component class="javax.swing.JButton" name="btnInTKMonAn">
-=======
-                <Component class="javax.swing.JButton" name="btnInBCMonAn">
->>>>>>> 9d097ea (Test bao cao thong ke)
                   <Properties>
                     <Property name="text" type="java.lang.String" value="In B&#xe1;o C&#xe1;o"/>
                   </Properties>
