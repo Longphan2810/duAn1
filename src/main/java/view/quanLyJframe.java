@@ -16,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
@@ -56,8 +55,6 @@ public class quanLyJframe extends javax.swing.JFrame {
         inIt();
         setLocationRelativeTo(this);
         this.setTitle("Màn hình Quản lý");
-
-       
 
     }
 
@@ -1128,7 +1125,7 @@ public class quanLyJframe extends javax.swing.JFrame {
     private void btnThongKeDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeDoanhThuActionPerformed
         // TODO add your handling code here:
         checkClickButton(btnThongKeDoanhThu);
-        tabbedTong.setSelectedIndex(4);  
+        tabbedTong.setSelectedIndex(4);
         tkDoanhThuNamCombobox();
         tkDoanhThuThangCombobox();
 
@@ -1169,7 +1166,7 @@ public class quanLyJframe extends javax.swing.JFrame {
 
         checkClickButton(btnThongKeMonAn);
         tabbedTong.setSelectedIndex(5);
-          tkMonAnNamCombobox();
+        tkMonAnNamCombobox();
         tkMonAnThangCombobox();
 //        fillTableTKMonAn();
 
@@ -1369,11 +1366,9 @@ public class quanLyJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
 
-
-
     private void cboDoanhThuThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuThangItemStateChanged
         // TODO add your handling code here:
-fillTableDoanhThu();
+        fillTableDoanhThu();
     }//GEN-LAST:event_cboDoanhThuThangItemStateChanged
 
     private void cboDoanhThuNgayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayItemStateChanged
@@ -1383,7 +1378,7 @@ fillTableDoanhThu();
     private void cboDoanhThuNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuNamItemStateChanged
         // TODO add your handling code here:
 // tkDoanhThuThangCombobox();
-       fillTableDoanhThu();
+        fillTableDoanhThu();
     }//GEN-LAST:event_cboDoanhThuNamItemStateChanged
 
     private void cboMonAnNgayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnNgayItemStateChanged
@@ -1418,19 +1413,18 @@ fillTableDoanhThu();
 
     private void cboDoanhThuNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayActionPerformed
         // TODO add your handling code here:
-     
+
     }//GEN-LAST:event_cboDoanhThuNgayActionPerformed
 
     private void cboDoanhThuThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuThangActionPerformed
         // TODO add your handling code here:
         String selectedItem = cboDoanhThuThang.getSelectedItem().toString();
         if (selectedItem.equalsIgnoreCase("Tất cả")) {
-         cboDoanhThuNgay.setEnabled(false);
+            cboDoanhThuNgay.setEnabled(false);
+        } else {
+            cboDoanhThuNgay.setEnabled(true);
         }
-        else{
-         cboDoanhThuNgay.setEnabled(true);
-        }
-             cboDoanhThuThang.removeItem("Tháng"); 
+        cboDoanhThuThang.removeItem("Tháng");
 
         tkDTNgayCombobox();
     }//GEN-LAST:event_cboDoanhThuThangActionPerformed
@@ -1444,7 +1438,9 @@ fillTableDoanhThu();
 
 
     }//GEN-LAST:event_cboTKMonAnThangItemStateChanged
->>>>>>> 9d097ea (Test bao cao thong ke)
+    >>>>>>> 9d097ea (Test bao
+
+    cao thong ke)
 
     /**
      * @param args the command line arguments
@@ -1673,7 +1669,6 @@ fillTableDoanhThu();
 
             imageCurrent = "src\\main\\resources\\logo\\" + f.getHinhAnh();
 
-
             lblHinhAnh.setIcon(scaledIcon);
             lblHinhAnh.setToolTipText(f.getHinhAnh());
         } else {
@@ -1759,52 +1754,54 @@ fillTableDoanhThu();
         }
     }
 
-
     //=====================Báo cáo thống kê===============
     //======================Năm==================
-     void tkDoanhThuNamCombobox() {
+    void tkDoanhThuNamCombobox() {
         List<Integer> years = daoDH.selectYear();
         int size = years.size();
         String[] yearArray = new String[size];
         for (int i = 0; i < size; i++) {
-    yearArray[i] = years.get(i).toString(); 
-}
+            yearArray[i] = years.get(i).toString();
+        }
         DefaultComboBoxModel<String> yearModel = new DefaultComboBoxModel<>(yearArray);
         cboDoanhThuNam.setModel(yearModel);
-        
+
     }
 //
 //
-   void tkMonAnNamCombobox() {
-               List<Integer> years = daoDH.selectYear();
+
+    void tkMonAnNamCombobox() {
+        List<Integer> years = daoDH.selectYear();
         int size = years.size();
         String[] yearArray = new String[size];
         for (int i = 0; i < size; i++) {
-    yearArray[i] = years.get(i).toString(); 
-}
+            yearArray[i] = years.get(i).toString();
+        }
         DefaultComboBoxModel<String> yearModel = new DefaultComboBoxModel<>(yearArray);
         cboMonAnNam.setModel(yearModel);
 
     }
 //
 //    //=======================Tháng================
-    void tkDoanhThuThangCombobox() {
-    DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
-    for (int i = 1; i <= 12; i++) {
-        thangModel.addElement(String.valueOf(i));
-    }
-    cboDoanhThuThang.setModel(thangModel);
-}
-//
-//
-    void tkMonAnThangCombobox() {
-   DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
-    for (int i = 1; i <= 12; i++) {
-        thangModel.addElement(String.valueOf(i));
-    }
-      cboMonAnThang.setModel(thangModel);
 
-   }
+    void tkDoanhThuThangCombobox() {
+        DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
+        for (int i = 1; i <= 12; i++) {
+            thangModel.addElement(String.valueOf(i));
+        }
+        cboDoanhThuThang.setModel(thangModel);
+    }
+//
+//
+
+    void tkMonAnThangCombobox() {
+        DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
+        for (int i = 1; i <= 12; i++) {
+            thangModel.addElement(String.valueOf(i));
+        }
+        cboMonAnThang.setModel(thangModel);
+
+    }
 //
 //    //=======================Ngày=================
 //    
@@ -1841,23 +1838,21 @@ fillTableDoanhThu();
 
 //    //===========================FillTable==================
 //
-void fillTableDoanhThu() {
-    DefaultTableModel doanhThu = (DefaultTableModel) tblTKDoanhThu.getModel();
-    doanhThu.setRowCount(0);
-    Object[] ds = {"Doanh Thu", "Mốc Thời Gian"};
-    doanhThu.setColumnIdentifiers(ds);
+    void fillTableDoanhThu() {
+        DefaultTableModel doanhThu = (DefaultTableModel) tblTKDoanhThu.getModel();
+        doanhThu.setRowCount(0);
+        Object[] ds = {"Doanh Thu", "Mốc Thời Gian"};
+        doanhThu.setColumnIdentifiers(ds);
 
-    int nam = Integer.parseInt(cboDoanhThuNam.getSelectedItem().toString());
-    int thang = Integer.parseInt(cboDoanhThuThang.getSelectedItem().toString());
+        int nam = Integer.parseInt(cboDoanhThuNam.getSelectedItem().toString());
+        int thang = Integer.parseInt(cboDoanhThuThang.getSelectedItem().toString());
 //    int ngay = Integer.parseInt(cboDoanhThuNgay.getSelectedItem().toString());
 
-    List<Object[]> doanhThuList = thongKeDAO.getDoanhThu(nam, thang);
-    for (Object[] row : doanhThuList) {
-        doanhThu.addRow(row);
+        List<Object[]> doanhThuList = thongKeDAO.getDoanhThu(nam, thang);
+        for (Object[] row : doanhThuList) {
+            doanhThu.addRow(row);
+        }
     }
-}
-
-
 
 //
     void fillTableTKMonAn() {
@@ -1867,8 +1862,8 @@ void fillTableDoanhThu() {
         monAn.setColumnIdentifiers(ds);
         tblTKMonAn.setModel(monAn);
         // Gọi stored procedure để tính toán và lưu trữ kết quả vào bảng tạm #TempMonAn
-          int nam = Integer.parseInt(cboMonAnNam.getSelectedItem().toString());
-    int thang = Integer.parseInt(cboMonAnThang.getSelectedItem().toString());
+        int nam = Integer.parseInt(cboMonAnNam.getSelectedItem().toString());
+        int thang = Integer.parseInt(cboMonAnThang.getSelectedItem().toString());
 //        String ngay = cboMonAnNgay.getSelectedItem().toString() != null ? cboMonAnNgay.getSelectedItem().toString() : "";
         List<Object[]> monAnList = thongKeDAO.getDoanhThuMonAn(nam, thang);
         // Đổ dữ liệu từ danh sách kết quả vào bảng
@@ -1934,7 +1929,9 @@ void fillTableDoanhThu() {
         return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
     }
     //====================SetCombobox Thống Kê Món ăn=========================
->>>>>>> 9d097ea (Test bao cao thong ke)
+
+    >>>>>>> 9d097ea (Test bao
+    cao thong ke)
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup ChucVu;
