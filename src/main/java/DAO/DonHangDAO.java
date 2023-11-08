@@ -98,4 +98,22 @@ public class DonHangDAO implements EntityDAO<DonHang> {
         }
         return list;
     }
+public List<Integer> selectYear() {
+    String sql = "Select distinct Year(ngayTao) as Year from donHang where trangThai like 'Da thanh toan' order by  Year desc";
+        List<Integer> list = new ArrayList<>();
+        try {
+            ResultSet rs = JDBChelper.Query(sql);
+            while (rs.next()) {
+                int Year = rs.getInt("Year");
+                list.add(Year);
+            }
+            rs.getStatement().getConnection().close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+}
+
+
 }

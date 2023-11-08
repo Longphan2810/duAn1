@@ -4,8 +4,10 @@
  */
 package view;
 
+import DAO.DonHangDAO;
 import DAO.FoodDAO;
 import DAO.NhanVienDAO;
+import DAO.ThongKeDAO;
 import entity.FoodAndDrink;
 import entity.NhanVien;
 import java.awt.Color;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -37,6 +40,8 @@ public class quanLyJframe extends javax.swing.JFrame {
     List<FoodAndDrink> listFood = new ArrayList<>();
     NhanVienDAO daonv = new NhanVienDAO();
     FoodDAO FoodDao = new FoodDAO();
+    DonHangDAO daoDH = new DonHangDAO();
+    ThongKeDAO thongKeDAO = new ThongKeDAO();
     DefaultTableModel modelFoodList, modelNV;
 
     String imageCurrent = "";
@@ -119,14 +124,26 @@ public class quanLyJframe extends javax.swing.JFrame {
         btnTimKiemNV = new javax.swing.JButton();
         tabThongKeDoanhThu = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
+        cboDoanhThuNgay = new javax.swing.JComboBox<>();
+        cboDoanhThuThang = new javax.swing.JComboBox<>();
+        cboDoanhThuNam = new javax.swing.JComboBox<>();
+        JScrollPane = new javax.swing.JScrollPane();
+        tblTKDoanhThu = new javax.swing.JTable();
+        btnInTKDoanhThu = new javax.swing.JButton();
         tabThongKeMonAn = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblTKMonAn = new javax.swing.JTable();
+        cboMonAnNgay = new javax.swing.JComboBox<>();
+        cboMonAnThang = new javax.swing.JComboBox<>();
+        cboMonAnNam = new javax.swing.JComboBox<>();
+        btnInTKMonAn = new javax.swing.JButton();
         btnThemNhanVien = new javax.swing.JButton();
         btnDanhSachNhanVien = new javax.swing.JButton();
-        btnThongKe = new javax.swing.JButton();
+        btnThongKeDoanhThu = new javax.swing.JButton();
         btnList5 = new javax.swing.JButton();
         btnDanhSachmon = new javax.swing.JButton();
-        btnThongKe2 = new javax.swing.JButton();
+        btnThongKeMonAn = new javax.swing.JButton();
         btnChuyenManHinh = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
 
@@ -205,7 +222,6 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel5.setText("Giá");
 
         TrangThaiMonAn.add(rdoConHang);
-        rdoConHang.setSelected(true);
         rdoConHang.setText("Còn hàng");
         rdoConHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,7 +299,7 @@ public class quanLyJframe extends javax.swing.JFrame {
                                 .addComponent(txtMaMon, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                                 .addComponent(txtTenMon)
                                 .addComponent(txtGia, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         tabThemMonLayout.setVerticalGroup(
             tabThemMonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -483,7 +499,7 @@ public class quanLyJframe extends javax.swing.JFrame {
                                 .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(33, 33, 33)
                                 .addComponent(txtSoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         tabThemNhanVienLayout.setVerticalGroup(
             tabThemNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -610,7 +626,58 @@ public class quanLyJframe extends javax.swing.JFrame {
         tabThongKeDoanhThu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel11.setText("Báo cáo thống kê");
+        jLabel11.setText("Báo cáo thống kê doanh thu");
+
+        cboDoanhThuNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
+        cboDoanhThuNgay.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboDoanhThuNgayItemStateChanged(evt);
+            }
+        });
+        cboDoanhThuNgay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDoanhThuNgayActionPerformed(evt);
+            }
+        });
+
+        cboDoanhThuThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
+        cboDoanhThuThang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboDoanhThuThangItemStateChanged(evt);
+            }
+        });
+        cboDoanhThuThang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDoanhThuThangActionPerformed(evt);
+            }
+        });
+
+        cboDoanhThuNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
+        cboDoanhThuNam.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboDoanhThuNamItemStateChanged(evt);
+            }
+        });
+        cboDoanhThuNam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboDoanhThuNamActionPerformed(evt);
+            }
+        });
+
+        tblTKDoanhThu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        JScrollPane.setViewportView(tblTKDoanhThu);
+
+        btnInTKDoanhThu.setText("In Báo Cáo");
 
         javax.swing.GroupLayout tabThongKeDoanhThuLayout = new javax.swing.GroupLayout(tabThongKeDoanhThu);
         tabThongKeDoanhThu.setLayout(tabThongKeDoanhThuLayout);
@@ -618,15 +685,37 @@ public class quanLyJframe extends javax.swing.JFrame {
             tabThongKeDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabThongKeDoanhThuLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(412, Short.MAX_VALUE))
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboDoanhThuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cboDoanhThuThang, 0, 91, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(cboDoanhThuNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(tabThongKeDoanhThuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JScrollPane)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabThongKeDoanhThuLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInTKDoanhThu)
+                .addGap(39, 39, 39))
         );
         tabThongKeDoanhThuLayout.setVerticalGroup(
             tabThongKeDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabThongKeDoanhThuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addGroup(tabThongKeDoanhThuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboDoanhThuNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboDoanhThuThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboDoanhThuNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInTKDoanhThu)
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         tabbedTong.addTab("Thống kê", tabThongKeDoanhThu);
@@ -635,7 +724,58 @@ public class quanLyJframe extends javax.swing.JFrame {
         tabThongKeMonAn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel18.setText("Báo cáo thống kê");
+        jLabel18.setText("Báo cáo thống kê món ăn");
+
+        tblTKMonAn.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblTKMonAn);
+
+        cboMonAnNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày" }));
+        cboMonAnNgay.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboMonAnNgayItemStateChanged(evt);
+            }
+        });
+        cboMonAnNgay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMonAnNgayActionPerformed(evt);
+            }
+        });
+
+        cboMonAnThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng" }));
+        cboMonAnThang.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboMonAnThangItemStateChanged(evt);
+            }
+        });
+        cboMonAnThang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMonAnThangActionPerformed(evt);
+            }
+        });
+
+        cboMonAnNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm" }));
+        cboMonAnNam.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cboMonAnNamItemStateChanged(evt);
+            }
+        });
+        cboMonAnNam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboMonAnNamActionPerformed(evt);
+            }
+        });
+
+        btnInTKMonAn.setText("In Báo Cáo");
 
         javax.swing.GroupLayout tabThongKeMonAnLayout = new javax.swing.GroupLayout(tabThongKeMonAn);
         tabThongKeMonAn.setLayout(tabThongKeMonAnLayout);
@@ -643,15 +783,37 @@ public class quanLyJframe extends javax.swing.JFrame {
             tabThongKeMonAnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabThongKeMonAnLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(412, Short.MAX_VALUE))
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cboMonAnNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(51, 51, 51)
+                .addComponent(cboMonAnThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(cboMonAnNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
+            .addGroup(tabThongKeMonAnLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabThongKeMonAnLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnInTKMonAn)
+                .addGap(38, 38, 38))
         );
         tabThongKeMonAnLayout.setVerticalGroup(
             tabThongKeMonAnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabThongKeMonAnLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(389, Short.MAX_VALUE))
+                .addGroup(tabThongKeMonAnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboMonAnNgay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboMonAnThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboMonAnNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnInTKMonAn)
+                .addContainerGap())
         );
 
         tabbedTong.addTab("Thống kê", tabThongKeMonAn);
@@ -672,11 +834,11 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        btnThongKe.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnThongKe.setText("Thống kê doanh thu");
-        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+        btnThongKeDoanhThu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThongKeDoanhThu.setText("Thống kê doanh thu");
+        btnThongKeDoanhThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThongKeActionPerformed(evt);
+                btnThongKeDoanhThuActionPerformed(evt);
             }
         });
 
@@ -696,11 +858,11 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        btnThongKe2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnThongKe2.setText("Thống kê món ăn");
-        btnThongKe2.addActionListener(new java.awt.event.ActionListener() {
+        btnThongKeMonAn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnThongKeMonAn.setText("Thống kê món ăn");
+        btnThongKeMonAn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThongKe2ActionPerformed(evt);
+                btnThongKeMonAnActionPerformed(evt);
             }
         });
 
@@ -734,13 +896,13 @@ public class quanLyJframe extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnThongKeDoanhThu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(btnDanhSachNhanVien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnThemNhanVien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnThemMon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnDanhSachmon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(btnThongKe2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnThongKeMonAn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btnChuyenManHinh, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tabbedTong)
@@ -770,9 +932,9 @@ public class quanLyJframe extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnList5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThongKeDoanhThu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThongKe2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThongKeMonAn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnChuyenManHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -825,11 +987,15 @@ public class quanLyJframe extends javax.swing.JFrame {
         tabbedTong.setSelectedIndex(2);
     }//GEN-LAST:event_btnThemNhanVienActionPerformed
 
-    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+    private void btnThongKeDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeDoanhThuActionPerformed
         // TODO add your handling code here:
-        checkClickButton(btnThongKe);
-        tabbedTong.setSelectedIndex(4);
-    }//GEN-LAST:event_btnThongKeActionPerformed
+        checkClickButton(btnThongKeDoanhThu);
+        tabbedTong.setSelectedIndex(4);  
+        tkDoanhThuNamCombobox();
+        tkDoanhThuThangCombobox();
+//        String thang = cboDoanhThuThang.getSelectedItem().toString();
+//        tkDoanhThuNgayCombobox(thang);
+    }//GEN-LAST:event_btnThongKeDoanhThuActionPerformed
 
     private void btnList5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnList5ActionPerformed
         // TODO add your handling code here:
@@ -861,9 +1027,13 @@ public class quanLyJframe extends javax.swing.JFrame {
         fillTableNV();
     }//GEN-LAST:event_btnDanhSachNhanVienActionPerformed
 
-    private void btnThongKe2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKe2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongKe2ActionPerformed
+    private void btnThongKeMonAnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeMonAnActionPerformed
+        checkClickButton(btnThongKeMonAn);
+        tabbedTong.setSelectedIndex(5);
+          tkMonAnNamCombobox();
+        tkMonAnThangCombobox();
+//        fillTableTKMonAn();
+    }//GEN-LAST:event_btnThongKeMonAnActionPerformed
 
     private void btnChuyenManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenManHinhActionPerformed
         // TODO add your handling code here:
@@ -905,7 +1075,7 @@ public class quanLyJframe extends javax.swing.JFrame {
             newFood.setGia(Float.parseFloat(txtGia.getText().trim()));
             newFood.setTrangThai(rdoConHang.isSelected());
             newFood.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
- 
+
             newFood.setHinhAnh(f.getName());
             try {
                 FoodDao.insert(newFood);
@@ -1049,15 +1219,75 @@ public class quanLyJframe extends javax.swing.JFrame {
             fillFormMenu();
         }
     }//GEN-LAST:event_tblDanhSachMonMousePressed
-  
+
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-        
-        this.dispose();     
+
+        this.dispose();
         new LoginMain(this, true).setVisible(true);
-            
+
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
-   
+    private void cboDoanhThuNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayActionPerformed
+
+    }//GEN-LAST:event_cboDoanhThuNgayActionPerformed
+
+    private void cboDoanhThuThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuThangActionPerformed
+        // TODO add your handling code here:
+           String thang = cboDoanhThuThang.getSelectedItem().toString() ;
+fillTableDoanhThu();
+
+    }//GEN-LAST:event_cboDoanhThuThangActionPerformed
+
+    private void cboDoanhThuNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNamActionPerformed
+
+        fillTableDoanhThu();
+    }//GEN-LAST:event_cboDoanhThuNamActionPerformed
+
+    private void cboDoanhThuThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuThangItemStateChanged
+        // TODO add your handling code here:
+fillTableDoanhThu();
+    }//GEN-LAST:event_cboDoanhThuThangItemStateChanged
+
+    private void cboDoanhThuNgayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayItemStateChanged
+//fillTableDoanhThu();
+    }//GEN-LAST:event_cboDoanhThuNgayItemStateChanged
+
+    private void cboDoanhThuNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuNamItemStateChanged
+        // TODO add your handling code here:
+// tkDoanhThuThangCombobox();
+       fillTableDoanhThu();
+    }//GEN-LAST:event_cboDoanhThuNamItemStateChanged
+
+    private void cboMonAnNgayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnNgayItemStateChanged
+        // TODO add your handling code here:
+//        fillTableTKMonAn();
+    }//GEN-LAST:event_cboMonAnNgayItemStateChanged
+
+    private void cboMonAnThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnThangItemStateChanged
+        // TODO add your handling code here:
+        fillTableTKMonAn();
+    }//GEN-LAST:event_cboMonAnThangItemStateChanged
+
+    private void cboMonAnNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnNamItemStateChanged
+        // TODO add your handling code here:
+        fillTableTKMonAn();
+    }//GEN-LAST:event_cboMonAnNamItemStateChanged
+
+    private void cboMonAnNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMonAnNgayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboMonAnNgayActionPerformed
+
+    private void cboMonAnThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMonAnThangActionPerformed
+        // TODO add your handling code here:
+        String thang = cboMonAnThang.getSelectedItem().toString();
+        fillTableTKMonAn();
+    }//GEN-LAST:event_cboMonAnThangActionPerformed
+
+    private void cboMonAnNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMonAnNamActionPerformed
+        // TODO add your handling code here:
+        fillTableTKMonAn();
+    }//GEN-LAST:event_cboMonAnNamActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1122,8 +1352,8 @@ public class quanLyJframe extends javax.swing.JFrame {
         btnThemNhanVien.setBackground(Color.white);
 
         btnDanhSachNhanVien.setBackground(Color.white);
-        btnThongKe.setBackground(Color.white);
-
+        btnThongKeDoanhThu.setBackground(Color.white);
+        btnInTKMonAn.setBackground(Color.WHITE);
         Color backgroundColor = new Color(255, 177, 55);
         Button.setBackground(backgroundColor);
     }
@@ -1202,7 +1432,7 @@ public class quanLyJframe extends javax.swing.JFrame {
         modelFoodList.setRowCount(0);
         listFood = FoodDao.selectAll();
         for (FoodAndDrink food : listFood) {
-            Object[] temp = {food.getMaThucAn(), food.getTenThucAn(), food.getGia(), food.getHinhAnh(), food.getMaNhanVien(), food.isTrangThai()?"Còn Hàng":"Hết Hàng"};
+            Object[] temp = {food.getMaThucAn(), food.getTenThucAn(), food.getGia(), food.getHinhAnh(), food.getMaNhanVien(), food.isTrangThai() ? "Còn Hàng" : "Hết Hàng"};
             modelFoodList.addRow(temp);
 
         }
@@ -1242,7 +1472,7 @@ public class quanLyJframe extends javax.swing.JFrame {
             if (modelFood != null) {
                 setFormMenu(modelFood);
                 tabbedTong.setSelectedIndex(0);
-                 checkClickButton(btnThemMon);
+                checkClickButton(btnThemMon);
             }
         } catch (Exception e) {
             DialogHelper.alert(this, "lỗi truy vấn dữ liệu");
@@ -1286,12 +1516,12 @@ public class quanLyJframe extends javax.swing.JFrame {
             Image scaledImage = originalImage.getScaledInstance(labelWidth, labelHeight, java.awt.Image.SCALE_SMOOTH);
             ImageIcon scaledIcon = new ImageIcon(scaledImage);
 
-            imageCurrent = "src\\main\\resources\\logo\\"+model.getHinhAnh();
-            
+            imageCurrent = "src\\main\\resources\\logo\\" + model.getHinhAnh();
+
             lblHinhAnh.setIcon(scaledIcon);
             lblHinhAnh.setToolTipText(model.getHinhAnh());
         } else {
-            lblHinhAnh.setIcon(null); 
+            lblHinhAnh.setIcon(null);
             lblHinhAnh.setToolTipText(null);
         }
     }
@@ -1373,13 +1603,224 @@ public class quanLyJframe extends javax.swing.JFrame {
         }
     }
 
+    //=====================Báo cáo thống kê===============
+    //======================Năm==================
+     void tkDoanhThuNamCombobox() {
+        List<Integer> years = daoDH.selectYear();
+        int size = years.size();
+        String[] yearArray = new String[size];
+        for (int i = 0; i < size; i++) {
+    yearArray[i] = years.get(i).toString(); 
+}
+        DefaultComboBoxModel<String> yearModel = new DefaultComboBoxModel<>(yearArray);
+        cboDoanhThuNam.setModel(yearModel);
+        
+    }
+//
+//
+   void tkMonAnNamCombobox() {
+               List<Integer> years = daoDH.selectYear();
+        int size = years.size();
+        String[] yearArray = new String[size];
+        for (int i = 0; i < size; i++) {
+    yearArray[i] = years.get(i).toString(); 
+}
+        DefaultComboBoxModel<String> yearModel = new DefaultComboBoxModel<>(yearArray);
+        cboMonAnNam.setModel(yearModel);
+
+    }
+//
+//    //=======================Tháng================
+    void tkDoanhThuThangCombobox() {
+    DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
+    for (int i = 1; i <= 12; i++) {
+        thangModel.addElement(String.valueOf(i));
+    }
+    cboDoanhThuThang.setModel(thangModel);
+}
+//
+//
+    void tkMonAnThangCombobox() {
+   DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
+    for (int i = 1; i <= 12; i++) {
+        thangModel.addElement(String.valueOf(i));
+    }
+      cboMonAnThang.setModel(thangModel);
+
+   }
+//
+//    //=======================Ngày=================
+//    
+//void tkDoanhThuNgayCombobox( String thang) {
+//int selectedMonth = Integer.parseInt(thang);
+//    int selectedYear = Integer.parseInt(cboDoanhThuNam.getSelectedItem().toString());
+//    int daysInMonth;
+//
+//    if (selectedMonth == 2) {
+//        // Kiểm tra năm nhuận
+//        if ((selectedYear % 4 == 0 && selectedYear % 100 != 0) || (selectedYear % 400 == 0)) {
+//            daysInMonth = 29; // Năm nhuận
+//        } else {
+//            daysInMonth = 28; // Không phải năm nhuận
+//        }
+//    } else if (selectedMonth == 4 || selectedMonth == 6 || selectedMonth == 9 || selectedMonth == 11) {
+//        daysInMonth = 30; // Các tháng có 30 ngày
+//    } else {
+//        daysInMonth = 31; // Các tháng có 31 ngày
+//    }
+//
+//    ArrayList<String> ngayValues = new ArrayList<>();
+//    for (int i = 1; i <= daysInMonth; i++) {
+//        String ngay = String.format("%02d", i);
+//        ngayValues.add(ngay);
+//    }
+//
+//    DefaultComboBoxModel<String> ngayModel = new DefaultComboBoxModel<>(ngayValues.toArray(new String[0]));
+//    cboDoanhThuNgay.setModel(ngayModel);
+//}
+//
+//
+//
+
+//    //===========================FillTable==================
+//
+void fillTableDoanhThu() {
+    DefaultTableModel doanhThu = (DefaultTableModel) tblTKDoanhThu.getModel();
+    doanhThu.setRowCount(0);
+    Object[] ds = {"Doanh Thu", "Mốc Thời Gian"};
+    doanhThu.setColumnIdentifiers(ds);
+
+    int nam = Integer.parseInt(cboDoanhThuNam.getSelectedItem().toString());
+    int thang = Integer.parseInt(cboDoanhThuThang.getSelectedItem().toString());
+//    int ngay = Integer.parseInt(cboDoanhThuNgay.getSelectedItem().toString());
+
+    List<Object[]> doanhThuList = thongKeDAO.getDoanhThu(nam, thang);
+    for (Object[] row : doanhThuList) {
+        doanhThu.addRow(row);
+    }
+}
+
+
+
+//
+    void fillTableTKMonAn() {
+        DefaultTableModel monAn = (DefaultTableModel) tblTKMonAn.getModel();
+        monAn.setRowCount(0);
+        Object[] ds = {"Mốc Thời Gian", "Mã Món Ăn", "Tên Món ăn", "Doanh Thu", "Doanh Thu (%)"};
+        monAn.setColumnIdentifiers(ds);
+        tblTKMonAn.setModel(monAn);
+        // Gọi stored procedure để tính toán và lưu trữ kết quả vào bảng tạm #TempMonAn
+          int nam = Integer.parseInt(cboMonAnNam.getSelectedItem().toString());
+    int thang = Integer.parseInt(cboMonAnThang.getSelectedItem().toString());
+//        String ngay = cboMonAnNgay.getSelectedItem().toString() != null ? cboMonAnNgay.getSelectedItem().toString() : "";
+        List<Object[]> monAnList = thongKeDAO.getDoanhThuMonAn(nam, thang);
+        // Đổ dữ liệu từ danh sách kết quả vào bảng
+        for (Object[] row : monAnList) {
+            monAn.addRow(row);
+        }
+    }
+    
+    //===============NEW====================
+//void tkDoanhThuNamCombobox() {
+//    List<Integer> years = daoDH.selectYear();
+//    years.add(0, -1); // Thêm mục "Tất cả" với giá trị -1
+//    int size = years.size();
+//    String[] yearArray = new String[size];
+//    for (int i = 0; i < size; i++) {
+//        yearArray[i] = years.get(i).toString();
+//    }
+//    DefaultComboBoxModel<String> yearModel = new DefaultComboBoxModel<>(yearArray);
+//    cboDoanhThuNam.setModel(yearModel);
+//}
+//
+//void tkDoanhThuThangCombobox() {
+//    DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
+//    for (int i = 1; i <= 12; i++) {
+//        thangModel.addElement(String.valueOf(i));
+//    }
+//    thangModel.insertElementAt("Tất cả", 0); // Thêm mục "Tất cả" ở đầu
+//    cboDoanhThuThang.setModel(thangModel);
+//}
+//
+//void tkDoanhThuNgayCombobox(String thang) {
+//    int selectedMonth = Integer.parseInt(thang);
+//    int selectedYear = Integer.parseInt(cboDoanhThuNam.getSelectedItem().toString());
+//    int daysInMonth;
+//
+//    if (selectedMonth == 2) {
+//        // Kiểm tra năm nhuận
+//        if ((selectedYear % 4 == 0 && selectedYear % 100 != 0) || (selectedYear % 400 == 0)) {
+//            daysInMonth = 29; // Năm nhuận
+//        } else {
+//            daysInMonth = 28; // Không phải năm nhuận
+//        }
+//    } else if (selectedMonth == 4 || selectedMonth == 6 || selectedMonth == 9 || selectedMonth == 11) {
+//        daysInMonth = 30; // Các tháng có 30 ngày
+//    } else {
+//        daysInMonth = 31; // Các tháng có 31 ngày
+//    }
+//
+//    DefaultComboBoxModel<String> ngayModel = new DefaultComboBoxModel<>();
+//    ngayModel.addElement("Tất cả"); // Thêm mục "Tất cả" vào đầu
+//    for (int i = 1; i <= daysInMonth; i++) {
+//        String ngay = String.format("%02d", i);
+//        ngayModel.addElement(ngay);
+//    }
+//    cboDoanhThuNgay.setModel(ngayModel);
+//}
+//
+//void fillTableDoanhThu() {
+//    DefaultTableModel doanhThu = (DefaultTableModel) tblTKDoanhThu.getModel();
+//    doanhThu.setRowCount(0);
+//    Object[] ds = {"Doanh Thu", "Mốc Thời Gian"};
+//    doanhThu.setColumnIdentifiers(ds);
+//
+//    int nam = -1;
+//    int thang = -1;
+//    int ngay = -1;
+//
+//    Object selectedNamObject = cboDoanhThuNam.getSelectedItem();
+//    Object selectedThangObject = cboDoanhThuThang.getSelectedItem();
+//    Object selectedNgayObject = cboDoanhThuNgay.getSelectedItem();
+//
+//    if (selectedNamObject != null && !selectedNamObject.toString().equals("Tất cả")) {
+//        nam = Integer.parseInt(selectedNamObject.toString());
+//    }
+//
+//    if (selectedThangObject != null && !selectedThangObject.toString().equals("Tất cả")) {
+//        thang = Integer.parseInt(selectedThangObject.toString());
+//    }
+//
+//    if (selectedNgayObject != null && !selectedNgayObject.toString().equals("Tất cả")) {
+//        ngay = Integer.parseInt(selectedNgayObject.toString());
+//    }
+//
+//    List<Object[]> doanhThuList;
+//    if (nam == -1) {
+//        doanhThuList = thongKeDAO.getDoanhThuAllYears();
+//    } else if (thang == -1) {
+//        doanhThuList = thongKeDAO.getDoanhThu(nam);
+//    } else if (ngay == -1) {
+//        doanhThuList = thongKeDAO.getDoanhThu(nam, thang);
+//    } else {
+//        doanhThuList = thongKeDAO.getDoanhThu(nam, thang, ngay);
+//    }
+//
+//    for (Object[] row : doanhThuList) {
+//        doanhThu.addRow(row);
+//    }
+//}
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup ChucVu;
+    private javax.swing.JScrollPane JScrollPane;
     private javax.swing.ButtonGroup TrangThaiMonAn;
     private javax.swing.JButton btnChuyenManHinh;
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDanhSachNhanVien;
     private javax.swing.JButton btnDanhSachmon;
+    private javax.swing.JButton btnInTKDoanhThu;
+    private javax.swing.JButton btnInTKMonAn;
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnList5;
     private javax.swing.JButton btnSuaMonAn;
@@ -1389,12 +1830,18 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnThemMonAn;
     private javax.swing.JButton btnThemNV;
     private javax.swing.JButton btnThemNhanVien;
-    private javax.swing.JButton btnThongKe;
-    private javax.swing.JButton btnThongKe2;
+    private javax.swing.JButton btnThongKeDoanhThu;
+    private javax.swing.JButton btnThongKeMonAn;
     private javax.swing.JButton btnTimKiemMonAn;
     private javax.swing.JButton btnTimKiemNV;
     private javax.swing.JButton btnXoaMon;
     private javax.swing.JButton btnXoaNhanVien;
+    private javax.swing.JComboBox<String> cboDoanhThuNam;
+    private javax.swing.JComboBox<String> cboDoanhThuNgay;
+    private javax.swing.JComboBox<String> cboDoanhThuThang;
+    private javax.swing.JComboBox<String> cboMonAnNam;
+    private javax.swing.JComboBox<String> cboMonAnNgay;
+    private javax.swing.JComboBox<String> cboMonAnThang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1419,6 +1866,7 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblHinhAnh;
     private javax.swing.JRadioButton rdoConHang;
     private javax.swing.JRadioButton rdoHetHang;
@@ -1433,6 +1881,8 @@ public class quanLyJframe extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabbedTong;
     private javax.swing.JTable tblDanhSachMon;
     private javax.swing.JTable tblDanhSachNhanVien;
+    private javax.swing.JTable tblTKDoanhThu;
+    private javax.swing.JTable tblTKMonAn;
     private javax.swing.JTextField txtGia;
     private javax.swing.JTextField txtMaMon;
     private javax.swing.JTextField txtMaNhanVien;
