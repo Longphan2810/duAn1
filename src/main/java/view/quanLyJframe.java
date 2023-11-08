@@ -1353,7 +1353,7 @@ fillTableDoanhThu();
 
         btnDanhSachNhanVien.setBackground(Color.white);
         btnThongKeDoanhThu.setBackground(Color.white);
-        btnInTKMonAn.setBackground(Color.WHITE);
+        btnThongKeMonAn.setBackground(Color.white);
         Color backgroundColor = new Color(255, 177, 55);
         Button.setBackground(backgroundColor);
     }
@@ -1720,96 +1720,7 @@ void fillTableDoanhThu() {
         }
     }
     
-    //===============NEW====================
-//void tkDoanhThuNamCombobox() {
-//    List<Integer> years = daoDH.selectYear();
-//    years.add(0, -1); // Thêm mục "Tất cả" với giá trị -1
-//    int size = years.size();
-//    String[] yearArray = new String[size];
-//    for (int i = 0; i < size; i++) {
-//        yearArray[i] = years.get(i).toString();
-//    }
-//    DefaultComboBoxModel<String> yearModel = new DefaultComboBoxModel<>(yearArray);
-//    cboDoanhThuNam.setModel(yearModel);
-//}
-//
-//void tkDoanhThuThangCombobox() {
-//    DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
-//    for (int i = 1; i <= 12; i++) {
-//        thangModel.addElement(String.valueOf(i));
-//    }
-//    thangModel.insertElementAt("Tất cả", 0); // Thêm mục "Tất cả" ở đầu
-//    cboDoanhThuThang.setModel(thangModel);
-//}
-//
-//void tkDoanhThuNgayCombobox(String thang) {
-//    int selectedMonth = Integer.parseInt(thang);
-//    int selectedYear = Integer.parseInt(cboDoanhThuNam.getSelectedItem().toString());
-//    int daysInMonth;
-//
-//    if (selectedMonth == 2) {
-//        // Kiểm tra năm nhuận
-//        if ((selectedYear % 4 == 0 && selectedYear % 100 != 0) || (selectedYear % 400 == 0)) {
-//            daysInMonth = 29; // Năm nhuận
-//        } else {
-//            daysInMonth = 28; // Không phải năm nhuận
-//        }
-//    } else if (selectedMonth == 4 || selectedMonth == 6 || selectedMonth == 9 || selectedMonth == 11) {
-//        daysInMonth = 30; // Các tháng có 30 ngày
-//    } else {
-//        daysInMonth = 31; // Các tháng có 31 ngày
-//    }
-//
-//    DefaultComboBoxModel<String> ngayModel = new DefaultComboBoxModel<>();
-//    ngayModel.addElement("Tất cả"); // Thêm mục "Tất cả" vào đầu
-//    for (int i = 1; i <= daysInMonth; i++) {
-//        String ngay = String.format("%02d", i);
-//        ngayModel.addElement(ngay);
-//    }
-//    cboDoanhThuNgay.setModel(ngayModel);
-//}
-//
-//void fillTableDoanhThu() {
-//    DefaultTableModel doanhThu = (DefaultTableModel) tblTKDoanhThu.getModel();
-//    doanhThu.setRowCount(0);
-//    Object[] ds = {"Doanh Thu", "Mốc Thời Gian"};
-//    doanhThu.setColumnIdentifiers(ds);
-//
-//    int nam = -1;
-//    int thang = -1;
-//    int ngay = -1;
-//
-//    Object selectedNamObject = cboDoanhThuNam.getSelectedItem();
-//    Object selectedThangObject = cboDoanhThuThang.getSelectedItem();
-//    Object selectedNgayObject = cboDoanhThuNgay.getSelectedItem();
-//
-//    if (selectedNamObject != null && !selectedNamObject.toString().equals("Tất cả")) {
-//        nam = Integer.parseInt(selectedNamObject.toString());
-//    }
-//
-//    if (selectedThangObject != null && !selectedThangObject.toString().equals("Tất cả")) {
-//        thang = Integer.parseInt(selectedThangObject.toString());
-//    }
-//
-//    if (selectedNgayObject != null && !selectedNgayObject.toString().equals("Tất cả")) {
-//        ngay = Integer.parseInt(selectedNgayObject.toString());
-//    }
-//
-//    List<Object[]> doanhThuList;
-//    if (nam == -1) {
-//        doanhThuList = thongKeDAO.getDoanhThuAllYears();
-//    } else if (thang == -1) {
-//        doanhThuList = thongKeDAO.getDoanhThu(nam);
-//    } else if (ngay == -1) {
-//        doanhThuList = thongKeDAO.getDoanhThu(nam, thang);
-//    } else {
-//        doanhThuList = thongKeDAO.getDoanhThu(nam, thang, ngay);
-//    }
-//
-//    for (Object[] row : doanhThuList) {
-//        doanhThu.addRow(row);
-//    }
-//}
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup ChucVu;
