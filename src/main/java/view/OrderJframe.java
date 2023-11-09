@@ -56,7 +56,7 @@ public class OrderJframe extends javax.swing.JFrame {
     HoaDonDAO hoaDonDao = new HoaDonDAO();
     boolean click =false;
     private DonHang donHangCurrent;
-
+    int index = -1;
     /**
      * Creates new form Order
      */
@@ -1001,13 +1001,14 @@ public class OrderJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHuyDonActionPerformed
 
     private void btnChiTietDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietDonHangActionPerformed
-         if(!click){              
+         index = tblLichSuHD.getSelectedRow(); 
+        if(index ==-1){              
             DialogHelper.alert(this, "Chọn đơn hàng cần xem!");
         }else{
-        int i = tblLichSuHD.getSelectedRow(); 
-        int maDH = (int) tblLichSuHD.getValueAt(i, 0);
+        
+        int maDH = (int) tblLichSuHD.getValueAt(index, 0);
         fillChiTietDonHang(maDH);
-        click = false;
+        index = -1;
         }
     }//GEN-LAST:event_btnChiTietDonHangActionPerformed
 
@@ -1028,7 +1029,7 @@ public class OrderJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_tblLichSuHDAncestorAdded
 
     private void tblLichSuHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLichSuHDMouseClicked
-         click = true;
+         
     }//GEN-LAST:event_tblLichSuHDMouseClicked
     
     /**
