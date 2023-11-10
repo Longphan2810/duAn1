@@ -35,19 +35,18 @@ public class ThongKeDAO {
     }
 
 
-public List<Object[]> getDoanhThu(int year,int month) {
-    String sql = "{Call sp_TKDoanhThu(?,?)}";
-//    int iYear = Integer.parseInt(year);
-//    int iMonth = Integer.parseInt(month);
-//    int iDay = Integer.parseInt(day);
-    String[] cols = {"DoanhThu", "ngayTao"};
-    return getListOfArray(sql, cols, year, month);
+public List<Object[]> getDoanhThu(Integer year, Integer month, Integer day) {
+    String sql = "{Call sp_TKDoanhThu(?,?,?)}";
+    String[] cols = {"DoanhThu", "MocThoiGian"};
+    return getListOfArray(sql, cols, year, month, day);
 }
 
-public List<Object[]> getDoanhThuMonAn(int year, int month) {
-    String sql = "{Call sp_TKMonAn(?, ?)}";
+
+
+public List<Object[]> getDoanhThuMonAn(Integer year, Integer month, Integer day) {
+    String sql = "{Call sp_TKMonAn(?, ?,?)}";
     String[] cols = {"MocThoiGian", "MaMonAn", "TenMonAn", "DoanhThu", "DoanhThuPhanTram"};
-    return getListOfArray(sql, cols, year, month);
+    return getListOfArray(sql, cols, year, month, day);
 }
 
 }

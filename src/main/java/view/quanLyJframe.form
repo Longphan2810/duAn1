@@ -1030,13 +1030,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboDoanhThuNgay">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboDoanhThuNgayItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboDoanhThuNgayActionPerformed"/>
@@ -1046,13 +1039,6 @@
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboDoanhThuThang">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboDoanhThuThangItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboDoanhThuThangActionPerformed"/>
@@ -1062,13 +1048,6 @@
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboDoanhThuNam">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboDoanhThuNamItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboDoanhThuNamActionPerformed"/>
@@ -1194,13 +1173,6 @@
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JComboBox" name="cboMonAnNgay">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="Ng&#xe0;y"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboMonAnNgayItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboMonAnNgayActionPerformed"/>
@@ -1210,13 +1182,6 @@
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboMonAnThang">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="Th&#xe1;ng"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboMonAnThangItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboMonAnThangActionPerformed"/>
@@ -1226,13 +1191,6 @@
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="cboMonAnNam">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="N&#x103;m"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cboMonAnNamItemStateChanged"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboMonAnNamActionPerformed"/>

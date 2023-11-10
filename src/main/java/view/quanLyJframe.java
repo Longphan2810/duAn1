@@ -628,7 +628,6 @@ public class quanLyJframe extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel11.setText("Báo cáo thống kê doanh thu");
 
-        cboDoanhThuNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
         cboDoanhThuNgay.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboDoanhThuNgayItemStateChanged(evt);
@@ -640,7 +639,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        cboDoanhThuThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
         cboDoanhThuThang.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboDoanhThuThangItemStateChanged(evt);
@@ -652,7 +650,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        cboDoanhThuNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả" }));
         cboDoanhThuNam.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboDoanhThuNamItemStateChanged(evt);
@@ -739,7 +736,6 @@ public class quanLyJframe extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tblTKMonAn);
 
-        cboMonAnNgay.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngày" }));
         cboMonAnNgay.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboMonAnNgayItemStateChanged(evt);
@@ -751,7 +747,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        cboMonAnThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tháng" }));
         cboMonAnThang.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboMonAnThangItemStateChanged(evt);
@@ -763,7 +758,6 @@ public class quanLyJframe extends javax.swing.JFrame {
             }
         });
 
-        cboMonAnNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Năm" }));
         cboMonAnNam.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cboMonAnNamItemStateChanged(evt);
@@ -990,11 +984,12 @@ public class quanLyJframe extends javax.swing.JFrame {
     private void btnThongKeDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeDoanhThuActionPerformed
         // TODO add your handling code here:
         checkClickButton(btnThongKeDoanhThu);
-        tabbedTong.setSelectedIndex(4);  
+        tabbedTong.setSelectedIndex(4);
         tkDoanhThuNamCombobox();
         tkDoanhThuThangCombobox();
-//        String thang = cboDoanhThuThang.getSelectedItem().toString();
-//        tkDoanhThuNgayCombobox(thang);
+         String thang = cboDoanhThuThang.getSelectedItem().toString();
+        tkDoanhThuNgayCombobox(thang);
+       fillTableDoanhThu();
     }//GEN-LAST:event_btnThongKeDoanhThuActionPerformed
 
     private void btnList5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnList5ActionPerformed
@@ -1030,9 +1025,12 @@ public class quanLyJframe extends javax.swing.JFrame {
     private void btnThongKeMonAnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeMonAnActionPerformed
         checkClickButton(btnThongKeMonAn);
         tabbedTong.setSelectedIndex(5);
-          tkMonAnNamCombobox();
+        tkMonAnNamCombobox();
         tkMonAnThangCombobox();
-//        fillTableTKMonAn();
+         String thang = cboMonAnThang.getSelectedItem().toString();
+        tkMonAnNgayCombobox(thang);
+        fillTableTKMonAn();
+
     }//GEN-LAST:event_btnThongKeMonAnActionPerformed
 
     private void btnChuyenManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChuyenManHinhActionPerformed
@@ -1228,64 +1226,113 @@ public class quanLyJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
     private void cboDoanhThuNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayActionPerformed
-
+fillTableDoanhThu();
     }//GEN-LAST:event_cboDoanhThuNgayActionPerformed
 
     private void cboDoanhThuThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuThangActionPerformed
-        // TODO add your handling code here:
-           String thang = cboDoanhThuThang.getSelectedItem().toString() ;
-fillTableDoanhThu();
-
+   
     }//GEN-LAST:event_cboDoanhThuThangActionPerformed
 
     private void cboDoanhThuNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboDoanhThuNamActionPerformed
 
-        fillTableDoanhThu();
     }//GEN-LAST:event_cboDoanhThuNamActionPerformed
 
     private void cboDoanhThuThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuThangItemStateChanged
-        // TODO add your handling code here:
-fillTableDoanhThu();
+ Object selectedItem = cboDoanhThuThang.getSelectedItem();
+        String thang = null;
+        if (selectedItem != null) {
+            thang = selectedItem.toString();
+            tkDoanhThuNgayCombobox(thang);
+        }
+
+        if (cboDoanhThuThang.getSelectedItem().equals("All")) {
+            cboDoanhThuNgay.setEnabled(false);
+        } else {
+            cboDoanhThuNgay.setEnabled(true);
+        }
+        fillTableDoanhThu();
     }//GEN-LAST:event_cboDoanhThuThangItemStateChanged
 
     private void cboDoanhThuNgayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuNgayItemStateChanged
-//fillTableDoanhThu();
+ Object selectedItem = cboDoanhThuNgay.getSelectedItem();
+        String ngay = null;
+        if (selectedItem != null) {
+            ngay = selectedItem.toString();
+        }
+        fillTableDoanhThu();
     }//GEN-LAST:event_cboDoanhThuNgayItemStateChanged
 
     private void cboDoanhThuNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboDoanhThuNamItemStateChanged
-        // TODO add your handling code here:
-// tkDoanhThuThangCombobox();
-       fillTableDoanhThu();
+        Object selectedItem = cboDoanhThuNam.getSelectedItem();
+        String nam = null;
+        if (selectedItem != null) {
+            nam = selectedItem.toString();
+        }
+
+        if (cboDoanhThuNam.getSelectedItem().equals("All")) {
+            cboDoanhThuThang.setEnabled(false);
+            cboDoanhThuNgay.setEnabled(false);
+        } else {
+            cboDoanhThuThang.setEnabled(true);
+            cboDoanhThuNgay.setEnabled(true);
+        }
+        fillTableDoanhThu();
     }//GEN-LAST:event_cboDoanhThuNamItemStateChanged
 
     private void cboMonAnNgayItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnNgayItemStateChanged
-        // TODO add your handling code here:
-//        fillTableTKMonAn();
+        Object selectedItem = cboMonAnNgay.getSelectedItem();
+        String ngay = null;
+        if (selectedItem != null) {
+            ngay = selectedItem.toString();
+        }
+        fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnNgayItemStateChanged
 
     private void cboMonAnThangItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnThangItemStateChanged
-        // TODO add your handling code here:
+        Object selectedItem = cboMonAnThang.getSelectedItem();
+        String thang = null;
+        if (selectedItem != null) {
+            thang = selectedItem.toString();
+            tkDoanhThuNgayCombobox(thang);
+        }
+
+        if (cboMonAnThang.getSelectedItem().equals("All")) {
+            cboMonAnNgay.setEnabled(false);
+        } else {
+            cboMonAnNgay.setEnabled(true);
+        }
         fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnThangItemStateChanged
 
     private void cboMonAnNamItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboMonAnNamItemStateChanged
         // TODO add your handling code here:
+        Object selectedItem = cboMonAnNam.getSelectedItem();
+        String nam = null;
+        if (selectedItem != null) {
+            nam = selectedItem.toString();
+        }
+
+        if (cboMonAnNam.getSelectedItem().equals("All")) {
+            cboMonAnThang.setEnabled(false);
+            cboMonAnNgay.setEnabled(false);
+        } else {
+            cboMonAnThang.setEnabled(true);
+            cboMonAnNgay.setEnabled(true);
+        }
         fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnNamItemStateChanged
 
     private void cboMonAnNgayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMonAnNgayActionPerformed
-        // TODO add your handling code here:
+        fillTableTKMonAn();
     }//GEN-LAST:event_cboMonAnNgayActionPerformed
 
     private void cboMonAnThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMonAnThangActionPerformed
         // TODO add your handling code here:
-        String thang = cboMonAnThang.getSelectedItem().toString();
-        fillTableTKMonAn();
+
     }//GEN-LAST:event_cboMonAnThangActionPerformed
 
     private void cboMonAnNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboMonAnNamActionPerformed
-        // TODO add your handling code here:
-        fillTableTKMonAn();
+
     }//GEN-LAST:event_cboMonAnNamActionPerformed
 
     /**
@@ -1605,122 +1652,209 @@ fillTableDoanhThu();
 
     //=====================Báo cáo thống kê===============
     //======================Năm==================
-     void tkDoanhThuNamCombobox() {
-        List<Integer> years = daoDH.selectYear();
-        int size = years.size();
+    void tkDoanhThuNamCombobox() {
+   List<Integer> years = daoDH.selectYear();
+        int size = years.size() + 1;
         String[] yearArray = new String[size];
-        for (int i = 0; i < size; i++) {
-    yearArray[i] = years.get(i).toString(); 
-}
+        yearArray[0] = "All";
+        for (int i = 1; i < size; i++) {
+            yearArray[i] = years.get(i - 1).toString();
+        }
         DefaultComboBoxModel<String> yearModel = new DefaultComboBoxModel<>(yearArray);
         cboDoanhThuNam.setModel(yearModel);
-        
+
     }
 //
 //
-   void tkMonAnNamCombobox() {
-               List<Integer> years = daoDH.selectYear();
-        int size = years.size();
+
+    void tkMonAnNamCombobox() {
+        List<Integer> years = daoDH.selectYear();
+        int size = years.size() + 1;
         String[] yearArray = new String[size];
-        for (int i = 0; i < size; i++) {
-    yearArray[i] = years.get(i).toString(); 
-}
+        yearArray[0] = "All";
+        for (int i = 1; i < size; i++) {
+            yearArray[i] = years.get(i - 1).toString();
+        }
         DefaultComboBoxModel<String> yearModel = new DefaultComboBoxModel<>(yearArray);
         cboMonAnNam.setModel(yearModel);
-
     }
 //
 //    //=======================Tháng================
-    void tkDoanhThuThangCombobox() {
-    DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
-    for (int i = 1; i <= 12; i++) {
-        thangModel.addElement(String.valueOf(i));
-    }
-    cboDoanhThuThang.setModel(thangModel);
-}
-//
-//
-    void tkMonAnThangCombobox() {
-   DefaultComboBoxModel<String> thangModel = new DefaultComboBoxModel<>();
-    for (int i = 1; i <= 12; i++) {
-        thangModel.addElement(String.valueOf(i));
-    }
-      cboMonAnThang.setModel(thangModel);
 
-   }
+    void tkDoanhThuThangCombobox() {
+int size = 13; 
+    String[] monthArray = new String[size];
+    monthArray[0] = "All";
+
+    for (int i = 1; i < size; i++) {
+        monthArray[i] = String.valueOf(i);
+    }
+
+    DefaultComboBoxModel<String> monthModel = new DefaultComboBoxModel<>(monthArray);
+    cboDoanhThuThang.setModel(monthModel);
+    }
+//
+//
+
+    void tkMonAnThangCombobox() {
+        
+    int size = 13; 
+    String[] monthArray = new String[size];
+    monthArray[0] = "All";
+
+    for (int i = 1; i < size; i++) {
+        monthArray[i] = String.valueOf(i);
+    }
+
+    DefaultComboBoxModel<String> monthModel = new DefaultComboBoxModel<>(monthArray);
+    cboMonAnThang.setModel(monthModel);
+    }
 //
 //    //=======================Ngày=================
-//    
-//void tkDoanhThuNgayCombobox( String thang) {
-//int selectedMonth = Integer.parseInt(thang);
-//    int selectedYear = Integer.parseInt(cboDoanhThuNam.getSelectedItem().toString());
-//    int daysInMonth;
-//
-//    if (selectedMonth == 2) {
-//        // Kiểm tra năm nhuận
-//        if ((selectedYear % 4 == 0 && selectedYear % 100 != 0) || (selectedYear % 400 == 0)) {
-//            daysInMonth = 29; // Năm nhuận
-//        } else {
-//            daysInMonth = 28; // Không phải năm nhuận
-//        }
-//    } else if (selectedMonth == 4 || selectedMonth == 6 || selectedMonth == 9 || selectedMonth == 11) {
-//        daysInMonth = 30; // Các tháng có 30 ngày
-//    } else {
-//        daysInMonth = 31; // Các tháng có 31 ngày
-//    }
-//
-//    ArrayList<String> ngayValues = new ArrayList<>();
-//    for (int i = 1; i <= daysInMonth; i++) {
-//        String ngay = String.format("%02d", i);
-//        ngayValues.add(ngay);
-//    }
-//
-//    DefaultComboBoxModel<String> ngayModel = new DefaultComboBoxModel<>(ngayValues.toArray(new String[0]));
-//    cboDoanhThuNgay.setModel(ngayModel);
-//}
-//
-//
-//
+
+    void tkDoanhThuNgayCombobox(String thang) {
+  Integer selectedYear = null;
+    Integer daysInMonth = 31;
+    Integer selectedMonth = null;
+
+    Object selectedItemNam = cboMonAnNam.getSelectedItem();
+    if (selectedItemNam != null && !selectedItemNam.equals("All")) {
+        selectedYear = Integer.parseInt(selectedItemNam.toString());
+    }
+
+    if (!thang.equals("All")) {
+        selectedMonth = Integer.parseInt(thang);
+        if (selectedMonth == 2) {
+            // Kiểm tra năm nhuận
+            if ((selectedYear % 4 == 0 && selectedYear % 100 != 0) || (selectedYear % 400 == 0)) {
+                daysInMonth = 29; // Năm nhuận
+            } else {
+                daysInMonth = 28; // Không phải năm nhuận
+            }
+        } else if (selectedMonth == 4 || selectedMonth == 6 || selectedMonth == 9 || selectedMonth == 11) {
+            daysInMonth = 30; // Các tháng có 30 ngày
+        } else {
+            daysInMonth = 31; // Các tháng có 31 ngày
+        }
+    }
+
+    int size = daysInMonth + 1; // Number of days in month + "Tất cả"
+    String[] dayArray = new String[size];
+    dayArray[0] = "All";
+
+    for (int i = 1; i < size; i++) {
+        dayArray[i] = String.valueOf(i);
+    }
+
+    DefaultComboBoxModel<String> dayModel = new DefaultComboBoxModel<>(dayArray);
+    cboDoanhThuNgay.setModel(dayModel);
+    }
+
+    void tkMonAnNgayCombobox(String thang) {
+    Integer selectedYear = null;
+    Integer daysInMonth = 31;
+    Integer selectedMonth = null;
+
+    Object selectedItemNam = cboMonAnNam.getSelectedItem();
+    if (selectedItemNam != null && !selectedItemNam.equals("All")) {
+        selectedYear = Integer.parseInt(selectedItemNam.toString());
+    }
+
+    if (!thang.equals("All")) {
+        selectedMonth = Integer.parseInt(thang);
+        if (selectedMonth == 2) {
+            // Kiểm tra năm nhuận
+            if ((selectedYear % 4 == 0 && selectedYear % 100 != 0) || (selectedYear % 400 == 0)) {
+                daysInMonth = 29; // Năm nhuận
+            } else {
+                daysInMonth = 28; // Không phải năm nhuận
+            }
+        } else if (selectedMonth == 4 || selectedMonth == 6 || selectedMonth == 9 || selectedMonth == 11) {
+            daysInMonth = 30; // Các tháng có 30 ngày
+        } else {
+            daysInMonth = 31; // Các tháng có 31 ngày
+        }
+    }
+
+    int size = daysInMonth + 1; // Number of days in month + "Tất cả"
+    String[] dayArray = new String[size];
+    dayArray[0] = "All";
+
+    for (int i = 1; i < size; i++) {
+        dayArray[i] = String.valueOf(i);
+    }
+
+    DefaultComboBoxModel<String> dayModel = new DefaultComboBoxModel<>(dayArray);
+    cboMonAnNgay.setModel(dayModel);
+}
+
 
 //    //===========================FillTable==================
 //
-void fillTableDoanhThu() {
-    DefaultTableModel doanhThu = (DefaultTableModel) tblTKDoanhThu.getModel();
-    doanhThu.setRowCount(0);
-    Object[] ds = {"Doanh Thu", "Mốc Thời Gian"};
-    doanhThu.setColumnIdentifiers(ds);
+    void fillTableDoanhThu() {
+                Integer nam = null;
+        Integer thang = null;
+        Integer ngay = null;
 
-    int nam = Integer.parseInt(cboDoanhThuNam.getSelectedItem().toString());
-    int thang = Integer.parseInt(cboDoanhThuThang.getSelectedItem().toString());
-//    int ngay = Integer.parseInt(cboDoanhThuNgay.getSelectedItem().toString());
+        Object selectedItemNam = cboDoanhThuNam.getSelectedItem();
+        if (selectedItemNam != null && !selectedItemNam.equals("All")) {
+            nam = Integer.parseInt(selectedItemNam.toString());
+        }
 
-    List<Object[]> doanhThuList = thongKeDAO.getDoanhThu(nam, thang);
-    for (Object[] row : doanhThuList) {
-        doanhThu.addRow(row);
+        Object selectedItemThang = cboDoanhThuThang.getSelectedItem();
+        if (selectedItemThang != null && !selectedItemThang.equals("All")) {
+            thang = Integer.parseInt(selectedItemThang.toString());
+        }
+
+        Object selectedItemNgay = cboDoanhThuNgay.getSelectedItem();
+        if (selectedItemNgay != null && !selectedItemNgay.equals("All")) {
+            ngay = Integer.parseInt(selectedItemNgay.toString());
+        }
+        DefaultTableModel doanhThu = (DefaultTableModel) tblTKDoanhThu.getModel();
+        doanhThu.setRowCount(0);
+        Object[] ds = {"Doanh Thu", "Mốc Thời Gian"};
+        doanhThu.setColumnIdentifiers(ds);
+
+        List<Object[]> doanhThuList = thongKeDAO.getDoanhThu(nam, thang, ngay);
+        for (Object[] row : doanhThuList) {
+            doanhThu.addRow(row);
+        }
     }
-}
-
-
 
 //
     void fillTableTKMonAn() {
+        Integer nam = null;
+        Integer thang = null;
+        Integer ngay = null;
+
+        Object selectedItemNam = cboMonAnNam.getSelectedItem();
+        if (selectedItemNam != null && !selectedItemNam.equals("All")) {
+            nam = Integer.parseInt(selectedItemNam.toString());
+        }
+
+        Object selectedItemThang = cboMonAnThang.getSelectedItem();
+        if (selectedItemThang != null && !selectedItemThang.equals("All")) {
+            thang = Integer.parseInt(selectedItemThang.toString());
+        }
+
+        Object selectedItemNgay = cboMonAnNgay.getSelectedItem();
+        if (selectedItemNgay != null && !selectedItemNgay.equals("All")) {
+            ngay = Integer.parseInt(selectedItemNgay.toString());
+        }
+
+        List<Object[]> monAnList = thongKeDAO.getDoanhThuMonAn(nam, thang, ngay);
         DefaultTableModel monAn = (DefaultTableModel) tblTKMonAn.getModel();
         monAn.setRowCount(0);
         Object[] ds = {"Mốc Thời Gian", "Mã Món Ăn", "Tên Món ăn", "Doanh Thu", "Doanh Thu (%)"};
         monAn.setColumnIdentifiers(ds);
         tblTKMonAn.setModel(monAn);
-        // Gọi stored procedure để tính toán và lưu trữ kết quả vào bảng tạm #TempMonAn
-          int nam = Integer.parseInt(cboMonAnNam.getSelectedItem().toString());
-    int thang = Integer.parseInt(cboMonAnThang.getSelectedItem().toString());
-//        String ngay = cboMonAnNgay.getSelectedItem().toString() != null ? cboMonAnNgay.getSelectedItem().toString() : "";
-        List<Object[]> monAnList = thongKeDAO.getDoanhThuMonAn(nam, thang);
+
         // Đổ dữ liệu từ danh sách kết quả vào bảng
         for (Object[] row : monAnList) {
             monAn.addRow(row);
         }
     }
-    
-   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup ChucVu;
