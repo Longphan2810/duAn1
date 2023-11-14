@@ -15,10 +15,11 @@ import java.nio.file.StandardCopyOption;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
-import org.apache.poi.sl.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
@@ -51,6 +52,47 @@ public class shareHelper {
         
         return new ImageIcon(fileIn.getAbsolutePath());
     }
+        public static void exportToExcel(JTable table, String directoryPath, String fileName) {
+        // Tạo thư mục nếu nó chưa tồn tại
+        Path path = Paths.get(directoryPath);
+        if (!Files.exists(path)) {
+            try {
+                Files.createDirectories(path);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
+        // Tạo một Workbook
+        Workbook workbook = new SXSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Doanh thu");
+
+
+        // Lấy model của table
+        TableModel model = table.getModel();
+       
+        // Tạo hàng tiêu đề
+         Row rows = sheet.createRow(0);
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            Cell cell = rows.createCell(i);
+            cell.setCellValue(model.getColumnName(i));
+        }
+
+        // Tạo các hàng dữ liệu
+        for (int i = 0; i < model.getRowCount(); i++) {
+            Row row = sheet.createRow(i + 1);
+            for (int j = 0; j < model.getColumnCount(); j++) {
+                Cell cell = row.createCell(j);
+                cell.setCellValue(model.getValueAt(i, j).toString());
+            }
+        }
+
+        // Xuất dữ liệu ra file Excel
+        try (FileOutputStream out = new FileOutputStream(directoryPath + "/" + fileName)) {
+            workbook.write(out);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
 
 }
