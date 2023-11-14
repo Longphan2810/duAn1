@@ -13,6 +13,7 @@ import entity.DonHang;
 import entity.DonHangChiTiet;
 import entity.FoodAndDrink;
 import entity.HoaDon;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -38,6 +39,17 @@ import ulti.DateHelper;
 import ulti.DialogHelper;
 import ulti.shareHelper;
 import java.lang.Double;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.Hashtable;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -48,15 +60,16 @@ public class OrderJframe extends javax.swing.JFrame {
     List<FoodAndDrink> listFood = new ArrayList<>();
     HashMap<FoodAndDrink, Integer> danhSachMonAn = new HashMap<>();
     HashMap<Object, Integer> gia = new HashMap<>();
-    DefaultTableModel modelTableDanhSachMonAn,modelDonHang;
+    DefaultTableModel modelTableDanhSachMonAn, modelDonHang;
     List<DonHang> listDonHang = new ArrayList<>();
     DonHangDAO donHangDao = new DonHangDAO();
     DonHangChiTietDAO chiTietDao = new DonHangChiTietDAO();
     FoodDAO foodDao = new FoodDAO();
     HoaDonDAO hoaDonDao = new HoaDonDAO();
-    boolean click =false;
+    boolean click = false;
     private DonHang donHangCurrent;
     int index = -1;
+
     /**
      * Creates new form Order
      */
@@ -111,10 +124,10 @@ public class OrderJframe extends javax.swing.JFrame {
         labelTongTien = new javax.swing.JLabel();
         btnThemDonHang = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
-        btnThanhToanDonHang = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
         btnXoaMon = new javax.swing.JButton();
         btnHuyDon = new javax.swing.JButton();
+        btnInHoaDon = new javax.swing.JButton();
         TabListDonHang = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         panelContainerDonHang = new javax.swing.JPanel();
@@ -131,6 +144,9 @@ public class OrderJframe extends javax.swing.JFrame {
         tblChiTietDonHang = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         lblTongTien = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        Jpanel_HoaDon = new javax.swing.JPanel();
+        btnThanhToanDonHang1 = new javax.swing.JButton();
         btnChuyenManHinh = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
 
@@ -228,7 +244,7 @@ public class OrderJframe extends javax.swing.JFrame {
             tabBurgerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabBurgerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -258,7 +274,7 @@ public class OrderJframe extends javax.swing.JFrame {
             tabPotatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabPotatoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -288,7 +304,7 @@ public class OrderJframe extends javax.swing.JFrame {
             tabCreamLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabCreamLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -318,7 +334,7 @@ public class OrderJframe extends javax.swing.JFrame {
             tabDrinkLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabDrinkLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -464,14 +480,6 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnThanhToanDonHang.setText("Thanh toán");
-        btnThanhToanDonHang.setEnabled(false);
-        btnThanhToanDonHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThanhToanDonHangActionPerformed(evt);
-            }
-        });
-
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -494,42 +502,50 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
+        btnInHoaDon.setText("Hóa đơn");
+        btnInHoaDon.setEnabled(false);
+        btnInHoaDon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInHoaDonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel6Layout.createSequentialGroup()
-                                        .addComponent(btnLamMoi)
-                                        .addGap(42, 42, 42)
-                                        .addComponent(btnThemDonHang)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnCapNhat)
-                                        .addGap(36, 36, 36)))
-                                .addComponent(btnXoaMon)))
-                        .addContainerGap())
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(btnThanhToanDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnHuyDon)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLamMoi)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel6Layout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(btnThemDonHang)))))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btnCapNhat)
+                                .addGap(51, 51, 51)
+                                .addComponent(btnXoaMon))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(btnHuyDon, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)))))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -550,8 +566,8 @@ public class OrderJframe extends javax.swing.JFrame {
                     .addComponent(btnXoaMon))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThanhToanDonHang)
-                    .addComponent(btnHuyDon))
+                    .addComponent(btnHuyDon)
+                    .addComponent(btnInHoaDon))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -593,14 +609,14 @@ public class OrderJframe extends javax.swing.JFrame {
             TabListDonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabListDonHangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
                 .addContainerGap())
         );
         TabListDonHangLayout.setVerticalGroup(
             TabListDonHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TabListDonHangLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 441, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -708,7 +724,7 @@ public class OrderJframe extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(358, Short.MAX_VALUE))
+                        .addContainerGap(389, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel4)
@@ -747,6 +763,49 @@ public class OrderJframe extends javax.swing.JFrame {
 
         tabbedTong.addTab("tab3", tabLichSu);
 
+        javax.swing.GroupLayout Jpanel_HoaDonLayout = new javax.swing.GroupLayout(Jpanel_HoaDon);
+        Jpanel_HoaDon.setLayout(Jpanel_HoaDonLayout);
+        Jpanel_HoaDonLayout.setHorizontalGroup(
+            Jpanel_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        Jpanel_HoaDonLayout.setVerticalGroup(
+            Jpanel_HoaDonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 418, Short.MAX_VALUE)
+        );
+
+        btnThanhToanDonHang1.setText("Thanh toán");
+        btnThanhToanDonHang1.setEnabled(false);
+        btnThanhToanDonHang1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThanhToanDonHang1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Jpanel_HoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(808, Short.MAX_VALUE)
+                .addComponent(btnThanhToanDonHang1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(Jpanel_HoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnThanhToanDonHang1)
+                .addContainerGap())
+        );
+
+        tabbedTong.addTab("tab4", jPanel2);
+
         btnChuyenManHinh.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnChuyenManHinh.setText("Chuyển màn hình");
         btnChuyenManHinh.addActionListener(new java.awt.event.ActionListener() {
@@ -769,6 +828,10 @@ public class OrderJframe extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
@@ -785,11 +848,7 @@ public class OrderJframe extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(btnChuyenManHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tabbedTong))
         );
@@ -797,9 +856,6 @@ public class OrderJframe extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(tabbedTong, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -820,8 +876,11 @@ public class OrderJframe extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(btnChuyenManHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                        .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(tabbedTong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -955,7 +1014,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
             Set<FoodAndDrink> key = danhSachMonAn.keySet();
             chiTietDao.deleteMaDonHang(donHangCurrent.getMaDonHang());
-          
+
             for (FoodAndDrink foodAndDrink : key) {
                 DonHangChiTiet chiTietTemp = new DonHangChiTiet();
                 chiTietTemp.setMaDonHang(donHangCurrent.getMaDonHang());
@@ -971,27 +1030,6 @@ public class OrderJframe extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCapNhatActionPerformed
 
-    private void btnThanhToanDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanDonHangActionPerformed
-        try {
-            // TODO add your handling code here:
-            donHangCurrent.setTrangThai("Da Thanh Toan");
-            donHangDao.update(donHangCurrent);
-            
-            HoaDon newHoaDon = new HoaDon();
-            newHoaDon.setMaDonHang(donHangCurrent.getMaDonHang());
-            newHoaDon.setNgayTao(DateHelper.GetDateNow());
-            newHoaDon.setTrangThai("Da Thanh Toan");
-            newHoaDon.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
-            
-            hoaDonDao.insert(newHoaDon);
-            
-            DialogHelper.alert(this, "Da hoan tat !");
-            clearDonHang();
-        } catch (ParseException ex) {
-            Logger.getLogger(OrderJframe.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnThanhToanDonHangActionPerformed
-
     private void btnHuyDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyDonActionPerformed
         // TODO add your handling code here:
         donHangCurrent.setTrangThai("Da Huy");
@@ -1001,14 +1039,14 @@ public class OrderJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHuyDonActionPerformed
 
     private void btnChiTietDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietDonHangActionPerformed
-         index = tblLichSuHD.getSelectedRow(); 
-        if(index ==-1){              
+        index = tblLichSuHD.getSelectedRow();
+        if (index == -1) {
             DialogHelper.alert(this, "Chọn đơn hàng cần xem!");
-        }else{
-        
-        int maDH = (int) tblLichSuHD.getValueAt(index, 0);
-        fillChiTietDonHang(maDH);
-        index = -1;
+        } else {
+
+            int maDH = (int) tblLichSuHD.getValueAt(index, 0);
+            fillChiTietDonHang(maDH);
+            index = -1;
         }
     }//GEN-LAST:event_btnChiTietDonHangActionPerformed
 
@@ -1025,13 +1063,61 @@ public class OrderJframe extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTimKiemDonHangActionPerformed
 
     private void tblLichSuHDAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_tblLichSuHDAncestorAdded
-           
+
     }//GEN-LAST:event_tblLichSuHDAncestorAdded
 
     private void tblLichSuHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLichSuHDMouseClicked
-         
+
     }//GEN-LAST:event_tblLichSuHDMouseClicked
-    
+
+    private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
+        try {
+            // TODO add your handling code here:
+            donHangCurrent.setTrangThai("Da Thanh Toan");
+            donHangDao.update(donHangCurrent);
+            HoaDon newHoaDon = new HoaDon();
+            newHoaDon.setMaDonHang(donHangCurrent.getMaDonHang());
+            newHoaDon.setNgayTao(DateHelper.GetDateNow());
+            newHoaDon.setTrangThai("Da Thanh Toan");
+            newHoaDon.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
+            hoaDonDao.insert(newHoaDon);
+            InHoaDon(donHangCurrent.getMaDonHang());
+
+            tabbedTong.setSelectedIndex(3);
+
+        } catch (Exception ex) {
+            Logger.getLogger(OrderJframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tabbedTong.setSelectedIndex(3);
+    }//GEN-LAST:event_btnInHoaDonActionPerformed
+
+    private void btnThanhToanDonHang1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanDonHang1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            donHangCurrent.setTrangThai("Da Thanh Toan");
+            donHangDao.update(donHangCurrent);
+
+            HoaDon newHoaDon = new HoaDon();
+            newHoaDon.setMaDonHang(donHangCurrent.getMaDonHang());
+            newHoaDon.setNgayTao(DateHelper.GetDateNow());
+            newHoaDon.setTrangThai("Da Thanh Toan");
+            newHoaDon.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
+            hoaDonDao.insert(newHoaDon);
+
+            DialogHelper.alert(this, "Da hoan tat !");
+
+            clearDonHang();
+            removeColorAllButton();
+            removeColorAllButtonSub();
+            blockOrder(true);
+            checkClickButton(btnLichSu);
+            tabbedTong.setSelectedIndex(2);
+            fillTableLichSu();
+        } catch (ParseException ex) {
+            Logger.getLogger(OrderJframe.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnThanhToanDonHang1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1092,7 +1178,8 @@ public class OrderJframe extends javax.swing.JFrame {
 
     private void clearDonHang() {
         danhSachMonAn.clear();
-        btnThanhToanDonHang.setEnabled(false);
+        btnThanhToanDonHang1.setEnabled(false);
+        btnInHoaDon.setEnabled(false);
         btnCapNhat.setEnabled(false);
         btnThemDonHang.setEnabled(true);
         btnHuyDon.setEnabled(false);
@@ -1264,17 +1351,17 @@ public class OrderJframe extends javax.swing.JFrame {
                 tabbedTong.setSelectedIndex(0);
                 tbpSub.setSelectedIndex(0);
                 btnCapNhat.setEnabled(true);
-                btnThanhToanDonHang.setEnabled(true);
+                btnThanhToanDonHang1.setEnabled(true);
+                btnInHoaDon.setEnabled(true);
                 btnThemDonHang.setEnabled(false);
                 btnHuyDon.setEnabled(true);
                 donHangCurrent = donHang;
-                
+
                 Set<FoodAndDrink> key = danhSachMonAn.keySet();
                 for (FoodAndDrink foodAndDrink : key) {
                     System.out.println(foodAndDrink);
-                    
+
                 }
-                
 
             }
         };
@@ -1287,17 +1374,13 @@ public class OrderJframe extends javax.swing.JFrame {
 
         return panelReturn;
     }
-    
-    
+
     // ======================  read  food in order================
     private void readFoodFromDonHang(String maDonHang) {
         danhSachMonAn.clear();
-        //
         HashMap<String, Integer> listFoodTemp = chiTietDao.selectFoodFromOrder(maDonHang);
         Set<String> maMonAnFromListFoodTemp = listFoodTemp.keySet();
-
         for (String maMonAn : maMonAnFromListFoodTemp) {
-
             FoodAndDrink food = foodDao.findById(maMonAn);
             danhSachMonAn.put(food, listFoodTemp.get(maMonAn));
 
@@ -1337,24 +1420,25 @@ public class OrderJframe extends javax.swing.JFrame {
         }
 
     }
-    
-    public void fillTableLichSu(){
+
+    public void fillTableLichSu() {
         listDonHang = donHangDao.selectDaThanhToan();
         DefaultTableModel model = (DefaultTableModel) tblLichSuHD.getModel();
         model.setRowCount(0);
         for (DonHang dh : listDonHang) {
-            model.addRow(new Object[]{dh.getMaDonHang(),dh.getNgayTao(),dh.getMaNhanVien(),dh.getTrangThai()});
+            model.addRow(new Object[]{dh.getMaDonHang(), dh.getNgayTao(), dh.getMaNhanVien(), dh.getTrangThai()});
         }
-        
+
     }
-    void fillChiTietDonHang(int MaDH){                               
+
+    void fillChiTietDonHang(int MaDH) {
         float tongtien = 0;
-    
+
         ChiTietDAO CTDAO = new ChiTietDAO();
         DefaultTableModel model = (DefaultTableModel) tblChiTietDonHang.getModel();
         model.setRowCount(0);
         model.setColumnCount(0);
-        String[] colunms = {"MaDH", "Số lượng", "Ngày Tạo", "MaNV","Tên món","Thành tiền","Trạng thái"};
+        String[] colunms = {"MaDH", "Số lượng", "Ngày Tạo", "MaNV", "Tên món", "Thành tiền", "Trạng thái"};
         for (String colunm : colunms) {
             model.addColumn(colunm);
         }
@@ -1362,17 +1446,15 @@ public class OrderJframe extends javax.swing.JFrame {
 
             List<Object[]> list = CTDAO.getChiTiet(MaDH);
 //            List<Object> listTien = new ArrayList<>();
-            
-           
-            for (Object[] row : list) {              
-                model.addRow(row);                                          
+
+            for (Object[] row : list) {
+                model.addRow(row);
             }
-            for (int i = 0; i < list.size();i++ ) {              
-                 tongtien+= Float.valueOf(String.valueOf( model.getValueAt(i, 5)));
-                
-                             
+            for (int i = 0; i < list.size(); i++) {
+                tongtien += Float.valueOf(String.valueOf(model.getValueAt(i, 5)));
+
             }
-           lblTongTien.setText(String.valueOf(tongtien)+"VND");
+            lblTongTien.setText(String.valueOf(tongtien) + "VND");
 
         } catch (Exception e) {
             System.out.println(e);
@@ -1381,7 +1463,36 @@ public class OrderJframe extends javax.swing.JFrame {
         }
     }
 
+    void InHoaDon(int maHD) {
+        try {
+            String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=nekodelivery";
+            String user = "sa";
+            String passSQL = "123";
+            Connection con = DriverManager.getConnection(url, user, passSQL);
+            HashMap map = new HashMap();
+            map.put("sMaHD", maHD);
+            System.out.println(map);
+
+            Jpanel_HoaDon.removeAll();
+            Jpanel_HoaDon.repaint();
+            Jpanel_HoaDon.revalidate();
+
+            JasperDesign jdesign = JRXmlLoader.load("src\\main\\java\\Report\\HoaDon.jrxml");
+            JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+            JasperPrint jprint = JasperFillManager.fillReport(jreport, map, con);
+            JRViewer v = new JRViewer(jprint);
+
+            Jpanel_HoaDon.setLayout(new BorderLayout());
+            Jpanel_HoaDon.add(v);
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Jpanel_HoaDon;
     private javax.swing.JPanel TabListDonHang;
     private javax.swing.JButton btnBurger;
     private javax.swing.JButton btnCapNhat;
@@ -1391,12 +1502,13 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnDrink;
     private javax.swing.JButton btnHuyDon;
+    private javax.swing.JButton btnInHoaDon;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnLichSu;
     private javax.swing.JButton btnList;
     private javax.swing.JButton btnPotato;
     private javax.swing.JButton btnTaoDon;
-    private javax.swing.JButton btnThanhToanDonHang;
+    private javax.swing.JButton btnThanhToanDonHang1;
     private javax.swing.JButton btnThemDonHang;
     private javax.swing.JButton btnTimKiemDonHang;
     private javax.swing.JButton btnXoaMon;
@@ -1406,6 +1518,7 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
