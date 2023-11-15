@@ -1478,7 +1478,7 @@ public class OrderJframe extends javax.swing.JFrame {
             Jpanel_HoaDon.repaint();
             Jpanel_HoaDon.revalidate();
 
-            JasperDesign jdesign = JRXmlLoader.load("src\\main\\java\\Report\\HoaDon.jrxml");
+            JasperDesign jdesign = JRXmlLoader.load("src\\main\\java\\Report\\XuatHoaDon.jrxml");
             JasperReport jreport = JasperCompileManager.compileReport(jdesign);
             JasperPrint jprint = JasperFillManager.fillReport(jreport, map, con);
             JRViewer v = new JRViewer(jprint);
