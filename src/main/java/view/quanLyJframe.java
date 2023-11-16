@@ -23,6 +23,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.table.DefaultTableModel;
 import ulti.Auth;
@@ -675,6 +676,11 @@ public class quanLyJframe extends javax.swing.JFrame {
         JScrollPane.setViewportView(tblTKDoanhThu);
 
         btnInTKDoanhThu.setText("In Báo Cáo");
+        btnInTKDoanhThu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInTKDoanhThuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabThongKeDoanhThuLayout = new javax.swing.GroupLayout(tabThongKeDoanhThu);
         tabThongKeDoanhThu.setLayout(tabThongKeDoanhThuLayout);
@@ -1355,8 +1361,16 @@ public class quanLyJframe extends javax.swing.JFrame {
     private void btnInTKMonAnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInTKMonAnActionPerformed
         // TODO add your handling code here:
         String filePath = "src\\main\\resources\\BaoCao";
-        shareHelper.exportToExcel(tblTKMonAn, filePath, "BaoCaoDoanhThuMonAn.xlsx");
+         String fileName = DialogHelper.prompt(this, "Nhập tên file");
+        shareHelper.exportToExcel(tblTKMonAn, filePath, fileName);
     }//GEN-LAST:event_btnInTKMonAnActionPerformed
+
+    private void btnInTKDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInTKDoanhThuActionPerformed
+        // TODO add your handling code here:
+        String filePath = "src\\main\\resources\\BaoCao";
+       String fileName = DialogHelper.prompt(this, "Nhập tên file");
+        shareHelper.exportToExcel(tblTKMonAn, filePath, fileName);
+    }//GEN-LAST:event_btnInTKDoanhThuActionPerformed
 
     /**
      * @param args the command line arguments

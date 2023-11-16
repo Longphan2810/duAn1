@@ -22,37 +22,36 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
 /**
  *
  * @author Thinkpad E440
  */
 public class shareHelper {
-    
+
     public static void saveLogo(File fileIn) throws FileNotFoundException, IOException {
-        
+
         File parent = new File("src\\main\\resources\\logo");
-        
-        if(!parent.exists()){
+
+        if (!parent.exists()) {
             parent.mkdirs();
         }
-        
-        
+
         File fileOut = new File("src\\main\\resources\\logo", fileIn.getName());
-        
+
         Path from = Paths.get(fileIn.getAbsolutePath());
         Path to = Paths.get(fileOut.getAbsolutePath());
-        
+
         Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
-        
+
     }
-    
+
     public static ImageIcon readLogo(String FileName) {
         File fileIn = new File("src\\main\\resources\\logo", FileName);
-        
+
         return new ImageIcon(fileIn.getAbsolutePath());
     }
-        public static void exportToExcel(JTable table, String directoryPath, String fileName) {
+
+    public static void exportToExcel(JTable table, String directoryPath, String fileName) {
         // Tạo thư mục nếu nó chưa tồn tại
         Path path = Paths.get(directoryPath);
         if (!Files.exists(path)) {
@@ -67,12 +66,11 @@ public class shareHelper {
         Workbook workbook = new SXSSFWorkbook();
         Sheet sheet = workbook.createSheet("Doanh thu");
 
-
         // Lấy model của table
         TableModel model = table.getModel();
-       
+
         // Tạo hàng tiêu đề
-         Row rows = sheet.createRow(0);
+        Row rows = sheet.createRow(0);
         for (int i = 0; i < model.getColumnCount(); i++) {
             Cell cell = rows.createCell(i);
             cell.setCellValue(model.getColumnName(i));
@@ -82,17 +80,23 @@ public class shareHelper {
         for (int i = 0; i < model.getRowCount(); i++) {
             Row row = sheet.createRow(i + 1);
             for (int j = 0; j < model.getColumnCount(); j++) {
+                Object cellValue = model.getValueAt(i, j);
                 Cell cell = row.createCell(j);
-                cell.setCellValue(model.getValueAt(i, j).toString());
+                if (cellValue != null) {
+                    cell.setCellValue(cellValue.toString());
+                } else {
+                    cell.setCellValue("");
+                }
             }
         }
 
         // Xuất dữ liệu ra file Excel
-        try (FileOutputStream out = new FileOutputStream(directoryPath + "/" + fileName)) {
+        try (FileOutputStream out = new FileOutputStream(directoryPath + "/" + fileName + ".xlsx")) {
             workbook.write(out);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
     }
 
 }

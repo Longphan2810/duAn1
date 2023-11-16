@@ -1078,6 +1078,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="In B&#xe1;o C&#xe1;o"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnInTKDoanhThuActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
