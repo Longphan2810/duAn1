@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="450" pageHeight="300" orientation="Landscape" columnWidth="410" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6c10b26f-3ba8-4e01-b0a3-3936b2271b2d">
-	<property name="ireport.zoom" value="1.0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="450" pageHeight="500" orientation="Landscape" columnWidth="410" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6c10b26f-3ba8-4e01-b0a3-3936b2271b2d">
+	<property name="ireport.zoom" value="1.6105100000000014"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="sMaHD" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT dbo.donHang.maDonHang, dbo.donHang.ngayTao, dbo.donHangChiTiet.soLuongMon, dbo.monAn.tenMonAn, dbo.monAn.giaTien, dbo.nhanVien.tenNhanVien
+		<![CDATA[declare @tongtien float 
+select  @tongtien = sum(dbo.monAn.giaTien)
 FROM     dbo.donHang INNER JOIN
                   dbo.donHangChiTiet ON dbo.donHang.maDonHang = dbo.donHangChiTiet.maDonHang INNER JOIN
                   dbo.hoaDon ON dbo.donHang.maDonHang = dbo.hoaDon.maDonHang INNER JOIN
                   dbo.monAn ON dbo.donHangChiTiet.maMonAn = dbo.monAn.maMonAn INNER JOIN
                   dbo.nhanVien ON dbo.donHang.maNhanVien = dbo.nhanVien.maNhanVien AND dbo.hoaDon.maNhanVien = dbo.nhanVien.maNhanVien AND dbo.monAn.maNhanVien = dbo.nhanVien.maNhanVien
-where dbo.donHang.maDonHang  = $P{sMaHD}]]>
+
+where  dbo.donHang.maDonHang = $P{sMaHD}
+
+
+
+
+SELECT dbo.donHang.maDonHang, dbo.donHang.ngayTao, dbo.donHangChiTiet.soLuongMon, dbo.monAn.tenMonAn
+, dbo.monAn.giaTien, dbo.nhanVien.tenNhanVien, @tongtien as 'Tong tien'
+FROM     dbo.donHang INNER JOIN
+                  dbo.donHangChiTiet ON dbo.donHang.maDonHang = dbo.donHangChiTiet.maDonHang INNER JOIN
+                  dbo.hoaDon ON dbo.donHang.maDonHang = dbo.hoaDon.maDonHang INNER JOIN
+                  dbo.monAn ON dbo.donHangChiTiet.maMonAn = dbo.monAn.maMonAn INNER JOIN
+                  dbo.nhanVien ON dbo.donHang.maNhanVien = dbo.nhanVien.maNhanVien AND dbo.hoaDon.maNhanVien = dbo.nhanVien.maNhanVien AND dbo.monAn.maNhanVien = dbo.nhanVien.maNhanVien
+
+where  dbo.donHang.maDonHang = $P{sMaHD}]]>
 	</queryString>
 	<field name="maDonHang" class="java.lang.Integer"/>
 	<field name="ngayTao" class="java.sql.Date"/>
@@ -21,6 +36,7 @@ where dbo.donHang.maDonHang  = $P{sMaHD}]]>
 	<field name="tenMonAn" class="java.lang.String"/>
 	<field name="giaTien" class="java.lang.Double"/>
 	<field name="tenNhanVien" class="java.lang.String"/>
+	<field name="Tong tien" class="java.lang.Double"/>
 	<group name="tenMonAn">
 		<groupExpression><![CDATA[$F{tenMonAn}]]></groupExpression>
 	</group>
@@ -95,7 +111,7 @@ where dbo.donHang.maDonHang  = $P{sMaHD}]]>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="31" splitType="Stretch">
+		<band height="46" splitType="Stretch">
 			<textField>
 				<reportElement x="169" y="8" width="100" height="20" uuid="ce84711b-1957-4751-a838-94f74a25a0ae"/>
 				<textElement textAlignment="Center"/>
@@ -111,6 +127,9 @@ where dbo.donHang.maDonHang  = $P{sMaHD}]]>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{giaTien}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="-17" y="45" width="444" height="1" uuid="c6b65a88-71bc-458c-83a2-1f3461238263"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
@@ -119,17 +138,22 @@ where dbo.donHang.maDonHang  = $P{sMaHD}]]>
 	<pageFooter>
 		<band height="23" splitType="Stretch">
 			<textField>
-				<reportElement x="250" y="0" width="80" height="20" uuid="b7e46fe8-1085-4a94-a156-ca6a35dda02f"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<reportElement x="310" y="3" width="87" height="20" uuid="f7394958-e2d1-4125-88f2-a15dc11c03d6"/>
+				<textFieldExpression><![CDATA[$F{Tong tien}]]></textFieldExpression>
 			</textField>
-			<textField evaluationTime="Report">
-				<reportElement x="330" y="0" width="40" height="20" uuid="57d4c640-de70-4c1d-889c-2393f5d77f30"/>
-				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
+			<staticText>
+				<reportElement x="250" y="3" width="60" height="20" uuid="1d7a50f6-5788-47b3-bac8-bfccd437bd1e"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Tổng tiền: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="373" y="3" width="37" height="20" uuid="f254ff2c-794a-4102-b953-b79604499b6c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[VND]]></text>
+			</staticText>
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="9" splitType="Stretch"/>
+		<band height="10" splitType="Stretch"/>
 	</summary>
 </jasperReport>
