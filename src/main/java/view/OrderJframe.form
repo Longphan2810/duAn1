@@ -57,7 +57,7 @@
                       <Group type="103" alignment="0" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel7" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Component id="lblIconNeko2" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
@@ -75,7 +75,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnChuyenManHinh" min="-2" pref="240" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="btnList" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                          <Component id="btnListDonHang" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -89,7 +89,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel7" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="lblIconNeko2" min="-2" pref="71" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnTaoDon" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -101,7 +101,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnDrink" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="btnList" min="-2" pref="35" max="-2" attributes="0"/>
+                          <Component id="btnListDonHang" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnLichSu" min="-2" pref="35" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -164,7 +164,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBurgerActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="lblIconNeko2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/logo_brand.png"/>
@@ -182,7 +182,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDrinkActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnList">
+        <Component class="javax.swing.JButton" name="btnListDonHang">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -190,7 +190,7 @@
             <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch &#x111;&#x1a1;n h&#xe0;ng"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListDonHangActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnLichSu">
@@ -543,7 +543,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" pref="170" max="-2" attributes="0"/>
+                              <Component id="lblDSMonThuocDonHang" min="-2" pref="170" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -555,11 +555,11 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="btnInHoaDon" min="-2" pref="159" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
-                                              <Component id="jLabel3" min="-2" pref="113" max="-2" attributes="0"/>
+                                              <Component id="lblThanhTien" min="-2" pref="113" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="102" attributes="0">
                                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="labelTongTien" min="-2" pref="113" max="-2" attributes="0"/>
+                                                      <Component id="lblTongTienDonHang" min="-2" pref="113" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="0" attributes="0">
                                                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -591,13 +591,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDSMonThuocDonHang" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jScrollPane2" min="-2" pref="272" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="labelTongTien" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblThanhTien" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTongTienDonHang" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -659,7 +659,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="jLabel2">
+                    <Component class="javax.swing.JLabel" name="lblDSMonThuocDonHang">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>
@@ -667,7 +667,7 @@
                         <Property name="text" type="java.lang.String" value="Danh S&#xe1;ch m&#xf3;n :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel3">
+                    <Component class="javax.swing.JLabel" name="lblThanhTien">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -675,7 +675,7 @@
                         <Property name="text" type="java.lang.String" value="Th&#xe0;nh ti&#x1ec1;n :"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="labelTongTien">
+                    <Component class="javax.swing.JLabel" name="lblTongTienDonHang">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
@@ -955,12 +955,12 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLabel1" min="-2" pref="224" max="-2" attributes="0"/>
+                                      <Component id="lblTitleChiTietDonHang" min="-2" pref="224" max="-2" attributes="0"/>
                                       <EmptySpace pref="389" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTitleTongTien" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="lblTongTien" min="-2" pref="148" max="-2" attributes="0"/>
                                   </Group>
@@ -972,12 +972,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTitleChiTietDonHang" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jScrollPane8" min="-2" pref="364" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTitleTongTien" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblTongTien" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
@@ -986,7 +986,7 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel1">
+                    <Component class="javax.swing.JLabel" name="lblTitleChiTietDonHang">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="24" style="1"/>
@@ -1060,7 +1060,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="jLabel4">
+                    <Component class="javax.swing.JLabel" name="lblTitleTongTien">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>

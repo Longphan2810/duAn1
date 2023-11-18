@@ -97,9 +97,9 @@ public class OrderJframe extends javax.swing.JFrame {
         btnPotato = new javax.swing.JButton();
         btnCream = new javax.swing.JButton();
         btnBurger = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        lblIconNeko2 = new javax.swing.JLabel();
         btnDrink = new javax.swing.JButton();
-        btnList = new javax.swing.JButton();
+        btnListDonHang = new javax.swing.JButton();
         btnLichSu = new javax.swing.JButton();
         tabbedTong = new javax.swing.JTabbedPane();
         tabTaoDonHang = new javax.swing.JPanel();
@@ -119,9 +119,9 @@ public class OrderJframe extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDonHang = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        labelTongTien = new javax.swing.JLabel();
+        lblDSMonThuocDonHang = new javax.swing.JLabel();
+        lblThanhTien = new javax.swing.JLabel();
+        lblTongTienDonHang = new javax.swing.JLabel();
         btnThemDonHang = new javax.swing.JButton();
         btnCapNhat = new javax.swing.JButton();
         btnLamMoi = new javax.swing.JButton();
@@ -139,10 +139,10 @@ public class OrderJframe extends javax.swing.JFrame {
         txtTimKiemDonHang = new javax.swing.JTextField();
         btnTimKiemDonHang = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitleChiTietDonHang = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         tblChiTietDonHang = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
+        lblTitleTongTien = new javax.swing.JLabel();
         lblTongTien = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Jpanel_HoaDon = new javax.swing.JPanel();
@@ -186,7 +186,7 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo_brand.png"))); // NOI18N
+        lblIconNeko2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/logo_brand.png"))); // NOI18N
 
         btnDrink.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDrink.setText("Drink");
@@ -196,11 +196,11 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        btnList.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnList.setText("Danh sách đơn hàng");
-        btnList.addActionListener(new java.awt.event.ActionListener() {
+        btnListDonHang.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnListDonHang.setText("Danh sách đơn hàng");
+        btnListDonHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListActionPerformed(evt);
+                btnListDonHangActionPerformed(evt);
             }
         });
 
@@ -456,14 +456,14 @@ public class OrderJframe extends javax.swing.JFrame {
             tblDonHang.getColumnModel().getColumn(2).setPreferredWidth(90);
         }
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Danh Sách món :");
+        lblDSMonThuocDonHang.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDSMonThuocDonHang.setText("Danh Sách món :");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Thành tiền :");
+        lblThanhTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblThanhTien.setText("Thành tiền :");
 
-        labelTongTien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelTongTien.setText("1000000$");
+        lblTongTienDonHang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTongTienDonHang.setText("1000000$");
 
         btnThemDonHang.setText("Tạo đơn");
         btnThemDonHang.addActionListener(new java.awt.event.ActionListener() {
@@ -516,7 +516,7 @@ public class OrderJframe extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblDSMonThuocDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
@@ -527,11 +527,11 @@ public class OrderJframe extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnInHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblThanhTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(labelTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblTongTienDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel6Layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
                                         .addComponent(btnThemDonHang)))))
@@ -551,13 +551,13 @@ public class OrderJframe extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblDSMonThuocDonHang)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(labelTongTien))
+                    .addComponent(lblThanhTien)
+                    .addComponent(lblTongTienDonHang))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemDonHang)
@@ -696,8 +696,8 @@ public class OrderJframe extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Chi tiết đơn hàng");
+        lblTitleChiTietDonHang.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblTitleChiTietDonHang.setText("Chi tiết đơn hàng");
 
         tblChiTietDonHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -709,8 +709,8 @@ public class OrderJframe extends javax.swing.JFrame {
         ));
         jScrollPane8.setViewportView(tblChiTietDonHang);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Tổng tiền: ");
+        lblTitleTongTien.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTitleTongTien.setText("Tổng tiền: ");
 
         lblTongTien.setText("1000000 VND");
 
@@ -723,11 +723,11 @@ public class OrderJframe extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTitleChiTietDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(389, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
+                        .addComponent(lblTitleTongTien)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -735,12 +735,12 @@ public class OrderJframe extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1)
+                .addComponent(lblTitleChiTietDonHang)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(lblTitleTongTien)
                     .addComponent(lblTongTien))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -835,7 +835,7 @@ public class OrderJframe extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblIconNeko2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(49, 49, 49)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -848,7 +848,7 @@ public class OrderJframe extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(btnChuyenManHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnListDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tabbedTong))
         );
@@ -858,7 +858,7 @@ public class OrderJframe extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblIconNeko2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnTaoDon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -870,7 +870,7 @@ public class OrderJframe extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDrink, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
-                        .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnListDonHang, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLichSu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
@@ -924,15 +924,15 @@ public class OrderJframe extends javax.swing.JFrame {
         tbpSub.setSelectedIndex(3);
     }//GEN-LAST:event_btnDrinkActionPerformed
 
-    private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
+    private void btnListDonHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListDonHangActionPerformed
         // TODO add your handling code here:
         removeColorAllButton();
         removeColorAllButtonSub();
         blockOrder(true);
-        checkClickButton(btnList);
+        checkClickButton(btnListDonHang);
         fillDonHangChuaThanhToan();
         tabbedTong.setSelectedIndex(1);
-    }//GEN-LAST:event_btnListActionPerformed
+    }//GEN-LAST:event_btnListDonHangActionPerformed
 
     private void btnPotatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPotatoActionPerformed
         // TODO add your handling code here:
@@ -1209,7 +1209,7 @@ public class OrderJframe extends javax.swing.JFrame {
             tongTien += gia;
 
         }
-        labelTongTien.setText(tongTien + "$");
+        lblTongTienDonHang.setText(tongTien + "$");
 
     }
 
@@ -1222,7 +1222,7 @@ public class OrderJframe extends javax.swing.JFrame {
 
     private void removeColorAllButton() {
         btnTaoDon.setBackground(Color.white);
-        btnList.setBackground(Color.white);
+        btnListDonHang.setBackground(Color.white);
         btnLichSu.setBackground(Color.white);
     }
 
@@ -1508,18 +1508,13 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JButton btnInHoaDon;
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnLichSu;
-    private javax.swing.JButton btnList;
+    private javax.swing.JButton btnListDonHang;
     private javax.swing.JButton btnPotato;
     private javax.swing.JButton btnTaoDon;
     private javax.swing.JButton btnThanhToanDonHang1;
     private javax.swing.JButton btnThemDonHang;
     private javax.swing.JButton btnTimKiemDonHang;
     private javax.swing.JButton btnXoaMon;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1533,8 +1528,13 @@ public class OrderJframe extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JLabel labelTongTien;
+    private javax.swing.JLabel lblDSMonThuocDonHang;
+    private javax.swing.JLabel lblIconNeko2;
+    private javax.swing.JLabel lblThanhTien;
+    private javax.swing.JLabel lblTitleChiTietDonHang;
+    private javax.swing.JLabel lblTitleTongTien;
     private javax.swing.JLabel lblTongTien;
+    private javax.swing.JLabel lblTongTienDonHang;
     private javax.swing.JPanel panelContainerBurger;
     private javax.swing.JPanel panelContainerCream;
     private javax.swing.JPanel panelContainerDonHang;

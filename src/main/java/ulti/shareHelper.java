@@ -51,52 +51,53 @@ public class shareHelper {
         return new ImageIcon(fileIn.getAbsolutePath());
     }
 
-    public static void exportToExcel(JTable table, String directoryPath, String fileName) {
-        // Tạo thư mục nếu nó chưa tồn tại
-        Path path = Paths.get(directoryPath);
-        if (!Files.exists(path)) {
-            try {
-                Files.createDirectories(path);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+   public static void exportToExcel(JTable table, String filePath) {
+    // Tạo thư mục cha nếu nó chưa tồn tại
+    File file = new File(filePath);
+    File parentDir = file.getParentFile();
+    if (!parentDir.exists()) {
+        try {
+            parentDir.mkdirs();
+        } catch (SecurityException e) {
+            e.printStackTrace();
         }
-
-        // Tạo một Workbook
-        Workbook workbook = new SXSSFWorkbook();
-        Sheet sheet = workbook.createSheet("Doanh thu");
-
-        // Lấy model của table
-        TableModel model = table.getModel();
-
-        // Tạo hàng tiêu đề
-        Row rows = sheet.createRow(0);
-        for (int i = 0; i < model.getColumnCount(); i++) {
-            Cell cell = rows.createCell(i);
-            cell.setCellValue(model.getColumnName(i));
-        }
-
-        // Tạo các hàng dữ liệu
-        for (int i = 0; i < model.getRowCount(); i++) {
-            Row row = sheet.createRow(i + 1);
-            for (int j = 0; j < model.getColumnCount(); j++) {
-                Object cellValue = model.getValueAt(i, j);
-                Cell cell = row.createCell(j);
-                if (cellValue != null) {
-                    cell.setCellValue(cellValue.toString());
-                } else {
-                    cell.setCellValue("");
-                }
-            }
-        }
-
-        // Xuất dữ liệu ra file Excel
-        try (FileOutputStream out = new FileOutputStream(directoryPath + "/" + fileName + ".xlsx")) {
-            workbook.write(out);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
     }
+
+    // Tạo một Workbook
+    Workbook workbook = new SXSSFWorkbook();
+    Sheet sheet = workbook.createSheet("Doanh thu");
+
+    // Lấy model của table
+    TableModel model = table.getModel();
+
+    // Tạo hàng tiêu đề
+    Row rows = sheet.createRow(0);
+    for (int i = 0; i < model.getColumnCount(); i++) {
+        Cell cell = rows.createCell(i);
+        cell.setCellValue(model.getColumnName(i));
+    }
+
+    // Tạo các hàng dữ liệu
+    for (int i = 0; i < model.getRowCount(); i++) {
+        Row row = sheet.createRow(i + 1);
+        for (int j = 0; j < model.getColumnCount(); j++) {
+            Object cellValue = model.getValueAt(i, j);
+            Cell cell = row.createCell(j);
+            if (cellValue != null) {
+                cell.setCellValue(cellValue.toString());
+            } else {
+                cell.setCellValue("");
+            }
+        }
+    }
+
+    // Xuất dữ liệu ra file Excel
+    try (FileOutputStream out = new FileOutputStream(file)) {
+        workbook.write(out);
+    } catch (IOException ex) {
+        ex.printStackTrace();
+    }
+}
+
 
 }

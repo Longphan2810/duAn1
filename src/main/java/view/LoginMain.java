@@ -40,10 +40,10 @@ public class LoginMain extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblScreenIcon = new javax.swing.JLabel();
+        lblIconLogin = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
@@ -51,17 +51,15 @@ public class LoginMain extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login_1.png"))); // NOI18N
+        lblScreenIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login_1.png"))); // NOI18N
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login_2.png"))); // NOI18N
+        lblIconLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login_2.png"))); // NOI18N
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Password");
+        lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblPassword.setText("Password");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Username");
+        lblUserName.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        lblUserName.setText("Username");
 
         txtUserName.setBackground(new java.awt.Color(243, 239, 243));
         txtUserName.setText("NV001");
@@ -78,7 +76,6 @@ public class LoginMain extends javax.swing.JDialog {
 
         btnLogin.setBackground(new java.awt.Color(204, 204, 204));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnLogin.setForeground(new java.awt.Color(0, 0, 0));
         btnLogin.setText("Login");
         btnLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(153, 153, 153)));
         btnLogin.setFocusCycleRoot(true);
@@ -90,7 +87,6 @@ public class LoginMain extends javax.swing.JDialog {
 
         btnExit.setBackground(new java.awt.Color(204, 204, 204));
         btnExit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(0, 0, 0));
         btnExit.setText("Exit");
         btnExit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(153, 153, 153)));
         btnExit.setFocusCycleRoot(true);
@@ -105,17 +101,17 @@ public class LoginMain extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(lblScreenIcon)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
+                        .addComponent(lblIconLogin))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblUserName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPassword, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,17 +122,17 @@ public class LoginMain extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(lblScreenIcon)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jLabel2)
+                .addComponent(lblIconLogin)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(lblUserName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(lblPassword)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
@@ -279,11 +275,11 @@ public class LoginMain extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblIconLogin;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblScreenIcon;
+    private javax.swing.JLabel lblUserName;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables

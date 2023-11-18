@@ -32,16 +32,16 @@ public class chaoJDialog extends javax.swing.JDialog {
                     chaoJDialog.this.dispose();
                     
                 } else {
-                    man.setLocation(manRun, 451);
+                    lblDercorIcon.setLocation(manRun, 451);
                     progress.setValue(progressRun);
                     manRun += 3;
                     progressRun = progressRun + 7;
                     if (progressRun % 310 <= 150) {
                         i--;
-                        man.setLocation(manRun, i);
+                        lblDercorIcon.setLocation(manRun, i);
                     } else {
                         i++;
-                        man.setLocation(manRun, i);
+                        lblDercorIcon.setLocation(manRun, i);
                     }
                 }
             }
@@ -62,8 +62,8 @@ public class chaoJDialog extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         progress = new javax.swing.JProgressBar();
-        man = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblDercorIcon = new javax.swing.JLabel();
+        lblScreen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,13 +72,13 @@ public class chaoJDialog extends javax.swing.JDialog {
         progress.setMaximum(1490);
         jPanel1.add(progress, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 640, 20));
 
-        man.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        man.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/xxxxxxxxxxx.png"))); // NOI18N
-        man.setPreferredSize(new java.awt.Dimension(100, 100));
-        jPanel1.add(man, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 50, 30));
+        lblDercorIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDercorIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/xxxxxxxxxxx.png"))); // NOI18N
+        lblDercorIcon.setPreferredSize(new java.awt.Dimension(100, 100));
+        jPanel1.add(lblDercorIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 50, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chao.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblScreen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Chao.png"))); // NOI18N
+        jPanel1.add(lblScreen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,9 +144,9 @@ public class chaoJDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel man;
+    private javax.swing.JLabel lblDercorIcon;
+    private javax.swing.JLabel lblScreen;
     private javax.swing.JProgressBar progress;
     // End of variables declaration//GEN-END:variables
 }
