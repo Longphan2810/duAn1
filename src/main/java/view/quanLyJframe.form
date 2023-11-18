@@ -66,8 +66,8 @@
                               <Component id="lblNekoIcon" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
                                   <Component id="btnDanhSachNhanVien" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnThemNhanVien" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnThemMon" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="btnTaoNhanVien" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnTaoMon" alignment="1" max="32767" attributes="0"/>
                                   <Component id="btnDanhSachmon" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -97,13 +97,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnQuanLyMon" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnThemMon" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnTaoMon" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDanhSachmon" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnQuanLyNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnThemNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnTaoNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDanhSachNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -138,7 +138,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuanLyMonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnThemMon">
+        <Component class="javax.swing.JButton" name="btnTaoMon">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -146,7 +146,7 @@
             <Property name="text" type="java.lang.String" value="Th&#xea;m/S&#x1eed;a m&#xf3;n"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemMonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaoMonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblNekoIcon">
@@ -1214,7 +1214,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="btnThemNhanVien">
+        <Component class="javax.swing.JButton" name="btnTaoNhanVien">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -1222,7 +1222,7 @@
             <Property name="text" type="java.lang.String" value="Th&#xea;m nh&#xe2;n vi&#xea;n"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemNhanVienActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaoNhanVienActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDanhSachNhanVien">
