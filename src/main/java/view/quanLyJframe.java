@@ -1419,9 +1419,10 @@ public class quanLyJframe extends javax.swing.JFrame {
     }
 
     private void inIt() {
-        Color backgroundColor = new Color(255, 177, 55);
-        btnThemMon.setBackground(backgroundColor);
-
+//        Color backgroundColor = new Color(255, 177, 55);
+//        
+//        btnThemMon.setBackground(backgroundColor);
+            checkClickButton(btnThemMon);
         modelFoodList = (DefaultTableModel) tblDanhSachMon.getModel();
 
     }

@@ -800,7 +800,7 @@ public class OrderJframe extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(Jpanel_HoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnThanhToanDonHang1)
+                .addComponent(btnThanhToanDonHang1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -1073,12 +1073,12 @@ public class OrderJframe extends javax.swing.JFrame {
     private void btnInHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInHoaDonActionPerformed
         try {
             // TODO add your handling code here:
-            donHangCurrent.setTrangThai("Da Thanh Toan");
+            donHangCurrent.setTrangThai("Chua Thanh Toan");
             donHangDao.update(donHangCurrent);
             HoaDon newHoaDon = new HoaDon();
             newHoaDon.setMaDonHang(donHangCurrent.getMaDonHang());
             newHoaDon.setNgayTao(DateHelper.GetDateNow());
-            newHoaDon.setTrangThai("Da Thanh Toan");
+            newHoaDon.setTrangThai("Chua Thanh Toan");
             newHoaDon.setMaNhanVien(Auth.currentNhanVien.getMaNhanVien());
             hoaDonDao.insert(newHoaDon);
             InHoaDon(donHangCurrent.getMaDonHang());
@@ -1112,6 +1112,7 @@ public class OrderJframe extends javax.swing.JFrame {
             blockOrder(true);
             checkClickButton(btnLichSu);
             tabbedTong.setSelectedIndex(2);
+            fillDonHangChuaThanhToan();
             fillTableLichSu();
         } catch (ParseException ex) {
             Logger.getLogger(OrderJframe.class.getName()).log(Level.SEVERE, null, ex);
@@ -1164,8 +1165,6 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
-        Color backgroundColor = new Color(255, 177, 55);
-        btnTaoDon.setBackground(backgroundColor);
         tbpSub.setUI(new BasicTabbedPaneUI() {
             @Override
             protected int calculateTabAreaHeight(int tabPlacement, int horizRunCount, int maxTabHeight) {
@@ -1173,6 +1172,10 @@ public class OrderJframe extends javax.swing.JFrame {
             }
         });
 
+        removeColorAllButton();
+        removeColorAllButtonSub();
+        Color backgroundColor = new Color(255, 177, 55);
+        btnTaoDon.setBackground(backgroundColor);
     }
     //============= clear form don hang =============
 

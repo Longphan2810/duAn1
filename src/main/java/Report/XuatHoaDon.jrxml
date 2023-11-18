@@ -133,25 +133,25 @@ where  dbo.donHang.maDonHang = $P{sMaHD}]]>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="23" splitType="Stretch">
+		<band height="33" splitType="Stretch">
 			<textField>
-				<reportElement x="310" y="3" width="87" height="20" uuid="f7394958-e2d1-4125-88f2-a15dc11c03d6"/>
+				<reportElement x="303" y="0" width="87" height="20" uuid="f7394958-e2d1-4125-88f2-a15dc11c03d6"/>
 				<textFieldExpression><![CDATA[$F{Tong tien}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="250" y="3" width="60" height="20" uuid="1d7a50f6-5788-47b3-bac8-bfccd437bd1e"/>
+				<reportElement x="243" y="0" width="60" height="20" uuid="1d7a50f6-5788-47b3-bac8-bfccd437bd1e"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Tổng tiền: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="373" y="3" width="37" height="20" uuid="f254ff2c-794a-4102-b953-b79604499b6c"/>
+				<reportElement x="390" y="0" width="37" height="20" uuid="f254ff2c-794a-4102-b953-b79604499b6c"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[VND]]></text>
 			</staticText>
 		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="10" splitType="Stretch"/>
