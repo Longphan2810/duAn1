@@ -57,26 +57,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnTaoDon" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
-                      <Component id="btnList" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnList5" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnQuanLyMon" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
+                      <Component id="btnQuanLyNhanVien" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnBaoCaoThongKe" min="-2" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel7" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
-                                  <Component id="btnThongKeDoanhThu" alignment="1" min="-2" pref="189" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="btnDanhSachNhanVien" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnThemNhanVien" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnThemMon" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="btnDanhSachmon" alignment="1" max="32767" attributes="0"/>
-                                  </Group>
+                              <Component id="lblNekoIcon" alignment="0" min="-2" pref="240" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="btnDanhSachNhanVien" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnThemNhanVien" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnThemMon" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="btnDanhSachmon" alignment="1" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="btnThongKeMonAn" alignment="1" min="-2" pref="189" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="btnChuyenManHinh" alignment="1" min="-2" pref="240" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="btnThongKeMonAn" max="32767" attributes="0"/>
+                          <Component id="btnThongKeDoanhThu" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="tabbedTong" max="32767" attributes="0"/>
@@ -93,21 +93,21 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" pref="71" max="-2" attributes="0"/>
+                  <Component id="lblNekoIcon" min="-2" pref="71" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnTaoDon" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnQuanLyMon" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnThemMon" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDanhSachmon" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnList" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnQuanLyNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnThemNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnDanhSachNhanVien" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnList5" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btnBaoCaoThongKe" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnThongKeDoanhThu" min="-2" pref="35" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -127,15 +127,15 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnTaoDon">
+        <Component class="javax.swing.JButton" name="btnQuanLyMon">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Th&#xea;m/S&#x1eed;a m&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; m&#xf3;n &#x103;n"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTaoDonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuanLyMonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnThemMon">
@@ -143,20 +143,20 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Th&#xea;m m&#xf3;n"/>
+            <Property name="text" type="java.lang.String" value="Th&#xea;m/S&#x1eed;a m&#xf3;n"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemMonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="lblNekoIcon">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/image/logo_brand.png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnList">
+        <Component class="javax.swing.JButton" name="btnQuanLyNhanVien">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -164,7 +164,7 @@
             <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n l&#xfd; nh&#xe2;n vi&#xea;n"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnQuanLyNhanVienActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JTabbedPane" name="tabbedTong">
@@ -1241,13 +1241,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea; doanh thu"/>
+            <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;  t&#x1ed5;ng doanh thu"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThongKeDoanhThuActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnList5">
+        <Component class="javax.swing.JButton" name="btnBaoCaoThongKe">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -1255,7 +1255,7 @@
             <Property name="text" type="java.lang.String" value="B&#xe1;o c&#xe1;o th&#x1ed1;ng k&#xea;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnList5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBaoCaoThongKeActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDanhSachmon">
