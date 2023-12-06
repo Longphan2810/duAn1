@@ -173,23 +173,30 @@ public class LoginMain extends javax.swing.JDialog {
         JFrame nv = new OrderJframe();
 
         String pass = String.valueOf(txtPassword.getPassword());
+        String user = txtUserName.getText();
+
+        if (pass.trim().equals("") || user.trim().equals("")) {
+            DialogHelper.alert(this, "Vui long dien pass va user !");
+
+            return;
+        }
 
         NhanVien nvTemp = nhanVienDao.findById(txtUserName.getText().trim());
 
         if (nvTemp != null) {
             if (nvTemp.getMatKhau().equals(pass)) {
 
-                if (nvTemp.isRole()) {                    
-                    LoginMain.this.dispose();                  
+                if (nvTemp.isRole()) {
+                    LoginMain.this.dispose();
                     ql.setVisible(true);
                 } else {
-                    
-                    LoginMain.this.dispose();                  
+
+                    LoginMain.this.dispose();
                     nv.setVisible(true);
                 }
-                
+
                 Auth.currentNhanVien = nvTemp;
-                
+
             } else {
                 DialogHelper.alert(this, "Sai password !");
 

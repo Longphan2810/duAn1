@@ -1034,6 +1034,7 @@ public class OrderJframe extends javax.swing.JFrame {
         // TODO add your handling code here:
         donHangCurrent.setTrangThai("Da Huy");
         donHangDao.update(donHangCurrent);
+        DialogHelper.alert(this, "Da Huy Don !");
         clearDonHang();
 
     }//GEN-LAST:event_btnHuyDonActionPerformed
