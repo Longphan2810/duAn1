@@ -19,8 +19,8 @@ import java.util.logging.Logger;
  */
 public class DonHangDAO implements EntityDAO<DonHang> {
 
-    final String insert_SQL = "insert into donHang (ngayTao, maNhanVien, trangThai) values(?,?,?)";
-    final String update_SQL = "update donHang set ngayTao = ?, maNhanVien = ?,trangThai = ? where maDonHang = ?";
+    final String insert_SQL = "insert into donHang (ngayTao, maNhanVien, trangThai,ban) values(?,?,?,?)";
+    final String update_SQL = "update donHang set ngayTao = ?, maNhanVien = ?,trangThai = ?, ban =? where maDonHang = ?";
     final String delete_SQL = "delete from donHang where maDonHang = ?";
     final String selectALL_SQL = "select * from donHang";
     final String selectChuaThanhToan = "select * from donhang  where trangThai = 'Chua Thanh Toan'";
@@ -30,12 +30,12 @@ public class DonHangDAO implements EntityDAO<DonHang> {
 
     @Override
     public void insert(DonHang E) {
-        JDBChelper.Update(insert_SQL, E.getNgayTao(), E.getMaNhanVien(), E.getTrangThai());
+        JDBChelper.Update(insert_SQL, E.getNgayTao(), E.getMaNhanVien(), E.getTrangThai(),E.getBan());
     }
 
     @Override
     public void update(DonHang E) {
-        JDBChelper.Update(update_SQL, E.getNgayTao(), E.getMaNhanVien(), E.getTrangThai(), E.getMaDonHang());
+        JDBChelper.Update(update_SQL, E.getNgayTao(), E.getMaNhanVien(), E.getTrangThai(),E.getBan(), E.getMaDonHang());
     }
 
     @Override
@@ -47,12 +47,15 @@ public class DonHangDAO implements EntityDAO<DonHang> {
     public List<DonHang> selectAll() {
         return selectBySQL(selectALL_SQL);
     }
-     public List<DonHang> selectChuaThanhToan() {
+
+    public List<DonHang> selectChuaThanhToan() {
         return selectBySQL(selectChuaThanhToan);
     }
-     public List<DonHang> selectDaThanhToan() {
+
+    public List<DonHang> selectDaThanhToan() {
         return selectBySQL(selectDaThanhToan);
     }
+
     @Override
     public DonHang findById(String ID) {
         List<DonHang> list = selectBySQL(selectByID_SQL, ID);
@@ -72,6 +75,7 @@ public class DonHangDAO implements EntityDAO<DonHang> {
                 donHangTemp.setNgayTao(rs.getDate("ngayTao"));
                 donHangTemp.setMaNhanVien(rs.getString("maNhanVien"));
                 donHangTemp.setTrangThai(rs.getString("trangThai"));
+                donHangTemp.setBan(rs.getInt("Ban"));
 
             }
             return donHangTemp;
@@ -93,6 +97,7 @@ public class DonHangDAO implements EntityDAO<DonHang> {
                 entity.setNgayTao(rs.getDate("ngayTao"));
                 entity.setMaNhanVien(rs.getString("maNhanVien"));
                 entity.setTrangThai(rs.getString("trangThai"));
+                entity.setBan(rs.getInt("Ban"));
                 list.add(entity);
             }
         } catch (Exception e) {
@@ -101,8 +106,26 @@ public class DonHangDAO implements EntityDAO<DonHang> {
         }
         return list;
     }
-public List<Integer> selectYear() {
-    String sql = "Select distinct Year(ngayTao) as Year from donHang where trangThai like 'Da thanh toan' order by  Year desc";
+
+    public List<Integer> selectBanChuaThanhToan() {
+        List<Integer> list = new ArrayList<>();
+        String selectBan = " select ban  from donhang where trangThai = 'Chua Thanh Toan';";
+
+        try {
+            ResultSet rs = JDBChelper.Query(selectBan);
+            while (rs.next()) {
+                list.add(rs.getInt("Ban"));
+
+            }
+
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
+
+    public List<Integer> selectYear() {
+        String sql = "Select distinct Year(ngayTao) as Year from donHang where trangThai like 'Da thanh toan' order by  Year desc";
         List<Integer> list = new ArrayList<>();
         try {
             ResultSet rs = JDBChelper.Query(sql);
@@ -116,7 +139,6 @@ public List<Integer> selectYear() {
             throw new RuntimeException(e);
         }
         return list;
-}
-
+    }
 
 }

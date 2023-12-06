@@ -15,8 +15,17 @@ public class DonHang {
     private Date ngayTao;
     private String trangThai;
     private String  maNhanVien;
+    private int ban;
 
     public DonHang() {
+    }
+
+    public int getBan() {
+        return ban;
+    }
+
+    public void setBan(int ban) {
+        this.ban = ban;
     }
 
     public DonHang(int maDonHang, Date ngayTao, String trangThai, String maNhanVien) {
